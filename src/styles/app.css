@@ -1,0 +1,282 @@
+:root {
+  --sand: #f4f1ea;
+  --ink: #1f2937;
+  --mint: #0f766e;
+  --amber: #f59e0b;
+  --rose: #be123c;
+  --panel: #fffdf7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at 10% 10%, #fff7ed 0%, var(--sand) 40%, #e7ecef 100%);
+  color: var(--ink);
+}
+
+.practice-screen {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.reels {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(120px, 1fr);
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.reel-window {
+  background: var(--panel);
+  border: 3px solid var(--ink);
+  border-radius: 18px;
+  height: min(34vh, 260px);
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.reel-track {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.reel-track.spinning {
+  animation: reelSpin 0.5s cubic-bezier(0.1, 0.75, 0.3, 1) forwards;
+}
+
+@keyframes reelSpin {
+  0% {
+    transform: translateY(0%);
+  }
+  20% {
+    transform: translateY(-40%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.reel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.5rem;
+}
+
+.placeholder {
+  width: 80%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: repeating-linear-gradient(45deg, #d5d5d5, #d5d5d5 10px, #efefef 10px, #efefef 20px);
+}
+
+.image-error {
+  opacity: 0.35;
+}
+
+.practice-controls {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: white;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.icon-button.spin {
+  width: 72px;
+  height: 72px;
+  border-width: 3px;
+  background: var(--amber);
+}
+
+.icon-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.settings-screen {
+  min-height: 100%;
+  padding: 1rem;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-section {
+  margin-top: 1rem;
+  background: var(--panel);
+  border: 2px solid #d4d4d4;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.6rem;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.slot-editor {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.slot-controls {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.slot-controls button,
+.action-button,
+.template-save-row button,
+.template-item button {
+  border: 1px solid var(--ink);
+  background: white;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+}
+
+.template-save-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.template-list {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.template-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  display: grid;
+  place-items: center;
+  z-index: 20;
+  padding: 1rem;
+}
+
+.modal {
+  width: min(1000px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.history-item {
+  border: 1px solid #dadada;
+  padding: 0.6rem;
+  border-radius: 8px;
+}
+
+.history-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(90px, 1fr);
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.history-row img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.error-box {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+.rotate-screen {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  background: linear-gradient(120deg, #ffedd5, #e0f2fe);
+}
+
+.loading,
+.fatal-error {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .reels {
+    grid-auto-columns: minmax(90px, 1fr);
+  }
+
+  .slot-editor {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-screen {
+    padding: 0.7rem;
+  }
+}
