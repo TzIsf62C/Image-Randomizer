@@ -1,0 +1,405 @@
+[
+  {
+    "id": "1stPluralPro",
+    "file": "lesson1/1stPluralPro.svg",
+    "lesson": 1,
+    "categories": [
+      "pronoun",
+      "subject"
+    ]
+  },
+  {
+    "id": "1stSingPro",
+    "file": "lesson1/1stSingPro.svg",
+    "lesson": 1,
+    "categories": [
+      "pronoun",
+      "subject"
+    ]
+  },
+  {
+    "id": "2ndPluralPro",
+    "file": "lesson1/2ndPluralPro.svg",
+    "lesson": 1,
+    "categories": [
+      "pronoun",
+      "subject"
+    ]
+  },
+  {
+    "id": "2ndSingPro",
+    "file": "lesson1/2ndSingPro.svg",
+    "lesson": 1,
+    "categories": [
+      "pronoun",
+      "subject"
+    ]
+  },
+  {
+    "id": "3rdPluralPro",
+    "file": "lesson1/3rdPluralPro.svg",
+    "lesson": 1,
+    "categories": [
+      "pronoun",
+      "subject"
+    ]
+  },
+  {
+    "id": "3rdSingPro",
+    "file": "lesson1/3rdSingPro.svg",
+    "lesson": 1,
+    "categories": [
+      "pronoun",
+      "subject"
+    ]
+  },
+  {
+    "id": "animals",
+    "file": "lesson1/animals.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "bird",
+    "file": "lesson1/bird.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "boy_central-asian",
+    "file": "lesson1/boy_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "cat",
+    "file": "lesson1/cat.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "come",
+    "file": "lesson1/come.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "cow",
+    "file": "lesson1/cow.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "dog",
+    "file": "lesson1/dog.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "elder-man_central-asian",
+    "file": "lesson1/elder-man_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "elder-woman_central-asian",
+    "file": "lesson1/elder-woman_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "fish",
+    "file": "lesson1/fish.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "frog",
+    "file": "lesson1/frog.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "girl_central-asian",
+    "file": "lesson1/girl_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "go",
+    "file": "lesson1/go.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "horse",
+    "file": "lesson1/horse.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "housefly",
+    "file": "lesson1/housefly.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "infant_central-asian",
+    "file": "lesson1/infant_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "jump",
+    "file": "lesson1/jump.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "lie",
+    "file": "lesson1/lie.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "man_central-asian",
+    "file": "lesson1/man_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "mouse",
+    "file": "lesson1/mouse.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "run",
+    "file": "lesson1/run.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "sit",
+    "file": "lesson1/sit.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "spider",
+    "file": "lesson1/spider.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "animal"
+    ]
+  },
+  {
+    "id": "stand",
+    "file": "lesson1/stand.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "stop",
+    "file": "lesson1/stop.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "toddler_central-asian",
+    "file": "lesson1/toddler_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "walk",
+    "file": "lesson1/walk.svg",
+    "lesson": 1,
+    "categories": [
+      "verb",
+      "intransitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "woman_central-asian",
+    "file": "lesson1/woman_central-asian.svg",
+    "lesson": 1,
+    "categories": [
+      "noun",
+      "subject",
+      "object",
+      "person"
+    ]
+  },
+  {
+    "id": "give",
+    "file": "lesson2/give.svg",
+    "lesson": 2,
+    "categories": [
+      "verb",
+      "transitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "look",
+    "file": "lesson2/look.svg",
+    "lesson": 2,
+    "categories": [
+      "verb",
+      "transitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "point",
+    "file": "lesson2/point.svg",
+    "lesson": 2,
+    "categories": [
+      "verb",
+      "transitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "put",
+    "file": "lesson2/put.svg",
+    "lesson": 2,
+    "categories": [
+      "verb",
+      "transitive-verb",
+      "action"
+    ]
+  },
+  {
+    "id": "take",
+    "file": "lesson2/take.svg",
+    "lesson": 2,
+    "categories": [
+      "verb",
+      "transitive-verb",
+      "action"
+    ]
+  }
+]
