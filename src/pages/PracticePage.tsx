@@ -19,12 +19,22 @@ const buildEligibility = (records: ImageRecord[], selectedLessons: number[]): Im
 };
 
 export const PracticePage = ({ settings, metadata, repeatState }: PracticePageProps) => {
+  const REEL_STAGGER_MS = 90;
+  const REEL_HOLD_MS = 80;
+
   const navigate = useNavigate();
   const [spinning, setSpinning] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [current, setCurrent] = useState<(ImageRecord | null)[]>(() => settings.slots.map(() => null));
   const [history, setHistory] = useState<SpinResult[]>([]);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
   const spinCounterRef = useRef(0);
+
+  const REEL_SETTLE_MS = prefersReducedMotion ? 120 : 160;
+  const REEL_BLUR_MS = prefersReducedMotion ? 0 : Math.max(SPIN_DURATION_MS - REEL_HOLD_MS - REEL_SETTLE_MS, 0);
+  const REEL_TOTAL_MS = REEL_HOLD_MS + REEL_BLUR_MS + REEL_SETTLE_MS;
 
   const eligibleBySlot = useMemo(() => {
     const byLesson = buildEligibility(metadata, settings.selectedLessons);
@@ -50,7 +60,6 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
     });
 
     const finalize = () => {
-      setCurrent(selected);
       spinCounterRef.current += 1;
       setHistory((previous) => [
         ...previous,
@@ -73,11 +82,33 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
     };
 
     if (settings.animationEnabled) {
-      window.setTimeout(finalize, SPIN_DURATION_MS);
+      selected.forEach((record, index) => {
+        const swapDelayMs = index * REEL_STAGGER_MS + REEL_HOLD_MS + REEL_BLUR_MS;
+        window.setTimeout(() => {
+          setCurrent((previous) => {
+            const next = [...previous];
+            next[index] = record;
+            return next;
+          });
+        }, swapDelayMs);
+      });
+
+      const finalDelayMs = Math.max(selected.length - 1, 0) * REEL_STAGGER_MS + REEL_TOTAL_MS;
+      window.setTimeout(finalize, finalDelayMs);
     } else {
+      setCurrent(selected);
       finalize();
     }
-  }, [eligibleBySlot, hasConfigError, repeatState, settings.animationEnabled, settings.avoidLastN, settings.repeatMode, settings.slots, settings.soundEnabled, spinning]);
+  }, [REEL_BLUR_MS, REEL_HOLD_MS, REEL_STAGGER_MS, REEL_TOTAL_MS, eligibleBySlot, hasConfigError, repeatState, settings.animationEnabled, settings.avoidLastN, settings.repeatMode, settings.slots, settings.soundEnabled, spinning]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = (): void => setPrefersReducedMotion(mediaQuery.matches);
+
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent): void => {
@@ -133,8 +164,9 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
             key={settings.slots[index].id}
             record={record}
             spinning={spinning}
-            stopDelayMs={index * 90}
+            stopDelayMs={index * REEL_STAGGER_MS}
             animationEnabled={settings.animationEnabled}
+            prefersReducedMotion={prefersReducedMotion}
           />
         ))}
       </section>

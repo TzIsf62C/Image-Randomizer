@@ -51,6 +51,7 @@ body,
 .reel-window {
   width: clamp(88px, var(--max-reel-size), 260px);
   aspect-ratio: 1 / 1;
+  position: relative;
   background: var(--panel);
   border: 3px solid var(--ink);
   border-radius: 18px;
@@ -59,24 +60,128 @@ body,
 }
 
 .reel-track {
-  height: 100%;
+  position: relative;
+  height: 300%;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  transform: translateY(-33.333%);
+  will-change: transform, opacity;
+}
+
+.reel-track.spinning {
+  /* Adjust hold and blur duration percentages by changing keyframe stops. */
+  animation: reelSpinMotion 780ms linear forwards;
+}
+
+@keyframes reelSpinMotion {
+  0%,
+  10.256% {
+    transform: translateY(-33.333%);
+  }
+
+  24% {
+    transform: translateY(-80%);
+  }
+
+  36% {
+    transform: translateY(10%);
+  }
+
+  49% {
+    transform: translateY(-80%);
+  }
+
+  61% {
+    transform: translateY(10%);
+  }
+
+  74% {
+    transform: translateY(-80%);
+  }
+
+  86% {
+    transform: translateY(10%);
+  }
+
+  100% {
+    transform: translateY(-66.666%);
+  }
+}
+
+.reel-track.settling {
+  animation: reelSettle 160ms cubic-bezier(0.1, 0.75, 0.3, 1) forwards;
+}
+
+@keyframes reelSettle {
+  0% {
+    transform: translateY(-66.666%);
+  }
+
+  100% {
+    transform: translateY(-33.333%);
+  }
+}
+
+.reel-track.settling .symbol {
+  /* Selected image drops in from above the window during settle. */
+  animation: symbolDropIn 160ms cubic-bezier(0.1, 0.75, 0.3, 1) forwards;
+}
+
+@keyframes symbolDropIn {
+  0% {
+    transform: translateY(-35%);
+    opacity: 0.75;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.symbol {
+  min-height: 0;
   display: grid;
   place-items: center;
 }
 
-.reel-track.spinning {
-  animation: reelSpin 0.5s cubic-bezier(0.1, 0.75, 0.3, 1) forwards;
+.motion-blur-layer {
+  position: absolute;
+  inset: 33.333% 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
-@keyframes reelSpin {
+.reel-track.motion-blur .motion-blur-layer {
+  opacity: 1;
+}
+
+.reel-track.motion-blur .symbol {
+  opacity: 0.1;
+  filter: blur(6px);
+}
+
+.blur-clone {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  /* Adjust blur intensity here by changing blur(6px). */
+  filter: blur(6px);
+  opacity: calc(0.5 - (var(--blur-index) * 0.0642857));
+  transform: translateY(calc((var(--blur-index) - 4) * 2.2%));
+  animation: blurPassDown 140ms linear infinite;
+  animation-delay: calc(var(--blur-index) * -18ms);
+  will-change: transform, opacity;
+}
+
+@keyframes blurPassDown {
   0% {
-    transform: translateY(0%);
+    transform: translateY(-120%);
   }
-  20% {
-    transform: translateY(-40%);
-  }
+
   100% {
-    transform: translateY(0%);
+    transform: translateY(120%);
   }
 }
 
@@ -276,6 +381,43 @@ body,
   display: grid;
   place-items: center;
   font-size: 1.1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel-track.spinning {
+    animation: none;
+    transform: translateY(-33.333%);
+  }
+
+  .reel-track.motion-blur .symbol {
+    filter: none;
+    opacity: 1;
+  }
+
+  .motion-blur-layer {
+    display: none;
+  }
+
+  .reel-track.settling {
+    animation: reelCrossfade 120ms linear forwards;
+  }
+
+  .reel-track.settling .symbol,
+  .blur-clone {
+    animation: none;
+  }
+
+  @keyframes reelCrossfade {
+    0% {
+      opacity: 0;
+      transform: translateY(-33.333%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(-33.333%);
+    }
+  }
 }
 
 @media (max-width: 900px) {

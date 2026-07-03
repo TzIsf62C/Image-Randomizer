@@ -15,4 +15,4 @@ export const DEFAULT_SETTINGS: SettingsState = {
   templates: []
 };
 
-export const SPIN_DURATION_MS = 500;
+export const SPIN_DURATION_MS = 940;
