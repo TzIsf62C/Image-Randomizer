@@ -23,6 +23,11 @@ body,
 }
 
 .practice-screen {
+  --screen-padding: 1rem;
+  --reel-gap: 0.75rem;
+  --controls-height: 5.5rem;
+  --controls-gap: 1rem;
+
   height: 100%;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -31,18 +36,24 @@ body,
 }
 
 .reels {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(120px, 1fr);
-  gap: 0.75rem;
+  --slot-count: 1;
+  --max-reel-size: min(
+    calc((100vw - (2 * var(--screen-padding)) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count)),
+    calc(100dvh - var(--controls-height) - (2 * var(--screen-padding)) - var(--controls-gap))
+  );
+
+  display: flex;
+  justify-content: center;
+  gap: var(--reel-gap);
   align-items: center;
 }
 
 .reel-window {
+  width: clamp(88px, var(--max-reel-size), 260px);
+  aspect-ratio: 1 / 1;
   background: var(--panel);
   border: 3px solid var(--ink);
   border-radius: 18px;
-  height: min(34vh, 260px);
   overflow: hidden;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }
@@ -268,8 +279,18 @@ body,
 }
 
 @media (max-width: 900px) {
+  .practice-screen {
+    --screen-padding: 0.7rem;
+    --reel-gap: 0.5rem;
+    --controls-height: 5rem;
+    --controls-gap: 0.7rem;
+  }
+
   .reels {
-    grid-auto-columns: minmax(90px, 1fr);
+    --max-reel-size: min(
+      calc((100vw - (2 * var(--screen-padding)) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count)),
+      calc(100dvh - var(--controls-height) - (2 * var(--screen-padding)) - var(--controls-gap))
+    );
   }
 
   .slot-editor {

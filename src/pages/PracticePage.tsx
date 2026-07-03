@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HistoryModal } from '../components/HistoryModal';
 import { SlotReel } from '../components/SlotReel';
@@ -119,11 +119,15 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
     );
   }
 
+  const reelSectionStyle = {
+    '--slot-count': Math.max(current.length, 1)
+  } as CSSProperties;
+
   return (
     <main className="practice-screen">
       {showHistory ? <HistoryModal history={history} onClose={() => setShowHistory(false)} /> : null}
 
-      <section className="reels" aria-live="polite">
+      <section className="reels" aria-live="polite" style={reelSectionStyle}>
         {current.map((record, index) => (
           <SlotReel
             key={settings.slots[index].id}
