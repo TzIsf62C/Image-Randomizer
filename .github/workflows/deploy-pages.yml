@@ -1,0 +1,136 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  actions: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  build:
+    name: Build site artifact
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Print runner and repo context
+        run: |
+          set -euxo pipefail
+          echo "repo=${GITHUB_REPOSITORY}"
+          echo "workflow=${GITHUB_WORKFLOW}"
+          echo "run_id=${GITHUB_RUN_ID}"
+          echo "run_attempt=${GITHUB_RUN_ATTEMPT}"
+          echo "sha=${GITHUB_SHA}"
+          echo "ref=${GITHUB_REF}"
+          echo "actor=${GITHUB_ACTOR}"
+          node --version
+          npm --version
+
+      - name: Install dependencies
+        run: |
+          set -euxo pipefail
+          npm ci
+
+      - name: Build
+        run: |
+          set -euxo pipefail
+          npm run build
+
+      - name: Validate and inspect dist output
+        run: |
+          set -euxo pipefail
+          test -d dist
+          echo "dist size"
+          du -sh dist
+          echo "dist file count"
+          find dist -type f | wc -l
+          echo "dist tree (first 300 lines)"
+          find dist -maxdepth 4 -print | sed -n '1,300p'
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    name: Deploy to Pages
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Log deploy preflight context
+        run: |
+          set -euxo pipefail
+          echo "repo=${GITHUB_REPOSITORY}"
+          echo "run_id=${GITHUB_RUN_ID}"
+          echo "run_attempt=${GITHUB_RUN_ATTEMPT}"
+          echo "sha=${GITHUB_SHA}"
+          echo "ref=${GITHUB_REF}"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Deployment output summary
+        if: success()
+        run: |
+          set -euxo pipefail
+          echo "page_url=${{ steps.deployment.outputs.page_url }}"
+
+      - name: Diagnose Pages configuration and deployment status
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            core.info(`Collecting diagnostics for ${owner}/${repo}`);
+
+            const pages = await github.rest.repos.getPages({ owner, repo }).catch((error) => {
+              core.warning(`getPages failed: ${error.message}`);
+              return null;
+            });
+
+            if (pages) {
+              core.info(`Pages status: ${JSON.stringify(pages.data, null, 2)}`);
+            }
+
+            const deployments = await github.request("GET /repos/{owner}/{repo}/pages/deployments", {
+              owner,
+              repo,
+              per_page: 5
+            }).catch((error) => {
+              core.warning(`pages deployments API failed: ${error.message}`);
+              return null;
+            });
+
+            if (deployments) {
+              core.info(`Recent pages deployments: ${JSON.stringify(deployments.data, null, 2)}`);
+            }
+
+            core.notice("If deploy-pages fails with a generic error, inspect pages source settings, environment protection rules, and recent deployment statuses above.");
