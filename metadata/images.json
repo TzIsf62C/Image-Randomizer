@@ -5,7 +5,9 @@
     "lesson": 1,
     "categories": [
       "pronoun",
-      "subject"
+      "noun",
+      "person",
+      "animate"
     ]
   },
   {
@@ -14,7 +16,9 @@
     "lesson": 1,
     "categories": [
       "pronoun",
-      "subject"
+      "person",
+      "noun",
+      "animate"
     ]
   },
   {
@@ -23,7 +27,9 @@
     "lesson": 1,
     "categories": [
       "pronoun",
-      "subject"
+      "person",
+      "noun",
+      "animate"
     ]
   },
   {
@@ -32,7 +38,9 @@
     "lesson": 1,
     "categories": [
       "pronoun",
-      "subject"
+      "person",
+      "noun",
+      "animate"
     ]
   },
   {
@@ -41,7 +49,9 @@
     "lesson": 1,
     "categories": [
       "pronoun",
-      "subject"
+      "person",
+      "noun",
+      "animate"
     ]
   },
   {
@@ -50,7 +60,9 @@
     "lesson": 1,
     "categories": [
       "pronoun",
-      "subject"
+      "person",
+      "noun",
+      "animate"
     ]
   },
   {
@@ -59,9 +71,9 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
+
     ]
   },
   {
@@ -70,9 +82,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -81,9 +92,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -92,9 +102,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -104,7 +113,6 @@
     "categories": [
       "verb",
       "intransitive-verb",
-      "action"
     ]
   },
   {
@@ -113,9 +121,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -124,9 +131,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -135,9 +141,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -146,9 +151,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -157,9 +161,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate",
     ]
   },
   {
@@ -168,9 +171,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -179,9 +181,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -190,8 +191,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
-      "action"
+      "intransitive-verb"
     ]
   },
   {
@@ -200,9 +200,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -211,9 +210,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -222,9 +220,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -233,8 +230,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
-      "action"
+      "intransitive-verb"
     ]
   },
   {
@@ -243,8 +239,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
-      "action"
+      "intransitive-verb"
     ]
   },
   {
@@ -253,9 +248,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -264,9 +258,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -275,8 +268,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
-      "action"
+      "intransitive-verb"
     ]
   },
   {
@@ -285,8 +277,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
-      "action"
+      "intransitive-verb"
     ]
   },
   {
@@ -295,9 +286,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "animal"
+      "animal",
+      "animate"
     ]
   },
   {
@@ -306,8 +296,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
-      "action"
+      "intransitive-verb"
     ]
   },
   {
@@ -316,8 +305,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
-      "action"
+      "intransitive-verb"
     ]
   },
   {
@@ -326,9 +314,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -338,7 +325,6 @@
     "categories": [
       "verb",
       "intransitive-verb",
-      "action"
     ]
   },
   {
@@ -347,9 +333,8 @@
     "lesson": 1,
     "categories": [
       "noun",
-      "subject",
-      "object",
-      "person"
+      "person",
+      "animate"
     ]
   },
   {
@@ -358,8 +343,7 @@
     "lesson": 2,
     "categories": [
       "verb",
-      "transitive-verb",
-      "action"
+      "transitive-verb"
     ]
   },
   {
@@ -368,8 +352,7 @@
     "lesson": 2,
     "categories": [
       "verb",
-      "transitive-verb",
-      "action"
+      "transitive-verb"
     ]
   },
   {
@@ -378,8 +361,7 @@
     "lesson": 2,
     "categories": [
       "verb",
-      "transitive-verb",
-      "action"
+      "transitive-verb"
     ]
   },
   {
@@ -388,8 +370,7 @@
     "lesson": 2,
     "categories": [
       "verb",
-      "transitive-verb",
-      "action"
+      "transitive-verb"
     ]
   },
   {
@@ -398,8 +379,340 @@
     "lesson": 2,
     "categories": [
       "verb",
-      "transitive-verb",
-      "action"
+      "transitive-verb"
+    ]
+  },
+  {
+    "id": "armchair",
+    "file": "lesson2/armchair.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "bed",
+    "file": "lesson2/bed.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "book",
+    "file": "lesson2/book.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "chair",
+    "file": "lesson2/chair.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "coffee-mug",
+    "file": "lesson2/coffee-mug.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "dresser",
+    "file": "lesson2/dresser.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "fork",
+    "file": "lesson2/fork.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ] 
+  },
+  {
+    "id": "knife",
+    "file": "lesson2/knife.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "lg-bowl",
+    "file": "lesson2/lg-bowl.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "lg-plate",
+    "file": "lesson2/lg-plate.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"paper",
+    "file":"lesson2/paper.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "pen",
+    "file": "lesson2/pen.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "pencil",
+    "file": "lesson2/pencil.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "pillow",
+    "file": "lesson2/pillow.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"sm-bowl",
+    "file":"lesson2/sm-bowl.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "sm-plate",
+    "file": "lesson2/sm-plate.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "sofa",
+    "file": "lesson2/sofa.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "spoon",
+    "file": "lesson2/spoon.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "table",
+    "file": "lesson2/table.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "teacup",
+    "file": "lesson2/teacup.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "water-glass",
+    "file": "lesson2/water-glass.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id": "wine-glass",
+    "file": "lesson2/wine-glass.svg",
+    "lesson": 2,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"camel",
+    "file":"lesson3/camel.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"ceiling-light",
+    "file":"lesson3/ceiling-light.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"ceiling",
+    "file":"lesson3/ceiling.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "fixed-object",
+      "inanimate",
+      "location"
+    ]
+  },
+  {
+    "id":"chicken",
+    "file":"lesson3/chicken.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"clock",
+    "file":"lesson3/clock.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"corner",
+    "file":"lesson3/corner.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "fixed-object",
+      "inanimate",
+      "location"
+    ]
+  },
+  {
+    "id":"cutting-board",
+    "file":"lesson3/cutting-board.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"door",
+    "file":"lesson3/door.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "fixed-object",
+      "inanimate",
+      "location"
+    ]
+  },
+  {
+    "id":"duck",
+    "file":"lesson3/duck.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"floor",
+    "file":"lesson3/floor.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "fixed-object",
+      "inanimate",
+      "location"
+    ]
+  },
+  {
+    "id":"framed-photo",
+    "file":"lesson3/framed-photo.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
     ]
   }
-]
