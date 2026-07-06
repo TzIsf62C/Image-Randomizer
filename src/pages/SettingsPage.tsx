@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CloseIcon } from '../components/icons';
 import type { ImageRecord, SettingsState, SlotConfig, SlotTemplate } from '../types';
 
 interface SettingsPageProps {
@@ -13,6 +14,7 @@ const lessons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps) => {
   const navigate = useNavigate();
   const [templateName, setTemplateName] = useState('');
+  const [showImageRights, setShowImageRights] = useState(false);
 
   const categories = useMemo(() => {
     const set = new Set<string>();
@@ -115,6 +117,36 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
 
   const hasNoLessons = settings.selectedLessons.length === 0;
   const hasZeroCategory = settings.slots.some((slot) => (eligibleByCategory.get(slot.category) ?? 0) === 0);
+
+  if (showImageRights) {
+    return (
+      <main className="settings-screen image-rights-screen">
+        <header className="image-rights-header">
+          <button
+            className="icon-button image-rights-close"
+            type="button"
+            onClick={() => setShowImageRights(false)}
+            aria-label="Close image rights"
+          >
+            <CloseIcon />
+          </button>
+          <h1>Image Rights</h1>
+        </header>
+
+        <section className="settings-section image-rights-list" aria-label="Image rights list">
+          {metadata.map((record) => (
+            <article key={record.id} className="image-rights-item">
+              <img src={`./images/${record.file}`} alt={record.id} loading="lazy" />
+              <div className="image-rights-copy">
+                <p>{record.rights.copyrightNotice}</p>
+                <p>{record.rights.license}</p>
+              </div>
+            </article>
+          ))}
+        </section>
+      </main>
+    );
+  }
 
   return (
     <main className="settings-screen">
@@ -266,6 +298,13 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
           {hasZeroCategory ? <p>At least one slot category has zero eligible images.</p> : null}
         </section>
       )}
+
+      <footer className="settings-rights-footer">
+        <p>Image Randomizer App Copyright © 2026 TzIsf62C</p>
+        <button type="button" className="action-button" onClick={() => setShowImageRights(true)}>
+          Image Rights
+        </button>
+      </footer>
     </main>
   );
 };

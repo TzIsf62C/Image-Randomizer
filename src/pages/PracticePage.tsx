@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { useNavigate } from 'react-router-dom';
 import { HistoryModal } from '../components/HistoryModal';
 import { SlotReel } from '../components/SlotReel';
-import { HistoryIcon, SettingsIcon, SpinIcon } from '../components/icons';
+import { CloseIcon, HistoryIcon, SettingsIcon, SpinIcon } from '../components/icons';
 import { SPIN_DURATION_MS } from '../lib/constants';
 import { pickImageForSlot, type RepeatState } from '../lib/randomizer';
 import type { ImageRecord, SettingsState, SpinResult } from '../types';
@@ -136,6 +136,7 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
   const [showHistory, setShowHistory] = useState(false);
   const [current, setCurrent] = useState<(ImageRecord | null)[]>(() => settings.slots.map(() => null));
   const [history, setHistory] = useState<SpinResult[]>([]);
+  const [activeImage, setActiveImage] = useState<ImageRecord | null>(null);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
@@ -243,6 +244,7 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
       }
       if (event.key === 'Escape') {
         setShowHistory(false);
+        setActiveImage(null);
       }
     };
 
@@ -286,9 +288,38 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
             stopDelayMs={index * REEL_STAGGER_MS}
             animationEnabled={settings.animationEnabled}
             prefersReducedMotion={prefersReducedMotion}
+            onOpenImage={setActiveImage}
           />
         ))}
       </section>
+
+      {activeImage ? (
+        <div
+          className="modal-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${activeImage.id} image details`}
+          onClick={() => setActiveImage(null)}
+        >
+          <article className="image-preview-modal" onClick={(event) => event.stopPropagation()}>
+            <button
+              className="icon-button image-preview-close"
+              type="button"
+              onClick={() => setActiveImage(null)}
+              aria-label="Close image details"
+            >
+              <CloseIcon />
+            </button>
+
+            <img src={`./images/${activeImage.file}`} alt={activeImage.id} className="image-preview-large" loading="eager" />
+
+            <footer className="image-rights-footer">
+              <p>{activeImage.rights.copyrightNotice}</p>
+              <p>{activeImage.rights.license}</p>
+            </footer>
+          </article>
+        </div>
+      ) : null}
 
       <nav className="practice-controls" aria-label="Practice controls">
         <button className="icon-button spin" type="button" onClick={spin} disabled={spinning || hasConfigError} aria-label="Spin">

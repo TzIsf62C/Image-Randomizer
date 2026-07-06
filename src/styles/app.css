@@ -59,6 +59,27 @@ body,
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }
 
+.reel-info-button {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.35rem;
+  z-index: 3;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.reel-info-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .reel-track {
   position: relative;
   height: 300%;
@@ -190,6 +211,16 @@ body,
   height: 100%;
   object-fit: contain;
   padding: 0.5rem;
+}
+
+.reel-image-button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }
 
 .placeholder {
@@ -328,6 +359,42 @@ body,
   padding: 1rem;
 }
 
+.image-preview-modal {
+  width: min(760px, 100%);
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem 1rem 0.75rem;
+  position: relative;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.image-preview-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.image-preview-large {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-top: 2.6rem;
+}
+
+.image-rights-footer {
+  border-top: 1px solid #dedede;
+  padding-top: 0.6rem;
+  display: grid;
+  gap: 0.25rem;
+}
+
+.image-rights-footer p {
+  margin: 0;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -363,6 +430,67 @@ body,
 .error-box {
   border-color: var(--rose);
   color: var(--rose);
+}
+
+.settings-rights-footer {
+  margin-top: 1rem;
+  padding: 0.75rem 0.25rem 1rem;
+  display: grid;
+  justify-items: start;
+  gap: 0.65rem;
+}
+
+.settings-rights-footer p {
+  margin: 0;
+}
+
+.image-rights-screen {
+  padding-top: 0.5rem;
+}
+
+.image-rights-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.image-rights-header h1 {
+  margin: 0;
+}
+
+.image-rights-close {
+  width: 46px;
+  height: 46px;
+}
+
+.image-rights-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.image-rights-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  border: 1px solid #dadada;
+  border-radius: 8px;
+  padding: 0.45rem;
+}
+
+.image-rights-item img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.image-rights-copy {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.image-rights-copy p {
+  margin: 0;
 }
 
 .rotate-screen {

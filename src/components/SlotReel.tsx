@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { SPIN_DURATION_MS } from '../lib/constants';
 import type { ImageRecord } from '../types';
+import { InfoIcon } from './icons';
 
 interface SlotReelProps {
   record: ImageRecord | null;
@@ -8,6 +9,7 @@ interface SlotReelProps {
   stopDelayMs: number;
   animationEnabled: boolean;
   prefersReducedMotion: boolean;
+  onOpenImage: (record: ImageRecord) => void;
 }
 
 export const SlotReel = ({
@@ -15,7 +17,8 @@ export const SlotReel = ({
   spinning,
   stopDelayMs,
   animationEnabled,
-  prefersReducedMotion
+  prefersReducedMotion,
+  onOpenImage
 }: SlotReelProps) => {
   const HOLD_MS = 80;
   const SETTLE_MS = prefersReducedMotion ? 120 : 160;
@@ -73,16 +76,23 @@ export const SlotReel = ({
   const renderSymbol = (key: string) => (
     <div key={key} className="symbol">
       {record ? (
-        <img
-          src={`./images/${record.file}`}
-          alt=""
-          role="presentation"
-          className="reel-image"
-          loading="eager"
-          onError={(event) => {
-            event.currentTarget.classList.add('image-error');
-          }}
-        />
+        <button
+          type="button"
+          className="reel-image-button"
+          onClick={() => onOpenImage(record)}
+          aria-label={`Open ${record.id} image details`}
+        >
+          <img
+            src={`./images/${record.file}`}
+            alt=""
+            role="presentation"
+            className="reel-image"
+            loading="eager"
+            onError={(event) => {
+              event.currentTarget.classList.add('image-error');
+            }}
+          />
+        </button>
       ) : (
         <div className="placeholder" />
       )}
@@ -91,6 +101,19 @@ export const SlotReel = ({
 
   return (
     <div className="reel-window">
+      <button
+        type="button"
+        className="reel-info-button"
+        onClick={() => {
+          if (record) {
+            onOpenImage(record);
+          }
+        }}
+        aria-label={record ? `Open ${record.id} image details` : 'No image selected'}
+        disabled={!record}
+      >
+        <InfoIcon />
+      </button>
       <div className={trackClassName}>
         {renderSymbol('symbol-top')}
         {renderSymbol('symbol-middle')}

@@ -5,6 +5,12 @@ export interface ImageRecord {
   file: string;
   lesson: number;
   categories: string[];
+  rights: {
+    creator: string;
+    copyrightNotice: string;
+    license: string;
+    source: string;
+  };
 }
 
 export interface SlotConfig {
