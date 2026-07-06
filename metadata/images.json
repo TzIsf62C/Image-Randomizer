@@ -162,7 +162,7 @@
     "categories": [
       "noun",
       "animal",
-      "animate",
+      "animate"
     ]
   },
   {
@@ -324,7 +324,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
+      "intransitive-verb"
     ]
   },
   {
@@ -714,5 +714,440 @@
       "noun",
       "concrete-object",
       "inanimate"
+    ]
+  },
+  {
+    "id":"frying-pan",
+    "file":"lesson3/frying-pan.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]  
+  },
+  {
+    "id":"gas-range",
+    "file":"lesson3/gas-range.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"goat",
+    "file":"lesson3/goat.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"goose",
+    "file":"lesson3/goose.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"heater",
+    "file":"lesson3/heater.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "animate"
+    ]
+  },
+  {
+    "id":"hold",
+    "file":"lesson3/hold.svg",
+    "lesson": 3,
+    "categories": [
+      "verb",
+      "transitive-verb"
+    ]
+  },
+  {
+    "id":"honeybee",
+    "file":"lesson3/honeybee.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"kettle",
+    "file":"lesson3/kettle.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ] 
+  },
+  {
+    "id":"large-pot",
+    "file":"lesson3/large-pot.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ] 
+  },
+  {
+    "id":"lid",
+    "file":"lesson3/lid.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"lizard",
+    "file":"lesson3/lizard.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"pig",
+    "file":"lesson3/pig.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"pitcher",
+    "file":"lesson3/pitcher.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"rabbit",
+    "file":"lesson3/rabbit.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"sheep",
+    "file":"lesson3/sheep.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"snake",
+    "file":"lesson3/snake.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"tableware",
+    "file":"lesson3/tableware.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"tiger",
+    "file":"lesson3/tiger.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"touch",
+    "file":"lesson3/touch.svg",
+    "lesson": 3,
+    "categories": [
+      "verb",
+      "transitive-verb"
+    ]
+  },
+  {
+    "id":"wall-hooks",
+    "file":"lesson3/wall-hooks.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  }
+  {
+    "id":"wall",
+    "file":"lesson3/wall.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "fixed-object",
+      "inanimate",
+      "location"
+    ]
+  },
+  {
+    "id":"whiteboard",
+    "file":"lesson3/whiteboard.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"window",
+    "file":"lesson3/window.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "fixed-object",
+      "inanimate",
+      "location"
+    ]
+  },
+  {
+    "id":"wok",
+    "file":"lesson3/wok.svg",
+    "lesson": 3,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"above",
+    "file":"lesson4/above.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"bathroom-sink",
+    "file":"lesson4/bathroom-sink.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"behind",
+    "file":"lesson4/behind.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"beside",
+    "file":"lesson4/beside.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"between",
+    "file":"lesson4/between.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"broom",
+    "file":"lesson4/broom.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"comb",
+    "file":"lesson4/comb.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"elephant",
+    "file":"lesson4/elephant.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"flower",
+    "file":"lesson4/flower.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate",
+      "plant"
+    ]
+  },
+  {
+    "id":"house",
+    "file":"lesson4/house.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "fixed-object",
+      "inanimate",
+      "location"
+    ]
+  },
+  {
+    "id":"in-front-of",
+    "file":"lesson4/in-front-of.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"inside",
+    "file":"lesson4/inside.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"lion",
+    "file":"lesson4/lion.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "animal",
+      "animate"
+    ]
+  },
+  {
+    "id":"matchstick",
+    "file":"lesson4/matchstick.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"mirror",
+    "file":"lesson4/mirror.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"next-to",
+    "file":"lesson4/next-to.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"on",
+    "file":"lesson4/on.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"toilet",
+    "file":"lesson4/toilet.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate"
+    ]
+  },
+  {
+    "id":"tree",
+    "file":"lesson4/tree.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "inanimate",
+      "plant"
+    ]
+  },
+  {
+    "id":"under",
+    "file":"lesson4/under.svg",
+    "lesson": 4,
+    "categories": [
+      "preposition"
+    ]
+  },
+  {
+    "id":"wastebin",
+    "file":"lesson4/wastebin.svg",
+    "lesson": 4,
+    "categories": [
+      "noun",
+      "concrete-object",
+      "animate"
     ]
   }
