@@ -66,6 +66,8 @@ body,
   z-index: 3;
   width: 1.9rem;
   height: 1.9rem;
+  border: 0px solid var(--ink);
+  border-radius: 999px;
   background: rgba(255, 255, 255, 0.95);
   color: var(--ink);
   display: grid;
