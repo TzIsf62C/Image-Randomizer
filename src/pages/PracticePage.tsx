@@ -311,12 +311,14 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
               <CloseIcon />
             </button>
 
-            <img src={`./images/${activeImage.file}`} alt={activeImage.id} className="image-preview-large" loading="eager" />
+            <div className="image-preview-content">
+              <img src={`./images/${activeImage.file}`} alt={activeImage.id} className="image-preview-large" loading="eager" />
 
-            <footer className="image-rights-footer">
-              <p>{activeImage.rights.copyrightNotice}</p>
-              <p>{activeImage.rights.license}</p>
-            </footer>
+              <aside className="image-rights-footer">
+                <p>{activeImage.rights.copyrightNotice}</p>
+                <p>{activeImage.rights.license}</p>
+              </aside>
+            </div>
           </article>
         </div>
       ) : null}
