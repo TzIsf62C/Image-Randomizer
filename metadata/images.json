@@ -8,7 +8,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "1stSingPro",
@@ -19,7 +25,13 @@
       "person",
       "noun",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "2ndPluralPro",
@@ -30,7 +42,13 @@
       "person",
       "noun",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "2ndSingPro",
@@ -41,7 +59,13 @@
       "person",
       "noun",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "3rdPluralPro",
@@ -52,7 +76,13 @@
       "person",
       "noun",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "3rdSingPro",
@@ -63,7 +93,13 @@
       "person",
       "noun",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "animals",
@@ -74,7 +110,13 @@
       "animal",
       "animate"
 
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "bird",
@@ -84,7 +126,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "boy_central-asian",
@@ -94,7 +142,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "cat",
@@ -104,7 +158,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "come",
@@ -113,7 +173,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "cow",
@@ -123,7 +189,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "dog",
@@ -133,7 +205,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "elder-man_central-asian",
@@ -143,7 +221,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "elder-woman_central-asian",
@@ -153,7 +237,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "fish",
@@ -163,7 +253,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "frog",
@@ -173,7 +269,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "girl_central-asian",
@@ -183,7 +285,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "go",
@@ -192,7 +300,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "horse",
@@ -202,7 +316,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "housefly",
@@ -212,7 +332,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "infant_central-asian",
@@ -222,7 +348,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "jump",
@@ -231,7 +363,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "lie",
@@ -240,7 +378,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "man_central-asian",
@@ -250,7 +394,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "mouse",
@@ -260,7 +410,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "run",
@@ -269,7 +425,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "sit",
@@ -278,7 +440,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "spider",
@@ -288,7 +456,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "stand",
@@ -297,7 +471,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "stop",
@@ -306,7 +486,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "toddler_central-asian",
@@ -316,7 +502,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "walk",
@@ -325,7 +517,13 @@
     "categories": [
       "verb",
       "intransitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "woman_central-asian",
@@ -335,7 +533,13 @@
       "noun",
       "person",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "give",
@@ -344,7 +548,13 @@
     "categories": [
       "verb",
       "transitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "look",
@@ -353,7 +563,13 @@
     "categories": [
       "verb",
       "transitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "point",
@@ -362,7 +578,13 @@
     "categories": [
       "verb",
       "transitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "put",
@@ -371,7 +593,13 @@
     "categories": [
       "verb",
       "transitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "take",
@@ -380,7 +608,13 @@
     "categories": [
       "verb",
       "transitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "armchair",
@@ -390,7 +624,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "bed",
@@ -400,7 +640,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "book",
@@ -410,7 +656,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "chair",
@@ -420,7 +672,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "coffee-mug",
@@ -430,7 +688,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "dresser",
@@ -440,7 +704,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "fork",
@@ -450,7 +720,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ] 
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "knife",
@@ -460,7 +736,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "lg-bowl",
@@ -470,7 +752,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "lg-plate",
@@ -480,7 +768,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"paper",
@@ -490,7 +784,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "pen",
@@ -500,7 +800,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "pencil",
@@ -510,7 +816,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "pillow",
@@ -520,7 +832,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"sm-bowl",
@@ -530,7 +848,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "sm-plate",
@@ -540,7 +864,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "sofa",
@@ -550,7 +880,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "spoon",
@@ -560,7 +896,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "table",
@@ -570,7 +912,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "teacup",
@@ -580,7 +928,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "water-glass",
@@ -590,7 +944,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id": "wine-glass",
@@ -600,7 +960,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"camel",
@@ -610,7 +976,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"ceiling-light",
@@ -620,7 +992,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"ceiling",
@@ -631,7 +1009,13 @@
       "fixed-object",
       "inanimate",
       "location"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"chicken",
@@ -641,7 +1025,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"clock",
@@ -651,7 +1041,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"corner",
@@ -662,7 +1058,13 @@
       "fixed-object",
       "inanimate",
       "location"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"cutting-board",
@@ -672,7 +1074,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"door",
@@ -683,7 +1091,13 @@
       "fixed-object",
       "inanimate",
       "location"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"duck",
@@ -693,7 +1107,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"floor",
@@ -704,7 +1124,13 @@
       "fixed-object",
       "inanimate",
       "location"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"framed-photo",
@@ -714,7 +1140,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"frying-pan",
@@ -724,7 +1156,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]  
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    } 
   },
   {
     "id":"gas-range",
@@ -734,7 +1172,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"goat",
@@ -744,7 +1188,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"goose",
@@ -754,7 +1204,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"heater",
@@ -764,7 +1220,13 @@
       "noun",
       "concrete-object",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"hold",
@@ -773,7 +1235,13 @@
     "categories": [
       "verb",
       "transitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"honeybee",
@@ -783,7 +1251,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"kettle",
@@ -793,7 +1267,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ] 
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"large-pot",
@@ -803,7 +1283,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ] 
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"lid",
@@ -813,7 +1299,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"lizard",
@@ -823,7 +1315,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"pig",
@@ -833,7 +1331,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"pitcher",
@@ -843,7 +1347,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"rabbit",
@@ -853,7 +1363,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"sheep",
@@ -863,7 +1379,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"snake",
@@ -873,7 +1395,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"tableware",
@@ -883,7 +1411,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"tiger",
@@ -893,7 +1427,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"touch",
@@ -902,7 +1442,13 @@
     "categories": [
       "verb",
       "transitive-verb"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"wall-hooks",
@@ -912,7 +1458,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"wall",
@@ -923,7 +1475,13 @@
       "fixed-object",
       "inanimate",
       "location"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"whiteboard",
@@ -933,7 +1491,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"window",
@@ -944,7 +1508,13 @@
       "fixed-object",
       "inanimate",
       "location"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"wok",
@@ -954,7 +1524,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"above",
@@ -962,7 +1538,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"bathroom-sink",
@@ -972,7 +1554,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"behind",
@@ -980,7 +1568,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"beside",
@@ -988,7 +1582,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"between",
@@ -996,7 +1596,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"broom",
@@ -1006,7 +1612,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"comb",
@@ -1016,7 +1628,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"elephant",
@@ -1026,7 +1644,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"flower",
@@ -1037,7 +1661,13 @@
       "concrete-object",
       "inanimate",
       "plant"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"house",
@@ -1048,7 +1678,13 @@
       "fixed-object",
       "inanimate",
       "location"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"in-front-of",
@@ -1056,7 +1692,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"inside",
@@ -1064,7 +1706,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"lion",
@@ -1074,7 +1722,13 @@
       "noun",
       "animal",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"matchstick",
@@ -1084,7 +1738,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"mirror",
@@ -1094,7 +1754,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"next-to",
@@ -1102,7 +1768,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"on",
@@ -1110,7 +1782,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"toilet",
@@ -1120,7 +1798,13 @@
       "noun",
       "concrete-object",
       "inanimate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"tree",
@@ -1131,7 +1815,13 @@
       "concrete-object",
       "inanimate",
       "plant"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"under",
@@ -1139,7 +1829,13 @@
     "lesson": 4,
     "categories": [
       "preposition"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   },
   {
     "id":"wastebin",
@@ -1149,6 +1845,12 @@
       "noun",
       "concrete-object",
       "animate"
-    ]
+    ],
+    "rights": {
+    "creator": "Angela Thompson",
+    "copyrightNotice": "© 2016 Angela Thompson",
+    "license": "All rights reserved",
+    "source": "internal"
+    }
   }
 ]
