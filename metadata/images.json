@@ -112,7 +112,7 @@
     "lesson": 1,
     "categories": [
       "verb",
-      "intransitive-verb",
+      "intransitive-verb"
     ]
   },
   {
@@ -913,7 +913,7 @@
       "concrete-object",
       "inanimate"
     ]
-  }
+  },
   {
     "id":"wall",
     "file":"lesson3/wall.svg",
