@@ -1,8 +1,8 @@
 [
   {
     "id": "1stPluralPro",
-    "file": "lesson1/1stPluralPro.svg",
-    "lesson": 1,
+    "file": "mp1/1stPluralPro.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "pronoun",
       "noun",
@@ -18,8 +18,8 @@
   },
   {
     "id": "1stSingPro",
-    "file": "lesson1/1stSingPro.svg",
-    "lesson": 1,
+    "file": "mp1/1stSingPro.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "pronoun",
       "person",
@@ -35,8 +35,8 @@
   },
   {
     "id": "2ndPluralPro",
-    "file": "lesson1/2ndPluralPro.svg",
-    "lesson": 1,
+    "file": "mp1/2ndPluralPro.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "pronoun",
       "person",
@@ -52,8 +52,8 @@
   },
   {
     "id": "2ndSingPro",
-    "file": "lesson1/2ndSingPro.svg",
-    "lesson": 1,
+    "file": "mp1/2ndSingPro.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "pronoun",
       "person",
@@ -69,8 +69,8 @@
   },
   {
     "id": "3rdPluralPro",
-    "file": "lesson1/3rdPluralPro.svg",
-    "lesson": 1,
+    "file": "mp1/3rdPluralPro.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "pronoun",
       "person",
@@ -86,8 +86,8 @@
   },
   {
     "id": "3rdSingPro",
-    "file": "lesson1/3rdSingPro.svg",
-    "lesson": 1,
+    "file": "mp1/3rdSingPro.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "pronoun",
       "person",
@@ -103,8 +103,8 @@
   },
   {
     "id": "animals",
-    "file": "lesson1/animals.svg",
-    "lesson": 1,
+    "file": "mp1/animals.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -120,8 +120,8 @@
   },
   {
     "id": "bird",
-    "file": "lesson1/bird.svg",
-    "lesson": 1,
+    "file": "mp1/bird.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -136,8 +136,8 @@
   },
   {
     "id": "boy_central-asian",
-    "file": "lesson1/boy_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/boy_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -152,8 +152,8 @@
   },
   {
     "id": "cat",
-    "file": "lesson1/cat.svg",
-    "lesson": 1,
+    "file": "mp1/cat.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -168,8 +168,8 @@
   },
   {
     "id": "come",
-    "file": "lesson1/come.svg",
-    "lesson": 1,
+    "file": "mp1/come.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -183,8 +183,8 @@
   },
   {
     "id": "cow",
-    "file": "lesson1/cow.svg",
-    "lesson": 1,
+    "file": "mp1/cow.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -199,8 +199,8 @@
   },
   {
     "id": "dog",
-    "file": "lesson1/dog.svg",
-    "lesson": 1,
+    "file": "mp1/dog.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -215,8 +215,8 @@
   },
   {
     "id": "elder-man_central-asian",
-    "file": "lesson1/elder-man_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/elder-man_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -231,8 +231,8 @@
   },
   {
     "id": "elder-woman_central-asian",
-    "file": "lesson1/elder-woman_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/elder-woman_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -247,8 +247,8 @@
   },
   {
     "id": "fish",
-    "file": "lesson1/fish.svg",
-    "lesson": 1,
+    "file": "mp1/fish.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -263,8 +263,8 @@
   },
   {
     "id": "frog",
-    "file": "lesson1/frog.svg",
-    "lesson": 1,
+    "file": "mp1/frog.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -279,8 +279,8 @@
   },
   {
     "id": "girl_central-asian",
-    "file": "lesson1/girl_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/girl_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -295,8 +295,8 @@
   },
   {
     "id": "go",
-    "file": "lesson1/go.svg",
-    "lesson": 1,
+    "file": "mp1/go.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -310,8 +310,8 @@
   },
   {
     "id": "horse",
-    "file": "lesson1/horse.svg",
-    "lesson": 1,
+    "file": "mp1/horse.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -326,8 +326,8 @@
   },
   {
     "id": "housefly",
-    "file": "lesson1/housefly.svg",
-    "lesson": 1,
+    "file": "mp1/housefly.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -342,8 +342,8 @@
   },
   {
     "id": "infant_central-asian",
-    "file": "lesson1/infant_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/infant_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -358,8 +358,8 @@
   },
   {
     "id": "jump",
-    "file": "lesson1/jump.svg",
-    "lesson": 1,
+    "file": "mp1/jump.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -373,8 +373,8 @@
   },
   {
     "id": "lie",
-    "file": "lesson1/lie.svg",
-    "lesson": 1,
+    "file": "mp1/lie.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -388,8 +388,8 @@
   },
   {
     "id": "man_central-asian",
-    "file": "lesson1/man_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/man_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -404,8 +404,8 @@
   },
   {
     "id": "mouse",
-    "file": "lesson1/mouse.svg",
-    "lesson": 1,
+    "file": "mp1/mouse.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -420,8 +420,8 @@
   },
   {
     "id": "run",
-    "file": "lesson1/run.svg",
-    "lesson": 1,
+    "file": "mp1/run.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -435,8 +435,8 @@
   },
   {
     "id": "sit",
-    "file": "lesson1/sit.svg",
-    "lesson": 1,
+    "file": "mp1/sit.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -450,8 +450,8 @@
   },
   {
     "id": "spider",
-    "file": "lesson1/spider.svg",
-    "lesson": 1,
+    "file": "mp1/spider.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "animal",
@@ -466,8 +466,8 @@
   },
   {
     "id": "stand",
-    "file": "lesson1/stand.svg",
-    "lesson": 1,
+    "file": "mp1/stand.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -481,8 +481,8 @@
   },
   {
     "id": "stop",
-    "file": "lesson1/stop.svg",
-    "lesson": 1,
+    "file": "mp1/stop.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -496,8 +496,8 @@
   },
   {
     "id": "toddler_central-asian",
-    "file": "lesson1/toddler_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/toddler_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -512,8 +512,8 @@
   },
   {
     "id": "walk",
-    "file": "lesson1/walk.svg",
-    "lesson": 1,
+    "file": "mp1/walk.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "verb",
       "intransitive-verb"
@@ -527,8 +527,8 @@
   },
   {
     "id": "woman_central-asian",
-    "file": "lesson1/woman_central-asian.svg",
-    "lesson": 1,
+    "file": "mp1/woman_central-asian.svg",
+    "setName": "Meeting Plan 1",
     "categories": [
       "noun",
       "person",
@@ -543,8 +543,8 @@
   },
   {
     "id": "give",
-    "file": "lesson2/give.svg",
-    "lesson": 2,
+    "file": "mp2/give.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "verb",
       "transitive-verb"
@@ -558,8 +558,8 @@
   },
   {
     "id": "look",
-    "file": "lesson2/look.svg",
-    "lesson": 2,
+    "file": "mp2/look.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "verb",
       "transitive-verb"
@@ -573,8 +573,8 @@
   },
   {
     "id": "point",
-    "file": "lesson2/point.svg",
-    "lesson": 2,
+    "file": "mp2/point.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "verb",
       "transitive-verb"
@@ -588,8 +588,8 @@
   },
   {
     "id": "put",
-    "file": "lesson2/put.svg",
-    "lesson": 2,
+    "file": "mp2/put.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "verb",
       "transitive-verb"
@@ -603,8 +603,8 @@
   },
   {
     "id": "take",
-    "file": "lesson2/take.svg",
-    "lesson": 2,
+    "file": "mp2/take.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "verb",
       "transitive-verb"
@@ -618,8 +618,8 @@
   },
   {
     "id": "armchair",
-    "file": "lesson2/armchair.svg",
-    "lesson": 2,
+    "file": "mp2/armchair.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -634,8 +634,8 @@
   },
   {
     "id": "bed",
-    "file": "lesson2/bed.svg",
-    "lesson": 2,
+    "file": "mp2/bed.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -650,8 +650,8 @@
   },
   {
     "id": "book",
-    "file": "lesson2/book.svg",
-    "lesson": 2,
+    "file": "mp2/book.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -666,8 +666,8 @@
   },
   {
     "id": "chair",
-    "file": "lesson2/chair.svg",
-    "lesson": 2,
+    "file": "mp2/chair.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -682,8 +682,8 @@
   },
   {
     "id": "coffee-mug",
-    "file": "lesson2/coffee-mug.svg",
-    "lesson": 2,
+    "file": "mp2/coffee-mug.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -698,8 +698,8 @@
   },
   {
     "id": "dresser",
-    "file": "lesson2/dresser.svg",
-    "lesson": 2,
+    "file": "mp2/dresser.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -714,8 +714,8 @@
   },
   {
     "id": "fork",
-    "file": "lesson2/fork.svg",
-    "lesson": 2,
+    "file": "mp2/fork.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -730,8 +730,8 @@
   },
   {
     "id": "knife",
-    "file": "lesson2/knife.svg",
-    "lesson": 2,
+    "file": "mp2/knife.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -746,8 +746,8 @@
   },
   {
     "id": "lg-bowl",
-    "file": "lesson2/lg-bowl.svg",
-    "lesson": 2,
+    "file": "mp2/lg-bowl.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -762,8 +762,8 @@
   },
   {
     "id": "lg-plate",
-    "file": "lesson2/lg-plate.svg",
-    "lesson": 2,
+    "file": "mp2/lg-plate.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -778,8 +778,8 @@
   },
   {
     "id":"paper",
-    "file":"lesson2/paper.svg",
-    "lesson": 2,
+    "file":"mp2/paper.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -794,8 +794,8 @@
   },
   {
     "id": "pen",
-    "file": "lesson2/pen.svg",
-    "lesson": 2,
+    "file": "mp2/pen.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -810,8 +810,8 @@
   },
   {
     "id": "pencil",
-    "file": "lesson2/pencil.svg",
-    "lesson": 2,
+    "file": "mp2/pencil.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -826,8 +826,8 @@
   },
   {
     "id": "pillow",
-    "file": "lesson2/pillow.svg",
-    "lesson": 2,
+    "file": "mp2/pillow.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -842,8 +842,8 @@
   },
   {
     "id":"sm-bowl",
-    "file":"lesson2/sm-bowl.svg",
-    "lesson": 2,
+    "file":"mp2/sm-bowl.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -858,8 +858,8 @@
   },
   {
     "id": "sm-plate",
-    "file": "lesson2/sm-plate.svg",
-    "lesson": 2,
+    "file": "mp2/sm-plate.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -874,8 +874,8 @@
   },
   {
     "id": "sofa",
-    "file": "lesson2/sofa.svg",
-    "lesson": 2,
+    "file": "mp2/sofa.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -890,8 +890,8 @@
   },
   {
     "id": "spoon",
-    "file": "lesson2/spoon.svg",
-    "lesson": 2,
+    "file": "mp2/spoon.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -906,8 +906,8 @@
   },
   {
     "id": "table",
-    "file": "lesson2/table.svg",
-    "lesson": 2,
+    "file": "mp2/table.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -922,8 +922,8 @@
   },
   {
     "id": "teacup",
-    "file": "lesson2/teacup.svg",
-    "lesson": 2,
+    "file": "mp2/teacup.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -938,8 +938,8 @@
   },
   {
     "id": "water-glass",
-    "file": "lesson2/water-glass.svg",
-    "lesson": 2,
+    "file": "mp2/water-glass.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -954,8 +954,8 @@
   },
   {
     "id": "wine-glass",
-    "file": "lesson2/wine-glass.svg",
-    "lesson": 2,
+    "file": "mp2/wine-glass.svg",
+    "setName": "Meeting Plan 2",
     "categories": [
       "noun",
       "concrete-object",
@@ -970,8 +970,8 @@
   },
   {
     "id":"camel",
-    "file":"lesson3/camel.svg",
-    "lesson": 3,
+    "file":"mp3/camel.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -986,8 +986,8 @@
   },
   {
     "id":"ceiling-light",
-    "file":"lesson3/ceiling-light.svg",
-    "lesson": 3,
+    "file":"mp3/ceiling-light.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1002,8 +1002,8 @@
   },
   {
     "id":"ceiling",
-    "file":"lesson3/ceiling.svg",
-    "lesson": 3,
+    "file":"mp3/ceiling.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "fixed-object",
@@ -1019,8 +1019,8 @@
   },
   {
     "id":"chicken",
-    "file":"lesson3/chicken.svg",
-    "lesson": 3,
+    "file":"mp3/chicken.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1035,8 +1035,8 @@
   },
   {
     "id":"clock",
-    "file":"lesson3/clock.svg",
-    "lesson": 3,
+    "file":"mp3/clock.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1051,8 +1051,8 @@
   },
   {
     "id":"corner",
-    "file":"lesson3/corner.svg",
-    "lesson": 3,
+    "file":"mp3/corner.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "fixed-object",
@@ -1068,8 +1068,8 @@
   },
   {
     "id":"cutting-board",
-    "file":"lesson3/cutting-board.svg",
-    "lesson": 3,
+    "file":"mp3/cutting-board.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1084,8 +1084,8 @@
   },
   {
     "id":"door",
-    "file":"lesson3/door.svg",
-    "lesson": 3,
+    "file":"mp3/door.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "fixed-object",
@@ -1101,8 +1101,8 @@
   },
   {
     "id":"duck",
-    "file":"lesson3/duck.svg",
-    "lesson": 3,
+    "file":"mp3/duck.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1117,8 +1117,8 @@
   },
   {
     "id":"floor",
-    "file":"lesson3/floor.svg",
-    "lesson": 3,
+    "file":"mp3/floor.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "fixed-object",
@@ -1134,8 +1134,8 @@
   },
   {
     "id":"framed-photo",
-    "file":"lesson3/framed-photo.svg",
-    "lesson": 3,
+    "file":"mp3/framed-photo.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1150,8 +1150,8 @@
   },
   {
     "id":"frying-pan",
-    "file":"lesson3/frying-pan.svg",
-    "lesson": 3,
+    "file":"mp3/frying-pan.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1166,8 +1166,8 @@
   },
   {
     "id":"gas-range",
-    "file":"lesson3/gas-range.svg",
-    "lesson": 3,
+    "file":"mp3/gas-range.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1182,8 +1182,8 @@
   },
   {
     "id":"goat",
-    "file":"lesson3/goat.svg",
-    "lesson": 3,
+    "file":"mp3/goat.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1198,8 +1198,8 @@
   },
   {
     "id":"goose",
-    "file":"lesson3/goose.svg",
-    "lesson": 3,
+    "file":"mp3/goose.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1214,8 +1214,8 @@
   },
   {
     "id":"heater",
-    "file":"lesson3/heater.svg",
-    "lesson": 3,
+    "file":"mp3/heater.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1230,8 +1230,8 @@
   },
   {
     "id":"hold",
-    "file":"lesson3/hold.svg",
-    "lesson": 3,
+    "file":"mp3/hold.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "verb",
       "transitive-verb"
@@ -1245,8 +1245,8 @@
   },
   {
     "id":"honeybee",
-    "file":"lesson3/honeybee.svg",
-    "lesson": 3,
+    "file":"mp3/honeybee.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1261,8 +1261,8 @@
   },
   {
     "id":"kettle",
-    "file":"lesson3/kettle.svg",
-    "lesson": 3,
+    "file":"mp3/kettle.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1277,8 +1277,8 @@
   },
   {
     "id":"large-pot",
-    "file":"lesson3/large-pot.svg",
-    "lesson": 3,
+    "file":"mp3/large-pot.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1293,8 +1293,8 @@
   },
   {
     "id":"lid",
-    "file":"lesson3/lid.svg",
-    "lesson": 3,
+    "file":"mp3/lid.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1309,8 +1309,8 @@
   },
   {
     "id":"lizard",
-    "file":"lesson3/lizard.svg",
-    "lesson": 3,
+    "file":"mp3/lizard.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1325,8 +1325,8 @@
   },
   {
     "id":"pig",
-    "file":"lesson3/pig.svg",
-    "lesson": 3,
+    "file":"mp3/pig.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1341,8 +1341,8 @@
   },
   {
     "id":"pitcher",
-    "file":"lesson3/pitcher.svg",
-    "lesson": 3,
+    "file":"mp3/pitcher.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1357,8 +1357,8 @@
   },
   {
     "id":"rabbit",
-    "file":"lesson3/rabbit.svg",
-    "lesson": 3,
+    "file":"mp3/rabbit.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1373,8 +1373,8 @@
   },
   {
     "id":"sheep",
-    "file":"lesson3/sheep.svg",
-    "lesson": 3,
+    "file":"mp3/sheep.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1389,8 +1389,8 @@
   },
   {
     "id":"snake",
-    "file":"lesson3/snake.svg",
-    "lesson": 3,
+    "file":"mp3/snake.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1405,8 +1405,8 @@
   },
   {
     "id":"tableware",
-    "file":"lesson3/tableware.svg",
-    "lesson": 3,
+    "file":"mp3/tableware.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1421,8 +1421,8 @@
   },
   {
     "id":"tiger",
-    "file":"lesson3/tiger.svg",
-    "lesson": 3,
+    "file":"mp3/tiger.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "animal",
@@ -1437,8 +1437,8 @@
   },
   {
     "id":"touch",
-    "file":"lesson3/touch.svg",
-    "lesson": 3,
+    "file":"mp3/touch.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "verb",
       "transitive-verb"
@@ -1452,8 +1452,8 @@
   },
   {
     "id":"wall-hooks",
-    "file":"lesson3/wall-hooks.svg",
-    "lesson": 3,
+    "file":"mp3/wall-hooks.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1468,8 +1468,8 @@
   },
   {
     "id":"wall",
-    "file":"lesson3/wall.svg",
-    "lesson": 3,
+    "file":"mp3/wall.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "fixed-object",
@@ -1485,8 +1485,8 @@
   },
   {
     "id":"whiteboard",
-    "file":"lesson3/whiteboard.svg",
-    "lesson": 3,
+    "file":"mp3/whiteboard.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1501,8 +1501,8 @@
   },
   {
     "id":"window",
-    "file":"lesson3/window.svg",
-    "lesson": 3,
+    "file":"mp3/window.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "fixed-object",
@@ -1518,8 +1518,8 @@
   },
   {
     "id":"wok",
-    "file":"lesson3/wok.svg",
-    "lesson": 3,
+    "file":"mp3/wok.svg",
+    "setName": "Meeting Plan 3",
     "categories": [
       "noun",
       "concrete-object",
@@ -1534,8 +1534,8 @@
   },
   {
     "id":"above",
-    "file":"lesson4/above.svg",
-    "lesson": 4,
+    "file":"mp4/above.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1548,8 +1548,8 @@
   },
   {
     "id":"bathroom-sink",
-    "file":"lesson4/bathroom-sink.svg",
-    "lesson": 4,
+    "file":"mp4/bathroom-sink.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1564,8 +1564,8 @@
   },
   {
     "id":"behind",
-    "file":"lesson4/behind.svg",
-    "lesson": 4,
+    "file":"mp4/behind.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1578,8 +1578,8 @@
   },
   {
     "id":"beside",
-    "file":"lesson4/beside.svg",
-    "lesson": 4,
+    "file":"mp4/beside.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1592,8 +1592,8 @@
   },
   {
     "id":"between",
-    "file":"lesson4/between.svg",
-    "lesson": 4,
+    "file":"mp4/between.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1606,8 +1606,8 @@
   },
   {
     "id":"broom",
-    "file":"lesson4/broom.svg",
-    "lesson": 4,
+    "file":"mp4/broom.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1622,8 +1622,8 @@
   },
   {
     "id":"comb",
-    "file":"lesson4/comb.svg",
-    "lesson": 4,
+    "file":"mp4/comb.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1638,8 +1638,8 @@
   },
   {
     "id":"elephant",
-    "file":"lesson4/elephant.svg",
-    "lesson": 4,
+    "file":"mp4/elephant.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "animal",
@@ -1654,8 +1654,8 @@
   },
   {
     "id":"flower",
-    "file":"lesson4/flower.svg",
-    "lesson": 4,
+    "file":"mp4/flower.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1671,8 +1671,8 @@
   },
   {
     "id":"house",
-    "file":"lesson4/house.svg",
-    "lesson": 4,
+    "file":"mp4/house.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "fixed-object",
@@ -1688,8 +1688,8 @@
   },
   {
     "id":"in-front-of",
-    "file":"lesson4/in-front-of.svg",
-    "lesson": 4,
+    "file":"mp4/in-front-of.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1702,8 +1702,8 @@
   },
   {
     "id":"inside",
-    "file":"lesson4/inside.svg",
-    "lesson": 4,
+    "file":"mp4/inside.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1716,8 +1716,8 @@
   },
   {
     "id":"lion",
-    "file":"lesson4/lion.svg",
-    "lesson": 4,
+    "file":"mp4/lion.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "animal",
@@ -1732,8 +1732,8 @@
   },
   {
     "id":"matchstick",
-    "file":"lesson4/matchstick.svg",
-    "lesson": 4,
+    "file":"mp4/matchstick.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1748,8 +1748,8 @@
   },
   {
     "id":"mirror",
-    "file":"lesson4/mirror.svg",
-    "lesson": 4,
+    "file":"mp4/mirror.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1764,8 +1764,8 @@
   },
   {
     "id":"next-to",
-    "file":"lesson4/next-to.svg",
-    "lesson": 4,
+    "file":"mp4/next-to.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1778,8 +1778,8 @@
   },
   {
     "id":"on",
-    "file":"lesson4/on.svg",
-    "lesson": 4,
+    "file":"mp4/on.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1792,8 +1792,8 @@
   },
   {
     "id":"toilet",
-    "file":"lesson4/toilet.svg",
-    "lesson": 4,
+    "file":"mp4/toilet.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1808,8 +1808,8 @@
   },
   {
     "id":"tree",
-    "file":"lesson4/tree.svg",
-    "lesson": 4,
+    "file":"mp4/tree.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",
@@ -1825,8 +1825,8 @@
   },
   {
     "id":"under",
-    "file":"lesson4/under.svg",
-    "lesson": 4,
+    "file":"mp4/under.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "preposition"
     ],
@@ -1839,8 +1839,8 @@
   },
   {
     "id":"wastebin",
-    "file":"lesson4/wastebin.svg",
-    "lesson": 4,
+    "file":"mp4/wastebin.svg",
+    "setName": "Meeting Plan 4",
     "categories": [
       "noun",
       "concrete-object",

@@ -6,7 +6,7 @@ Offline-first Progressive Web App for spontaneous language practice using random
 
 - React + TypeScript + Vite PWA
 - Offline support with service worker caching
-- Lesson selection with persistent settings
+- Set selection with persistent settings
 - Unlimited slot configuration (add, delete, reorder)
 - Category eligibility counts with validation
 - Three repeat-avoidance modes:
@@ -25,7 +25,7 @@ Offline-first Progressive Web App for spontaneous language practice using random
 ## Project Structure
 
 - `src/`: React app source
-- `public/images/lesson1`, `public/images/lesson2`: SVG assets
+- `public/images/mp1`, `public/images/mp2`: SVG assets
 - `public/metadata/images.json`: image metadata records
 
 ## Development

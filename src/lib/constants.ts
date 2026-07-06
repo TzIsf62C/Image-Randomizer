@@ -3,7 +3,7 @@ import type { SettingsState } from '../types';
 export const STORAGE_KEY = 'language-slot-machine-settings-v1';
 
 export const DEFAULT_SETTINGS: SettingsState = {
-  selectedLessons: [1,2,3,4],
+  selectedSetNames: ['Meeting Plan 1', 'Meeting Plan 2', 'Meeting Plan 3', 'Meeting Plan 4'],
   slots: [
     { id: crypto.randomUUID(), label: 'Subject', category: 'animate' },
     { id: crypto.randomUUID(), label: 'Verb', category: 'transitive-verb' },

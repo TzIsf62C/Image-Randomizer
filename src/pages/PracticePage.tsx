@@ -4,6 +4,7 @@ import { HistoryModal } from '../components/HistoryModal';
 import { SlotReel } from '../components/SlotReel';
 import { CloseIcon, HistoryIcon, SettingsIcon, SpinIcon } from '../components/icons';
 import { SPIN_DURATION_MS } from '../lib/constants';
+import { getRecordSetLabel, normalizeSetKey } from '../lib/metadata';
 import { pickImageForSlot, type RepeatState } from '../lib/randomizer';
 import type { ImageRecord, SettingsState, SpinResult } from '../types';
 
@@ -122,9 +123,9 @@ const playSpinSound = (
   }
 };
 
-const buildEligibility = (records: ImageRecord[], selectedLessons: number[]): ImageRecord[] => {
-  const lessonSet = new Set(selectedLessons);
-  return records.filter((record) => lessonSet.has(record.lesson));
+const buildEligibility = (records: ImageRecord[], selectedSetNames: string[]): ImageRecord[] => {
+  const selectedSetKeys = new Set(selectedSetNames.map((setName) => normalizeSetKey(setName)));
+  return records.filter((record) => selectedSetKeys.has(normalizeSetKey(getRecordSetLabel(record))));
 };
 
 export const PracticePage = ({ settings, metadata, repeatState }: PracticePageProps) => {
@@ -148,12 +149,12 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
   const REEL_TOTAL_MS = REEL_HOLD_MS + REEL_BLUR_MS + REEL_SETTLE_MS;
 
   const eligibleBySlot = useMemo(() => {
-    const byLesson = buildEligibility(metadata, settings.selectedLessons);
-    return settings.slots.map((slot) => byLesson.filter((item) => item.categories.includes(slot.category)));
-  }, [metadata, settings.selectedLessons, settings.slots]);
+    const bySet = buildEligibility(metadata, settings.selectedSetNames);
+    return settings.slots.map((slot) => bySet.filter((item) => item.categories.includes(slot.category)));
+  }, [metadata, settings.selectedSetNames, settings.slots]);
 
   const hasConfigError =
-    settings.selectedLessons.length === 0 || eligibleBySlot.some((eligible) => eligible.length === 0);
+    settings.selectedSetNames.length === 0 || eligibleBySlot.some((eligible) => eligible.length === 0);
 
   const spin = useCallback((): void => {
     if (spinning || hasConfigError) return;

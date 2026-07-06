@@ -3,7 +3,7 @@ export type RepeatMode = 'random' | 'cycle' | 'avoidLastN';
 export interface ImageRecord {
   id: string;
   file: string;
-  lesson: number;
+  setName: string;
   categories: string[];
   rights: {
     creator: string;
@@ -26,7 +26,7 @@ export interface SlotTemplate {
 }
 
 export interface SettingsState {
-  selectedLessons: number[];
+  selectedSetNames: string[];
   slots: SlotConfig[];
   soundEnabled: boolean;
   animationEnabled: boolean;

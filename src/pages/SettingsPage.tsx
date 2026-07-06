@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CloseIcon } from '../components/icons';
+import { extractSetOptions, getRecordSetLabel, normalizeSetKey } from '../lib/metadata';
 import type { ImageRecord, SettingsState, SlotConfig, SlotTemplate } from '../types';
 
 interface SettingsPageProps {
@@ -9,12 +10,17 @@ interface SettingsPageProps {
   onChange: (next: SettingsState) => void;
 }
 
-const lessons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
 export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps) => {
   const navigate = useNavigate();
   const [templateName, setTemplateName] = useState('');
   const [showImageRights, setShowImageRights] = useState(false);
+
+  const setOptions = useMemo(() => extractSetOptions(metadata), [metadata]);
+
+  const selectedSetKeys = useMemo(
+    () => new Set(settings.selectedSetNames.map((setName) => normalizeSetKey(setName))),
+    [settings.selectedSetNames]
+  );
 
   const categories = useMemo(() => {
     const set = new Set<string>();
@@ -23,8 +29,7 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
   }, [metadata]);
 
   const eligibleByCategory = useMemo(() => {
-    const selectedLessons = new Set(settings.selectedLessons);
-    const filtered = metadata.filter((record) => selectedLessons.has(record.lesson));
+    const filtered = metadata.filter((record) => selectedSetKeys.has(normalizeSetKey(getRecordSetLabel(record))));
     const map = new Map<string, number>();
 
     filtered.forEach((record) => {
@@ -34,7 +39,7 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
     });
 
     return map;
-  }, [metadata, settings.selectedLessons]);
+  }, [metadata, selectedSetKeys]);
 
   const updateSlot = (index: number, next: Partial<SlotConfig>): void => {
     const nextSlots = settings.slots.map((slot, slotIndex) =>
@@ -69,14 +74,14 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
     onChange({ ...settings, slots: nextSlots });
   };
 
-  const toggleLesson = (lesson: number): void => {
-    const selected = new Set(settings.selectedLessons);
-    if (selected.has(lesson)) {
-      selected.delete(lesson);
+  const toggleSetName = (setName: string): void => {
+    const selected = new Set(settings.selectedSetNames);
+    if (selected.has(setName)) {
+      selected.delete(setName);
     } else {
-      selected.add(lesson);
+      selected.add(setName);
     }
-    onChange({ ...settings, selectedLessons: [...selected].sort((a, b) => a - b) });
+    onChange({ ...settings, selectedSetNames: [...selected] });
   };
 
   const saveTemplate = (): void => {
@@ -115,7 +120,7 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
     });
   };
 
-  const hasNoLessons = settings.selectedLessons.length === 0;
+  const hasNoSets = settings.selectedSetNames.length === 0;
   const hasZeroCategory = settings.slots.some((slot) => (eligibleByCategory.get(slot.category) ?? 0) === 0);
 
   if (showImageRights) {
@@ -158,16 +163,16 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
       </header>
 
       <section className="settings-section">
-        <h2>Lessons</h2>
-        <div className="lesson-grid">
-          {lessons.map((lesson) => (
-            <label key={lesson} className="checkbox-label">
+        <h2>Sets</h2>
+        <div className="set-grid">
+          {setOptions.map((setOption) => (
+            <label key={setOption.key} className="checkbox-label">
               <input
                 type="checkbox"
-                checked={settings.selectedLessons.includes(lesson)}
-                onChange={() => toggleLesson(lesson)}
+                checked={selectedSetKeys.has(setOption.key)}
+                onChange={() => toggleSetName(setOption.label)}
               />
-              Lesson {lesson}
+              {setOption.label}
             </label>
           ))}
         </div>
@@ -292,9 +297,9 @@ export const SettingsPage = ({ metadata, settings, onChange }: SettingsPageProps
         </div>
       </section>
 
-      {(hasNoLessons || hasZeroCategory) && (
+      {(hasNoSets || hasZeroCategory) && (
         <section className="settings-section error-box" aria-live="assertive">
-          {hasNoLessons ? <p>No lessons selected. Select at least one lesson.</p> : null}
+          {hasNoSets ? <p>No sets selected. Select at least one set.</p> : null}
           {hasZeroCategory ? <p>At least one slot category has zero eligible images.</p> : null}
         </section>
       )}

@@ -5,7 +5,7 @@ const isValidSettings = (value: unknown): value is SettingsState => {
   if (typeof value !== 'object' || value === null) return false;
   const maybe = value as Partial<SettingsState>;
   return (
-    Array.isArray(maybe.selectedLessons) &&
+    Array.isArray(maybe.selectedSetNames) && maybe.selectedSetNames.every((setName) => typeof setName === 'string') &&
     Array.isArray(maybe.slots) &&
     typeof maybe.soundEnabled === 'boolean' &&
     typeof maybe.animationEnabled === 'boolean' &&
