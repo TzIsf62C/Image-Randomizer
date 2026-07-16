@@ -131,6 +131,7 @@ const buildEligibility = (records: ImageRecord[], selectedSetNames: string[]): I
 export const PracticePage = ({ settings, metadata, repeatState }: PracticePageProps) => {
   const REEL_STAGGER_MS = 90;
   const REEL_HOLD_MS = 80;
+  const PORTRAIT_REEL_MIN_SIZE = 125;
 
   const navigate = useNavigate();
   const [spinning, setSpinning] = useState(false);
@@ -138,11 +139,14 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
   const [current, setCurrent] = useState<(ImageRecord | null)[]>(() => settings.slots.map(() => null));
   const [history, setHistory] = useState<SpinResult[]>([]);
   const [activeImage, setActiveImage] = useState<ImageRecord | null>(null);
+  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
+  const [reelViewport, setReelViewport] = useState({ width: 0, height: 0, gap: 8 });
   const spinCounterRef = useRef(0);
   const audioEngineRef = useRef<SpinAudioEngine | null>(null);
+  const reelsRef = useRef<HTMLElement | null>(null);
 
   const REEL_SETTLE_MS = prefersReducedMotion ? 120 : 160;
   const REEL_BLUR_MS = prefersReducedMotion ? 0 : Math.max(SPIN_DURATION_MS - REEL_HOLD_MS - REEL_SETTLE_MS, 0);
@@ -232,6 +236,48 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
   }, []);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(orientation: portrait)');
+    const update = (): void => setIsPortrait(mediaQuery.matches);
+
+    update();
+    mediaQuery.addEventListener('change', update);
+    return () => mediaQuery.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    const updateViewport = (): void => {
+      const reelsElement = reelsRef.current;
+      if (!reelsElement) return;
+
+      const computed = window.getComputedStyle(reelsElement);
+      const parsedGap = Number.parseFloat(computed.rowGap || computed.gap || '8');
+
+      setReelViewport({
+        width: reelsElement.clientWidth,
+        height: reelsElement.clientHeight,
+        gap: Number.isFinite(parsedGap) ? parsedGap : 8
+      });
+    };
+
+    updateViewport();
+
+    const reelsElement = reelsRef.current;
+    if (!reelsElement || typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', updateViewport);
+      return () => window.removeEventListener('resize', updateViewport);
+    }
+
+    const observer = new ResizeObserver(updateViewport);
+    observer.observe(reelsElement);
+    window.addEventListener('resize', updateViewport);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateViewport);
+    };
+  }, []);
+
+  useEffect(() => {
     const onKeyDown = (event: KeyboardEvent): void => {
       if (event.code === 'Space') {
         event.preventDefault();
@@ -253,15 +299,35 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [navigate, spin, spinning]);
 
+  const slotCount = Math.max(current.length, 1);
+
+  const portraitColumnCount = useMemo(() => {
+    if (!isPortrait) return 1;
+
+    const singleColumnHeight =
+      (reelViewport.height - Math.max(slotCount - 1, 0) * reelViewport.gap) / slotCount;
+    const singleColumnSize = Math.min(singleColumnHeight, reelViewport.width);
+
+    if (singleColumnSize >= PORTRAIT_REEL_MIN_SIZE) {
+      return 1;
+    }
+
+    return 2;
+  }, [PORTRAIT_REEL_MIN_SIZE, isPortrait, reelViewport.gap, reelViewport.height, reelViewport.width, slotCount]);
+
+  const portraitRowCount = Math.ceil(slotCount / portraitColumnCount);
+
   const reelSectionStyle = {
-    '--slot-count': Math.max(current.length, 1)
+    '--slot-count': slotCount,
+    '--portrait-columns': portraitColumnCount,
+    '--portrait-rows': portraitRowCount
   } as CSSProperties;
 
   return (
     <main className="practice-screen">
       {showHistory ? <HistoryModal history={history} onClose={() => setShowHistory(false)} /> : null}
 
-      <section className="reels" aria-live="polite" style={reelSectionStyle}>
+      <section ref={reelsRef} className="reels" aria-live="polite" style={reelSectionStyle}>
         {current.map((record, index) => (
           <SlotReel
             key={settings.slots[index].id}

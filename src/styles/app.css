@@ -39,6 +39,8 @@ body,
 
 .reels {
   --slot-count: 1;
+  --portrait-columns: 1;
+  --portrait-rows: 1;
   --max-reel-size: min(
     calc((100vw - (2 * var(--screen-padding)) - var(--controls-column-width) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count)),
     calc(100dvh - var(--controls-height) - (2 * var(--screen-padding)) - var(--controls-gap))
@@ -568,49 +570,70 @@ body,
   }
 }
 
-@media (max-width: 900px) {
+@media (orientation: portrait) {
   .practice-screen {
-    --screen-padding: 0.7rem;
+    --screen-padding: 0.75rem;
     --reel-gap: 0.5rem;
-    --controls-height: 0px;
-    --controls-gap: 0.7rem;
-    --controls-column-width: 5.25rem;
+    --controls-height: 6.1rem;
+    --controls-gap: 0.65rem;
+    --controls-column-width: 0px;
     --reel-min-size: 125px;
 
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    align-items: stretch;
+    align-items: start;
+    gap: 0;
+    padding: var(--screen-padding);
+    padding-bottom: calc(var(--screen-padding) + var(--controls-height) + env(safe-area-inset-bottom, 0px));
   }
 
   .reels {
     --max-reel-size: min(
-      calc(100vw - (2 * var(--screen-padding)) - var(--controls-column-width) - var(--controls-gap)),
-      calc((100dvh - (2 * var(--screen-padding)) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count))
+      calc((100vw - (2 * var(--screen-padding)) - ((var(--portrait-columns) - 1) * var(--reel-gap))) / var(--portrait-columns)),
+      calc((100dvh - (2 * var(--screen-padding)) - var(--controls-height) - var(--controls-gap) - env(safe-area-inset-bottom, 0px) - ((var(--portrait-rows) - 1) * var(--reel-gap))) / var(--portrait-rows))
     );
 
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(var(--portrait-columns), var(--reel-size));
+    justify-content: center;
+    align-content: start;
     min-height: 0;
+    max-height: calc(100dvh - (2 * var(--screen-padding)) - var(--controls-height) - var(--controls-gap) - env(safe-area-inset-bottom, 0px));
     overflow-y: auto;
+    overflow-x: hidden;
     overscroll-behavior: contain;
-    padding-inline: 0.15rem;
+    padding: 0.15rem 0.3rem 0.2rem;
   }
 
   .practice-controls {
-    flex-direction: column;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 15;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    align-self: center;
-    gap: 0.65rem;
+    gap: 0.75rem;
+    padding: 0.45rem 1rem calc(0.55rem + env(safe-area-inset-bottom, 0px));
+    background: linear-gradient(180deg, rgba(244, 241, 234, 0.68) 0%, rgba(244, 241, 234, 0.96) 34%, rgba(244, 241, 234, 1) 100%);
+    backdrop-filter: blur(4px);
+    border-top: 1px solid rgba(31, 41, 55, 0.2);
   }
 
+  .icon-button.spin {
+    width: 68px;
+    height: 68px;
+  }
+
+  .icon-button {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+@media (max-width: 900px) {
   .slot-editor {
     grid-template-columns: 1fr;
-  }
-
-  .practice-screen {
-    padding: 0.7rem;
   }
 }
