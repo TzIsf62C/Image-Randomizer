@@ -27,6 +27,8 @@ body,
   --reel-gap: 0.75rem;
   --controls-height: 5.5rem;
   --controls-gap: 1rem;
+  --controls-column-width: 0px;
+  --reel-min-size: 88px;
 
   height: 100%;
   display: grid;
@@ -38,9 +40,10 @@ body,
 .reels {
   --slot-count: 1;
   --max-reel-size: min(
-    calc((100vw - (2 * var(--screen-padding)) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count)),
+    calc((100vw - (2 * var(--screen-padding)) - var(--controls-column-width) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count)),
     calc(100dvh - var(--controls-height) - (2 * var(--screen-padding)) - var(--controls-gap))
   );
+  --reel-size: clamp(var(--reel-min-size), var(--max-reel-size), 260px);
 
   display: flex;
   justify-content: center;
@@ -49,8 +52,9 @@ body,
 }
 
 .reel-window {
-  width: clamp(88px, var(--max-reel-size), 260px);
-  aspect-ratio: 1 / 1;
+  width: var(--reel-size);
+  height: var(--reel-size);
+  flex: 0 0 var(--reel-size);
   position: relative;
   background: var(--panel);
   border: 3px solid var(--ink);
@@ -518,15 +522,6 @@ body,
   margin: 0;
 }
 
-.rotate-screen {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  place-items: center;
-  font-size: 1.2rem;
-  background: linear-gradient(120deg, #ffedd5, #e0f2fe);
-}
-
 .loading,
 .fatal-error {
   width: 100%;
@@ -577,15 +572,38 @@ body,
   .practice-screen {
     --screen-padding: 0.7rem;
     --reel-gap: 0.5rem;
-    --controls-height: 5rem;
+    --controls-height: 0px;
     --controls-gap: 0.7rem;
+    --controls-column-width: 5.25rem;
+    --reel-min-size: 125px;
+
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 1fr;
+    align-items: stretch;
   }
 
   .reels {
     --max-reel-size: min(
-      calc((100vw - (2 * var(--screen-padding)) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count)),
-      calc(100dvh - var(--controls-height) - (2 * var(--screen-padding)) - var(--controls-gap))
+      calc(100vw - (2 * var(--screen-padding)) - var(--controls-column-width) - var(--controls-gap)),
+      calc((100dvh - (2 * var(--screen-padding)) - ((var(--slot-count) - 1) * var(--reel-gap))) / var(--slot-count))
     );
+
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-inline: 0.15rem;
+  }
+
+  .practice-controls {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    gap: 0.65rem;
   }
 
   .slot-editor {

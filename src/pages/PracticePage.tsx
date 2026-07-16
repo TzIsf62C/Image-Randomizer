@@ -253,25 +253,6 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [navigate, spin, spinning]);
 
-  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(orientation: portrait)');
-    const update = (): void => setIsPortrait(mediaQuery.matches);
-    update();
-
-    mediaQuery.addEventListener('change', update);
-    return () => mediaQuery.removeEventListener('change', update);
-  }, []);
-
-  if (isPortrait) {
-    return (
-      <main className="rotate-screen" aria-live="polite">
-        <p>Rotate device to landscape</p>
-      </main>
-    );
-  }
-
   const reelSectionStyle = {
     '--slot-count': Math.max(current.length, 1)
   } as CSSProperties;
