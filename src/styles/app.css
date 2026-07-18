@@ -413,16 +413,25 @@ body,
   padding: 2.4rem 0.15rem 0.15rem;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 800px) and (orientation: portrait) {
   .image-preview-content {
-    grid-template-columns: minmax(0, 1fr) minmax(150px, 38%);
-    gap: 0.6rem;
-    min-height: min(82vh, 82dvh);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 0.7rem;
+    min-height: auto;
   }
 
   .image-rights-footer {
-    padding-left: 0.55rem;
+    border-left: 0;
+    border-top: 1px solid #dedede;
+    padding-left: 0;
+    padding-top: 0.6rem;
     font-size: 0.92rem;
+  }
+
+  .image-preview-large {
+    max-height: min(58vh, 58dvh);
   }
 }
 
