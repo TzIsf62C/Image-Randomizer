@@ -21,9 +21,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'Language Learning Slot Machine',
-        short_name: 'Language Slots',
-        description: 'Offline-first image slot machine for language practice',
+        name: 'Language Learning Image Randomizer',
+        short_name: 'Language Images',
+        description: 'Offline-first image randomizer for language practice',
         theme_color: '#1f2937',
         background_color: '#f4f1ea',
         display: 'standalone',

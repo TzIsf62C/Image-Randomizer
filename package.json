@@ -1,7 +1,7 @@
 {
   "name": "image-randomizer",
   "version": "1.0.0",
-  "description": "Offline-first language learning slot machine",
+  "description": "Offline-first language learning image randomizer",
   "private": true,
   "type": "module",
   "scripts": {
