@@ -7,8 +7,7 @@ import {
   getRecordSetLabel,
   isDuplicateTaxonomyName,
   normalizeSetKey,
-  normalizeTaxonomyName,
-  resolveAssetUrl
+  normalizeTaxonomyName
 } from '../lib/metadata';
 import {
   buildTaxonomyEntry,
@@ -16,6 +15,7 @@ import {
   deleteTaxonomyEntry,
   deleteUserImage,
   exportUserDataArchive,
+  getRecordImageSource,
   importUserDataArchive,
   isQuotaExceededError,
   listTaxonomyEntries,
@@ -24,8 +24,10 @@ import {
   processUserImageFile,
   saveTaxonomyEntry,
   saveUserImage,
-  saveUserImageBlob
+  saveUserImageBlob,
+  useUserImageSources
 } from '../lib/userStorage';
+import { generateUuid } from '../lib/uuid';
 import type { ImageRecord, SettingsState, SlotConfig, SlotTemplate } from '../types';
 
 interface SettingsPageProps {
@@ -48,6 +50,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   const [importBusy, setImportBusy] = useState(false);
   const [importProgress, setImportProgress] = useState('');
   const [importReviewRows, setImportReviewRows] = useState<Array<ImageRecord & { blob?: Blob }>>([]);
+  const userImageUrls = useUserImageSources(metadata);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const archiveInputRef = useRef<HTMLInputElement | null>(null);
   const importAbortRef = useRef<AbortController | null>(null);
@@ -129,7 +132,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     const defaultCategory = categories[0] ?? 'subject';
     onChange({
       ...settings,
-      slots: [...settings.slots, { id: crypto.randomUUID(), label: '', category: defaultCategory }]
+      slots: [...settings.slots, { id: generateUuid(), label: '', category: defaultCategory }]
     });
   };
 
@@ -276,7 +279,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     if (!name) return;
 
     const template: SlotTemplate = {
-      id: crypto.randomUUID(),
+      id: generateUuid(),
       name,
       slots: settings.slots
     };
@@ -465,7 +468,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   };
 
   const loadTemplate = (template: SlotTemplate): void => {
-    onChange({ ...settings, slots: template.slots.map((slot) => ({ ...slot, id: crypto.randomUUID() })) });
+    onChange({ ...settings, slots: template.slots.map((slot) => ({ ...slot, id: generateUuid() })) });
   };
 
   const renameTemplate = (templateId: string): void => {
@@ -507,7 +510,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
         <section className="settings-section image-rights-list" aria-label="Image rights list">
           {metadata.map((record) => (
             <article key={record.id} className="image-rights-item">
-              <img src={resolveAssetUrl(`images/${record.file}`)} alt={record.id} loading="lazy" />
+              <img src={getRecordImageSource(record, userImageUrls)} alt={record.id} loading="lazy" />
               <div className="image-rights-copy">
                 <p>{record.rights.copyrightNotice}</p>
                 <p>{record.rights.license}</p>
@@ -599,7 +602,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
             <div className="image-review-list">
               {importReviewRows.map((row) => (
                 <article key={row.id} className="image-review-item">
-                  <img src={resolveAssetUrl(`images/${row.file}`)} alt={row.fileName ?? row.file} loading="lazy" className="image-review-thumb" />
+                  <img src={getRecordImageSource(row, userImageUrls, row.blob)} alt={row.fileName ?? row.file} loading="lazy" className="image-review-thumb" />
                   <div className="image-review-copy">
                     <strong>{row.fileName ?? row.file}</strong>
                     <label>

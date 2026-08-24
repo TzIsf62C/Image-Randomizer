@@ -1,5 +1,4 @@
-import { resolveAssetUrl } from '../lib/metadata';
-import { capSessionHistory, SESSION_HISTORY_LIMIT } from '../lib/userStorage';
+import { capSessionHistory, getRecordImageSource, SESSION_HISTORY_LIMIT, useUserImageSources } from '../lib/userStorage';
 import type { SpinResult } from '../types';
 import { CloseIcon } from './icons';
 
@@ -11,6 +10,7 @@ interface HistoryModalProps {
 export const HistoryModal = ({ history, onClose }: HistoryModalProps) => {
   const visibleHistory = capSessionHistory(history, SESSION_HISTORY_LIMIT);
   const hiddenSpinCount = Math.max(0, history.length - visibleHistory.length);
+  const userImageUrls = useUserImageSources(visibleHistory.flatMap((entry) => entry.records));
 
   return (
     <div className="modal-overlay" role="dialog" aria-modal="true" aria-label="Spin history">
@@ -39,7 +39,7 @@ export const HistoryModal = ({ history, onClose }: HistoryModalProps) => {
                       {entry.records.map((record, index) => (
                         <img
                           key={`${entry.spinNumber}-${record.id}-${index}`}
-                          src={resolveAssetUrl(`images/${record.file}`)}
+                          src={getRecordImageSource(record, userImageUrls)}
                           alt={`Spin ${entry.spinNumber} slot ${index + 1}`}
                           loading="lazy"
                         />

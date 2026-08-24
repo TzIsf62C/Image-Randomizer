@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CloseIcon } from '../components/icons';
-import { getRecordSetLabel, normalizeSetKey, resolveAssetUrl } from '../lib/metadata';
-import { deleteUserImage, saveNativeImageOverride, saveUserImage, setImageExcluded } from '../lib/userStorage';
+import { getRecordSetLabel, normalizeSetKey } from '../lib/metadata';
+import { deleteUserImage, getRecordImageSource, saveNativeImageOverride, saveUserImage, setImageExcluded, useUserImageSources } from '../lib/userStorage';
 import type { ImageRecord } from '../types';
 
 interface ImageManagementPageProps {
@@ -19,6 +19,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [originFilter, setOriginFilter] = useState<'all' | 'native' | 'user'>(EMPTY_FILTER as 'all' | 'native' | 'user');
   const [setFilter, setSetFilter] = useState<string>(EMPTY_FILTER);
+  const userImageUrls = useUserImageSources(metadata);
   const [categoryFilter, setCategoryFilter] = useState<string>(EMPTY_FILTER);
   const [statusMessage, setStatusMessage] = useState('');
   const [editorId, setEditorId] = useState<string | null>(null);
@@ -304,7 +305,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
           </div>
 
           {filteredRecords.map((record) => {
-            const imgUrl = resolveAssetUrl(`images/${record.file}`);
+            const imgUrl = getRecordImageSource(record, userImageUrls);
             const sets = (record.setIds && record.setIds.length > 0 ? record.setIds : record.setName ? [record.setName] : [NO_SET_OPTION])
               .filter(Boolean)
               .map((value) => (value === NO_SET_OPTION ? 'No Set' : value));
@@ -350,7 +351,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
 
           <div className="image-editor-grid">
             <div className="image-editor-card">
-              <img src={resolveAssetUrl(`images/${editingRecord.file}`)} alt={editingRecord.id} className="editor-preview" />
+              <img src={getRecordImageSource(editingRecord, userImageUrls)} alt={editingRecord.id} className="editor-preview" />
             </div>
 
             <div className="image-editor-card">

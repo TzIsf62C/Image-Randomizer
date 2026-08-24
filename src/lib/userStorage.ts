@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import type { ImageRecord } from '../types';
-import type { NativeImageOverride } from './metadata';
+import { resolveAssetUrl, type NativeImageOverride } from './metadata';
+import { generateUuid } from './uuid';
 
 export interface UserArchiveFile {
   id: string;
@@ -41,7 +43,7 @@ export const buildTaxonomyEntry = (
   const now = new Date().toISOString();
 
   return {
-    id: `${kind}-${slug}-${crypto.randomUUID().slice(0, 8)}`,
+    id: `${kind}-${slug}-${generateUuid().slice(0, 8)}`,
     name: normalized,
     origin,
     createdAt: now,
@@ -90,7 +92,7 @@ export const deleteTaxonomyEntry = async (storeName: 'categories' | 'sets', id: 
 
 export const buildUserImageRecord = (file: File): ImageRecord => {
   const now = new Date().toISOString();
-  const id = `user-${crypto.randomUUID()}`;
+  const id = `user-${generateUuid()}`;
   const extension = (file.name.split('.').pop() ?? 'bin').trim();
 
   return {
@@ -114,6 +116,68 @@ export const buildUserImageRecord = (file: File): ImageRecord => {
     width: undefined,
     height: undefined
   };
+};
+
+export const getRecordImageSource = (
+  record: Pick<ImageRecord, 'id' | 'origin' | 'file'>,
+  userImageUrls: Record<string, string> = {},
+  fallbackBlob?: Blob | null
+): string => {
+  if (record.origin === 'user') {
+    if (fallbackBlob) {
+      return URL.createObjectURL(fallbackBlob);
+    }
+
+    const url = userImageUrls[record.id];
+    return typeof url === 'string' && url.trim() ? url : '';
+  }
+
+  return resolveAssetUrl(`images/${record.file}`);
+};
+
+export const useUserImageSources = (records: ImageRecord[]): Record<string, string> => {
+  const [userImageUrls, setUserImageUrls] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const userRecords = records.filter((record) => record.origin === 'user');
+    if (userRecords.length === 0) {
+      setUserImageUrls({});
+      return;
+    }
+
+    let isActive = true;
+    const nextUrls: Record<string, string> = {};
+
+    const loadImages = async (): Promise<void> => {
+      for (const record of userRecords) {
+        const blob = await loadUserImageBlob(record.id);
+        if (!blob) continue;
+        nextUrls[record.id] = URL.createObjectURL(blob);
+      }
+
+      if (!isActive) {
+        Object.values(nextUrls).forEach((url) => URL.revokeObjectURL(url));
+        return;
+      }
+
+      setUserImageUrls((previous) => {
+        Object.values(previous).forEach((url) => URL.revokeObjectURL(url));
+        return nextUrls;
+      });
+    };
+
+    void loadImages();
+
+    return () => {
+      isActive = false;
+      setUserImageUrls((previous) => {
+        Object.values(previous).forEach((url) => URL.revokeObjectURL(url));
+        return {};
+      });
+    };
+  }, [records]);
+
+  return userImageUrls;
 };
 
 const resizeRasterForPortableMaster = async (file: File): Promise<Blob> => {

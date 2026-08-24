@@ -5,17 +5,36 @@ import {
   buildUserImageRecord,
   capSessionHistory,
   exportUserDataArchive,
+  getRecordImageSource,
   importUserDataArchive,
   isQuotaExceededError,
   processUserImageFile,
   setImageExcluded
 } from './userStorage';
+import { generateUuid } from './uuid';
 
 describe('taxonomy duplicate detection', () => {
   it('catches identical trimmed names regardless of casing', () => {
     expect(createTaxonomyNameKey('  Animal  ')).toBe('animal');
     expect(isDuplicateTaxonomyName(['Animal', 'food'], ' animal ')).toBe(true);
     expect(isDuplicateTaxonomyName(['Animal', 'food'], 'vehicle')).toBe(false);
+  });
+});
+
+describe('UUID generation', () => {
+  it('creates a valid UUID when randomUUID is missing', () => {
+    const fallbackCrypto = {
+      getRandomValues: (array: Uint8Array) => {
+        for (let index = 0; index < array.length; index += 1) {
+          array[index] = (index * 17 + 11) % 256;
+        }
+        return array;
+      }
+    };
+
+    const id = generateUuid(fallbackCrypto as Crypto);
+
+    expect(id).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
   });
 });
 
@@ -101,6 +120,25 @@ describe('user image import record creation', () => {
     expect(capped).toHaveLength(5);
     expect(capped[0]?.spinNumber).toBe(8);
     expect(capped.at(-1)?.spinNumber).toBe(12);
+  });
+
+  it('uses blob URLs for imported user images while keeping native assets on the static image path', () => {
+    const nativeRecord = {
+      id: 'mp1-1',
+      file: 'mp1/cow.svg',
+      origin: 'native' as const,
+      rights: { creator: '', copyrightNotice: '', license: '', source: 'native' }
+    };
+    const userRecord = {
+      id: 'user-123',
+      file: 'user-123.webp',
+      origin: 'user' as const,
+      rights: { creator: '', copyrightNotice: '', license: '', source: 'user' }
+    };
+
+    expect(getRecordImageSource(nativeRecord, {})).toContain('/images/mp1/cow.svg');
+    expect(getRecordImageSource(userRecord, { 'user-123': 'blob:user-123-url' })).toBe('blob:user-123-url');
+    expect(getRecordImageSource(userRecord, {})).toBe('');
   });
 
   it('detects browser quota exceeded errors for user import warnings', () => {
