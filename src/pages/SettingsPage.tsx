@@ -11,9 +11,7 @@ import {
 } from '../lib/metadata';
 import {
   buildTaxonomyEntry,
-  clearNativeImageOverride,
   deleteTaxonomyEntry,
-  deleteUserImage,
   exportUserDataArchive,
   getRecordImageSource,
   importUserDataArchive,
@@ -96,16 +94,6 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     customCategories.forEach((category) => set.add(category));
     return [...set].sort();
   }, [customCategories, metadata]);
-
-  const userImages = useMemo(
-    () => metadata.filter((record) => record.origin === 'user'),
-    [metadata]
-  );
-
-  const nativeImages = useMemo(
-    () => metadata.filter((record) => record.origin !== 'user'),
-    [metadata]
-  );
 
   const eligibleByCategory = useMemo(() => {
     const filtered = metadata.filter((record) => selectedSetKeys.has(normalizeSetKey(getRecordSetLabel(record))));
@@ -457,16 +445,6 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     }
   };
 
-  const restoreNativeImageDefaults = async (imageId: string): Promise<void> => {
-    await clearNativeImageOverride(imageId);
-    onRefreshMetadata?.();
-  };
-
-  const removeUserImage = async (imageId: string): Promise<void> => {
-    await deleteUserImage(imageId);
-    onRefreshMetadata?.();
-  };
-
   const loadTemplate = (template: SlotTemplate): void => {
     onChange({ ...settings, slots: template.slots.map((slot) => ({ ...slot, id: generateUuid() })) });
   };
@@ -698,42 +676,6 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
           </section>
         ) : null}
 
-        {userImages.length > 0 ? (
-          <div className="template-list">
-            {userImages.map((record) => (
-              <article key={record.id} className="template-item">
-                <strong>{record.fileName ?? record.file}</strong>
-                <div>
-                  <button type="button" onClick={() => void removeUserImage(record.id)}>
-                    Delete
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p className="muted-text">No user images imported yet.</p>
-        )}
-      </section>
-
-      <section className="settings-section">
-        <h2>Native image overrides</h2>
-        {nativeImages.length > 0 ? (
-          <div className="template-list">
-            {nativeImages.map((record) => (
-              <article key={record.id} className="template-item">
-                <strong>{record.id}</strong>
-                <div>
-                  <button type="button" onClick={() => void restoreNativeImageDefaults(record.id)}>
-                    Restore default
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p className="muted-text">No native overrides to restore.</p>
-        )}
       </section>
 
       <section className="settings-section">

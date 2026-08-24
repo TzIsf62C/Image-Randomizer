@@ -118,6 +118,17 @@ export const buildUserImageRecord = (file: File): ImageRecord => {
   };
 };
 
+export const areUserImageUrlMapsEqual = (previous: Record<string, string>, next: Record<string, string>): boolean => {
+  const previousKeys = Object.keys(previous);
+  const nextKeys = Object.keys(next);
+
+  if (previousKeys.length !== nextKeys.length) {
+    return false;
+  }
+
+  return previousKeys.every((key) => next[key] === previous[key]);
+};
+
 export const getRecordImageSource = (
   record: Pick<ImageRecord, 'id' | 'origin' | 'file'>,
   userImageUrls: Record<string, string> = {},
@@ -137,11 +148,19 @@ export const getRecordImageSource = (
 
 export const useUserImageSources = (records: ImageRecord[]): Record<string, string> => {
   const [userImageUrls, setUserImageUrls] = useState<Record<string, string>>({});
+  const userRecordSignature = records.filter((record) => record.origin === 'user').map((record) => record.id).join('|');
 
   useEffect(() => {
     const userRecords = records.filter((record) => record.origin === 'user');
     if (userRecords.length === 0) {
-      setUserImageUrls({});
+      setUserImageUrls((previous) => {
+        if (Object.keys(previous).length === 0) {
+          return previous;
+        }
+
+        Object.values(previous).forEach((url) => URL.revokeObjectURL(url));
+        return {};
+      });
       return;
     }
 
@@ -161,6 +180,10 @@ export const useUserImageSources = (records: ImageRecord[]): Record<string, stri
       }
 
       setUserImageUrls((previous) => {
+        if (areUserImageUrlMapsEqual(previous, nextUrls)) {
+          return previous;
+        }
+
         Object.values(previous).forEach((url) => URL.revokeObjectURL(url));
         return nextUrls;
       });
@@ -171,11 +194,15 @@ export const useUserImageSources = (records: ImageRecord[]): Record<string, stri
     return () => {
       isActive = false;
       setUserImageUrls((previous) => {
+        if (Object.keys(previous).length === 0) {
+          return previous;
+        }
+
         Object.values(previous).forEach((url) => URL.revokeObjectURL(url));
         return {};
       });
     };
-  }, [records]);
+  }, [userRecordSignature]);
 
   return userImageUrls;
 };

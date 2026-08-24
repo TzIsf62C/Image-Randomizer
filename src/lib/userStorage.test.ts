@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createTaxonomyNameKey, isDuplicateTaxonomyName } from './metadata';
 import {
+  areUserImageUrlMapsEqual,
   buildTaxonomyEntry,
   buildUserImageRecord,
   capSessionHistory,
@@ -139,6 +140,15 @@ describe('user image import record creation', () => {
     expect(getRecordImageSource(nativeRecord, {})).toContain('/images/mp1/cow.svg');
     expect(getRecordImageSource(userRecord, { 'user-123': 'blob:user-123-url' })).toBe('blob:user-123-url');
     expect(getRecordImageSource(userRecord, {})).toBe('');
+  });
+
+  it('treats equivalent user image URL maps as unchanged so render loops do not keep firing', () => {
+    const previous = { 'user-1': 'blob:user-1-url', 'user-2': 'blob:user-2-url' };
+    const next = { 'user-1': 'blob:user-1-url', 'user-2': 'blob:user-2-url' };
+    const replaced = { 'user-1': 'blob:user-1-new-url', 'user-2': 'blob:user-2-url' };
+
+    expect(areUserImageUrlMapsEqual(previous, next)).toBe(true);
+    expect(areUserImageUrlMapsEqual(previous, replaced)).toBe(false);
   });
 
   it('detects browser quota exceeded errors for user import warnings', () => {
