@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { SPIN_DURATION_MS } from '../lib/constants';
+import { resolveAssetUrl } from '../lib/metadata';
 import type { ImageRecord } from '../types';
 import { InfoIcon } from './icons';
 
@@ -83,7 +84,7 @@ export const SlotReel = ({
           aria-label={`Open ${record.id} image details`}
         >
           <img
-            src={`./images/${record.file}`}
+            src={resolveAssetUrl(`images/${record.file}`)}
             alt=""
             role="presentation"
             className="reel-image"
@@ -123,7 +124,7 @@ export const SlotReel = ({
           {Array.from({ length: 8 }, (_, index) => (
             <div key={`blur-${index}`} className="blur-clone" style={{ '--blur-index': index } as CSSProperties}>
               {record ? (
-                <img src={`./images/${record.file}`} alt="" role="presentation" className="reel-image" loading="eager" />
+                <img src={resolveAssetUrl(`images/${record.file}`)} alt="" role="presentation" className="reel-image" loading="eager" />
               ) : (
                 <div className="placeholder" />
               )}

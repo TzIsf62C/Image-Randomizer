@@ -4,8 +4,9 @@ import { HistoryModal } from '../components/HistoryModal';
 import { SlotReel } from '../components/SlotReel';
 import { CloseIcon, HistoryIcon, SettingsIcon, SpinIcon } from '../components/icons';
 import { SPIN_DURATION_MS } from '../lib/constants';
-import { getRecordSetLabel, normalizeSetKey } from '../lib/metadata';
+import { getRecordSetLabel, normalizeSetKey, resolveAssetUrl } from '../lib/metadata';
 import { pickImageForSlot, type RepeatState } from '../lib/randomizer';
+import { capSessionHistory, SESSION_HISTORY_LIMIT } from '../lib/userStorage';
 import type { ImageRecord, SettingsState, SpinResult } from '../types';
 
 interface PracticePageProps {
@@ -154,7 +155,9 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
 
   const eligibleBySlot = useMemo(() => {
     const bySet = buildEligibility(metadata, settings.selectedSetNames);
-    return settings.slots.map((slot) => bySet.filter((item) => item.categories.includes(slot.category)));
+    return settings.slots.map((slot) =>
+      bySet.filter((item) => (item.categoryIds ?? item.categories ?? []).includes(slot.category))
+    );
   }, [metadata, settings.selectedSetNames, settings.slots]);
 
   const hasConfigError =
@@ -187,13 +190,14 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
 
     const finalize = () => {
       spinCounterRef.current += 1;
-      setHistory((previous) => [
-        ...previous,
-        {
+      setHistory((previous) => {
+        const nextEntry = {
           spinNumber: spinCounterRef.current,
           records: selected
-        }
-      ]);
+        } satisfies SpinResult;
+
+        return capSessionHistory([...previous, nextEntry], SESSION_HISTORY_LIMIT);
+      });
       setSpinning(false);
     };
 
@@ -360,7 +364,7 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
             </button>
 
             <div className="image-preview-content">
-              <img src={`./images/${activeImage.file}`} alt={activeImage.id} className="image-preview-large" loading="eager" />
+              <img src={resolveAssetUrl(`images/${activeImage.file}`)} alt={activeImage.id} className="image-preview-large" loading="eager" />
 
               <aside className="image-rights-footer">
                 <p>{activeImage.rights.copyrightNotice}</p>

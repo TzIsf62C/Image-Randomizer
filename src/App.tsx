@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { loadMetadata } from './lib/metadata';
+import { buildEffectiveMetadata, loadMetadata } from './lib/metadata';
 import { createInitialRepeatState } from './lib/randomizer';
 import { loadSettings, saveSettings } from './lib/storage';
+import { loadNativeImageOverrides, listUserImages } from './lib/userStorage';
+import { ImageManagementPage } from './pages/ImageManagementPage';
 import { PracticePage } from './pages/PracticePage';
 import { SettingsPage } from './pages/SettingsPage';
 import type { ImageRecord, SettingsState } from './types';
@@ -18,14 +20,18 @@ export const App = () => {
     saveSettings(settings);
   }, [settings]);
 
-  useEffect(() => {
-    loadMetadata()
-      .then((records) => {
-        setMetadata(records);
+  const refreshMetadata = () => {
+    Promise.all([loadMetadata(), loadNativeImageOverrides(), listUserImages()])
+      .then(([nativeRecords, nativeOverrides, userImages]) => {
+        setMetadata(buildEffectiveMetadata(nativeRecords, nativeOverrides, userImages));
       })
       .catch(() => {
         setMetadataError('Metadata failed to load.');
       });
+  };
+
+  useEffect(() => {
+    refreshMetadata();
   }, []);
 
   const view = useMemo(() => {
@@ -42,7 +48,11 @@ export const App = () => {
         <Route path="/" element={<PracticePage settings={settings} metadata={metadata} repeatState={repeatState} />} />
         <Route
           path="/settings"
-          element={<SettingsPage settings={settings} metadata={metadata} onChange={setSettings} />}
+          element={<SettingsPage settings={settings} metadata={metadata} onChange={setSettings} onRefreshMetadata={refreshMetadata} />}
+        />
+        <Route
+          path="/images"
+          element={<ImageManagementPage metadata={metadata} onRefreshMetadata={refreshMetadata} />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

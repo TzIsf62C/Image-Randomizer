@@ -1,16 +1,32 @@
 export type RepeatMode = 'random' | 'cycle' | 'avoidLastN';
+export type ImageOrigin = 'native' | 'user';
+
+export interface ImageRights {
+  creator: string;
+  copyrightNotice: string;
+  license: string;
+  source: string;
+}
 
 export interface ImageRecord {
   id: string;
   file: string;
-  setName: string;
-  categories: string[];
-  rights: {
-    creator: string;
-    copyrightNotice: string;
-    license: string;
-    source: string;
-  };
+  origin?: ImageOrigin;
+  setName?: string;
+  setIds?: string[];
+  categories?: string[];
+  categoryIds?: string[];
+  rights: ImageRights;
+  excluded?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  blobKey?: string;
+  fileName?: string;
+  mimeType?: string;
+  width?: number;
+  height?: number;
+  bytes?: number;
+  blob?: Blob;
 }
 
 export interface SlotConfig {
