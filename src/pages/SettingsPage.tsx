@@ -643,43 +643,53 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
                         }
                       />
                     </label>
-                    <div className="tag-list">
-                      {categories.map((category) => {
-                        const selected = (row.categoryIds ?? row.categories ?? []).includes(category);
-                        return (
-                          <label key={`${row.id}-${category}`} className="checkbox-label">
-                            <input
-                              type="checkbox"
-                              checked={selected}
-                              onChange={() =>
-                                setImportReviewRows((previous) =>
-                                  previous.map((item) => {
-                                    if (item.id !== row.id) return item;
-                                    const current = item.categoryIds ?? item.categories ?? [];
-                                    const next = current.includes(category)
-                                      ? current.filter((value) => value !== category)
-                                      : [...current, category];
-                                    return { ...item, categoryIds: next, categories: next };
-                                  })
-                                )
-                              }
-                            />
-                            {category}
-                          </label>
-                        );
-                      })}
-                    </div>
                     <label>
-                      Exclude from reels
-                      <input
-                        type="checkbox"
-                        checked={Boolean(row.excluded)}
-                        onChange={(event) =>
+                      Category tags
+                      <select
+                        multiple
+                        value={row.categoryIds ?? row.categories ?? []}
+                        onChange={(event) => {
+                          const nextCategories = Array.from(event.target.selectedOptions, (option) => option.value);
                           setImportReviewRows((previous) =>
-                            previous.map((item) => (item.id === row.id ? { ...item, excluded: event.target.checked } : item))
-                          )
-                        }
-                      />
+                            previous.map((item) => {
+                              if (item.id !== row.id) return item;
+                              return { ...item, categoryIds: nextCategories, categories: nextCategories };
+                            })
+                          );
+                        }}
+                      >
+                        {categories.map((category) => (
+                          <option key={`${row.id}-${category}`} value={category}>
+                            {category}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      Sets
+                      <select
+                        multiple
+                        value={row.setIds ?? (row.setName ? [row.setName] : [])}
+                        onChange={(event) => {
+                          const nextSets = Array.from(event.target.selectedOptions, (option) => option.value);
+                          setImportReviewRows((previous) =>
+                            previous.map((item) => {
+                              if (item.id !== row.id) return item;
+                              return {
+                                ...item,
+                                setIds: nextSets,
+                                setName: nextSets[0] ?? undefined
+                              };
+                            })
+                          );
+                        }}
+                      >
+                        {setOptions.map((setOption) => (
+                          <option key={`${row.id}-set-${setOption.key}`} value={setOption.label}>
+                            {setOption.label}
+                          </option>
+                        ))}
+                      </select>
                     </label>
                   </div>
                 </article>
