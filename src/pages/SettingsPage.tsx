@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CloseIcon } from '../components/icons';
 import {
-  createTaxonomyNameKey,
   extractSetOptions,
   getRecordSetIds,
   isDuplicateTaxonomyName,
@@ -94,7 +93,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   const setOptions = useMemo(
     () => [
       ...baseSetOptions,
-      ...customSets.map((setName) => ({ key: createTaxonomyNameKey(setName), label: setName }))
+      ...customSets.map((setName) => ({ key: normalizeSetKey(setName), label: setName }))
     ].filter((option, index, list) => index === list.findIndex((candidate) => candidate.key === option.key)),
     [baseSetOptions, customSets]
   );

@@ -135,7 +135,7 @@ export const getRecordImageSource = (
 ): string => {
   if (record.origin === 'user') {
     const url = userImageUrls[record.id];
-    return typeof url === 'string' && url.trim() ? url : '';
+    return typeof url === 'string' && url.trim() ? url : 'data:,';
   }
 
   return resolveAssetUrl(`images/${record.file}`);
