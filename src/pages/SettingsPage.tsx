@@ -571,7 +571,14 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
                 <button type="button" className="action-button" onClick={() => void persistImportReview()}>
                   Save imported images
                 </button>
-                <button type="button" className="action-button" onClick={() => setImportReviewRows([])}>
+                <button
+                  type="button"
+                  className="action-button"
+                  onClick={() => {
+                    setImportReviewRows([]);
+                    setImportFeedback('');
+                  }}
+                >
                   Discard
                 </button>
               </div>
@@ -595,6 +602,25 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
                                 ? {
                                     ...item,
                                     rights: { ...item.rights, creator: event.target.value }
+                                  }
+                                : item
+                            )
+                          )
+                        }
+                      />
+                    </label>
+                    <label>
+                      Copyright notice
+                      <input
+                        type="text"
+                        value={row.rights.copyrightNotice ?? ''}
+                        onChange={(event) =>
+                          setImportReviewRows((previous) =>
+                            previous.map((item) =>
+                              item.id === row.id
+                                ? {
+                                    ...item,
+                                    rights: { ...item.rights, copyrightNotice: event.target.value }
                                   }
                                 : item
                             )
