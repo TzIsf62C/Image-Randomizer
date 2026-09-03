@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { SPIN_DURATION_MS } from '../lib/constants';
+import { getRecordImageSource, useUserImageSources } from '../lib/userStorage';
 import type { ImageRecord } from '../types';
 import { InfoIcon } from './icons';
 
@@ -20,6 +21,7 @@ export const SlotReel = ({
   prefersReducedMotion,
   onOpenImage
 }: SlotReelProps) => {
+  const userImageUrls = useUserImageSources(record ? [record] : []);
   const HOLD_MS = 80;
   const SETTLE_MS = prefersReducedMotion ? 120 : 160;
   const MOTION_BLUR_MS = Math.max(SPIN_DURATION_MS - HOLD_MS - SETTLE_MS, 0);
@@ -83,7 +85,7 @@ export const SlotReel = ({
           aria-label={`Open ${record.id} image details`}
         >
           <img
-            src={`./images/${record.file}`}
+            src={getRecordImageSource(record, userImageUrls)}
             alt=""
             role="presentation"
             className="reel-image"
@@ -123,7 +125,7 @@ export const SlotReel = ({
           {Array.from({ length: 8 }, (_, index) => (
             <div key={`blur-${index}`} className="blur-clone" style={{ '--blur-index': index } as CSSProperties}>
               {record ? (
-                <img src={`./images/${record.file}`} alt="" role="presentation" className="reel-image" loading="eager" />
+                <img src={getRecordImageSource(record, userImageUrls)} alt="" role="presentation" className="reel-image" loading="eager" />
               ) : (
                 <div className="placeholder" />
               )}

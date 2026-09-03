@@ -40,6 +40,24 @@ export const CloseIcon = () => (
   </svg>
 );
 
+export const ArrowLeftIcon = () => (
+  <svg {...baseProps}>
+    <line x1="19" y1="12" x2="5" y2="12" />
+    <polyline points="12 19 5 12 12 5" />
+  </svg>
+);
+
+export const FilterIcon = () => (
+  <svg {...baseProps}>
+    <path d="M4 6h16" />
+    <path d="M7 12h10" />
+    <path d="M10 18h4" />
+    <circle cx="7" cy="6" r="2" fill="currentColor" stroke="none" />
+    <circle cx="17" cy="12" r="2" fill="currentColor" stroke="none" />
+    <circle cx="12" cy="18" r="2" fill="currentColor" stroke="none" />
+  </svg>
+);
+
 export const InfoIcon = () => (
   <svg {...baseProps}>
     <circle cx="12" cy="12" r="9" />
