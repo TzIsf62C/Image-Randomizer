@@ -331,6 +331,48 @@ body,
   gap: 0.5rem;
 }
 
+.feedback-intro {
+  margin-bottom: 0.8rem;
+}
+
+.feedback-card {
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  padding: 0.7rem;
+  background: white;
+}
+
+.feedback-email-row,
+.feedback-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.feedback-email-row {
+  justify-content: space-between;
+}
+
+.feedback-email-link {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.feedback-actions {
+  flex-wrap: wrap;
+}
+
+.feedback-send-link {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.feedback-toast {
+  margin: 0.7rem 0 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
 .template-list {
   margin-top: 0.8rem;
   display: grid;

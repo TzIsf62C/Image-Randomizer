@@ -35,6 +35,8 @@ interface SettingsPageProps {
   onRefreshMetadata?: () => void;
 }
 
+const FEEDBACK_EMAIL = 'ad.infinitum@tutanota.com';
+
 export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }: SettingsPageProps) => {
   const navigate = useNavigate();
   const [templateName, setTemplateName] = useState('');
@@ -48,10 +50,27 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   const [importBusy, setImportBusy] = useState(false);
   const [importProgress, setImportProgress] = useState('');
   const [importReviewRows, setImportReviewRows] = useState<Array<ImageRecord & { blob?: Blob }>>([]);
+  const [feedbackCopied, setFeedbackCopied] = useState(false);
   const userImageUrls = useUserImageSources(metadata);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const archiveInputRef = useRef<HTMLInputElement | null>(null);
   const importAbortRef = useRef<AbortController | null>(null);
+
+  const getFeedbackMailtoHref = (): string => `mailto:${FEEDBACK_EMAIL}`;
+
+  const sendFeedbackEmail = (): void => {
+    setFeedbackCopied(false);
+  };
+
+  const copyFeedbackEmail = async (): Promise<void> => {
+    try {
+      await navigator.clipboard.writeText(FEEDBACK_EMAIL);
+      setFeedbackCopied(true);
+      window.setTimeout(() => setFeedbackCopied(false), 2500);
+    } catch {
+      setFeedbackCopied(false);
+    }
+  };
 
   useEffect(() => {
     return () => {
@@ -915,6 +934,33 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
           {hasZeroCategory ? <p>At least one slot category has zero eligible images.</p> : null}
         </section>
       )}
+
+      <section className="settings-section feedback-section">
+        <h2>Feedback &amp; Support</h2>
+        <p className="muted-text feedback-intro">
+          Hit a problem, have a feature idea, or just want to say hello? Email me.
+        </p>
+        <div className="feedback-card">
+          <div className="feedback-email-row">
+            <a className="feedback-email-link" href={getFeedbackMailtoHref()}>
+              {FEEDBACK_EMAIL}
+            </a>
+            <div className="feedback-actions">
+              <a
+                className="action-button feedback-send-link"
+                href={getFeedbackMailtoHref()}
+                onClick={sendFeedbackEmail}
+              >
+                Send Email
+              </a>
+              <button type="button" className="action-button" onClick={() => void copyFeedbackEmail()}>
+                Copy Address
+              </button>
+            </div>
+          </div>
+          {feedbackCopied ? <p className="feedback-toast" role="status">Address Copied</p> : null}
+        </div>
+      </section>
 
       <footer className="settings-rights-footer">
         <p>Image Randomizer App Copyright © 2026 TzIsf62C</p>
