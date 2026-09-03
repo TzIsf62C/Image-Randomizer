@@ -40,7 +40,12 @@ export const isDuplicateTaxonomyName = (existingNames: string[], candidateName: 
 
 export const normalizeTaxonomyName = (name: string): string => name.trim();
 
-export const normalizeSetKey = (setName: string): string => setName.trim().toLowerCase();
+export const normalizeSetKey = (setName: string): string =>
+  setName
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
 
 export const resolveAssetUrl = (assetPath: string): string => {
   const trimmed = assetPath.trim();
@@ -86,7 +91,9 @@ export const mergeNativeImageOverride = (
 ): ImageRecord => {
   const nativeCategoryIds = normalizeStringList(nativeRecord.categoryIds ?? nativeRecord.categories);
   const baseCategoryIds = normalizeStringList(override?.categoryIds ?? nativeCategoryIds);
-  const baseSetIds = normalizeStringList(override?.setIds ?? (nativeRecord.setName ? [nativeRecord.setName] : []));
+  const baseSetIds = normalizeStringList(
+    override?.setIds ?? nativeRecord.setIds ?? (nativeRecord.setName ? [normalizeSetKey(nativeRecord.setName)] : [])
+  );
 
   return {
     ...nativeRecord,

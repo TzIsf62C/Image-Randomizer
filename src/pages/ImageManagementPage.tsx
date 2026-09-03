@@ -234,7 +234,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
       const nextRecord: ImageRecord = {
         ...editingRecord,
         setIds: sanitizedSets,
-        setName: sanitizedSets[0] ?? undefined,
+        setName: setOptions.find((option) => option.key === sanitizedSets[0])?.label ?? undefined,
         categoryIds: sanitizedCategories,
         categories: sanitizedCategories,
         excluded: draftExcluded,

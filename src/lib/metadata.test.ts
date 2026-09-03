@@ -41,6 +41,42 @@ describe('mergeNativeImageOverride', () => {
     expect(effective.rights.creator).toBe('CREATOR NAME');
     expect(effective.rights.source).toBe('internal');
   });
+
+  it('normalizes bundled native set labels to stable IDs while preserving the label', () => {
+    const effective = mergeNativeImageOverride({
+      id: 'cow',
+      file: 'mp1/cow.svg',
+      setName: 'Meeting Plan 1',
+      categories: [],
+      rights: {
+        creator: '',
+        copyrightNotice: '',
+        license: '',
+        source: 'internal'
+      }
+    });
+
+    expect(effective.setIds).toEqual(['meeting-plan-1']);
+    expect(effective.setName).toBe('Meeting Plan 1');
+  });
+
+  it('restores the bundled native label when its override is removed', () => {
+    const nativeRecord = {
+      id: 'cow',
+      file: 'mp1/cow.svg',
+      setName: 'Meeting Plan 1',
+      rights: {
+        creator: '',
+        copyrightNotice: '',
+        license: '',
+        source: 'internal'
+      }
+    };
+
+    expect(mergeNativeImageOverride(nativeRecord, { imageId: 'cow', setIds: ['farm-vocabulary'] }).setName).toBe(
+      'Meeting Plan 1'
+    );
+  });
 });
 
 describe('taxonomy validation helpers', () => {
