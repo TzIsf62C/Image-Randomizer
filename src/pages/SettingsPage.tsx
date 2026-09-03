@@ -51,7 +51,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   const [importProgress, setImportProgress] = useState('');
   const [importReviewRows, setImportReviewRows] = useState<Array<ImageRecord & { blob?: Blob }>>([]);
   const [feedbackCopied, setFeedbackCopied] = useState(false);
-  const userImageUrls = useUserImageSources(metadata);
+  const userImageUrls = useUserImageSources([...metadata, ...importReviewRows]);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const archiveInputRef = useRef<HTMLInputElement | null>(null);
   const importAbortRef = useRef<AbortController | null>(null);
@@ -608,7 +608,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
             <div className="image-review-list">
               {importReviewRows.map((row) => (
                 <article key={row.id} className="image-review-item">
-                  <img src={getRecordImageSource(row, userImageUrls, row.blob)} alt={row.fileName ?? row.file} loading="lazy" className="image-review-thumb" />
+                  <img src={getRecordImageSource(row, userImageUrls)} alt={row.fileName ?? row.file} loading="lazy" className="image-review-thumb" />
                   <div className="image-review-copy">
                     <strong>{row.fileName ?? row.file}</strong>
                     <label>

@@ -131,14 +131,9 @@ export const areUserImageUrlMapsEqual = (previous: Record<string, string>, next:
 
 export const getRecordImageSource = (
   record: Pick<ImageRecord, 'id' | 'origin' | 'file'>,
-  userImageUrls: Record<string, string> = {},
-  fallbackBlob?: Blob | null
+  userImageUrls: Record<string, string> = {}
 ): string => {
   if (record.origin === 'user') {
-    if (fallbackBlob) {
-      return URL.createObjectURL(fallbackBlob);
-    }
-
     const url = userImageUrls[record.id];
     return typeof url === 'string' && url.trim() ? url : '';
   }
@@ -146,7 +141,9 @@ export const getRecordImageSource = (
   return resolveAssetUrl(`images/${record.file}`);
 };
 
-export const useUserImageSources = (records: ImageRecord[]): Record<string, string> => {
+type UserImageSourceRecord = ImageRecord & { blob?: Blob };
+
+export const useUserImageSources = (records: UserImageSourceRecord[]): Record<string, string> => {
   const [userImageUrls, setUserImageUrls] = useState<Record<string, string>>({});
   const userRecordSignature = records.filter((record) => record.origin === 'user').map((record) => record.id).join('|');
 
@@ -169,7 +166,7 @@ export const useUserImageSources = (records: ImageRecord[]): Record<string, stri
 
     const loadImages = async (): Promise<void> => {
       for (const record of userRecords) {
-        const blob = await loadUserImageBlob(record.id);
+        const blob = record.blob instanceof Blob ? record.blob : await loadUserImageBlob(record.id);
         if (!blob) continue;
         nextUrls[record.id] = URL.createObjectURL(blob);
       }
