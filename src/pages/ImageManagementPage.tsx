@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, CloseIcon, FilterIcon } from '../components/icons';
-import { getRecordSetLabel, normalizeSetKey } from '../lib/metadata';
+import { extractSetOptions, getRecordSetIds, normalizeSetKey } from '../lib/metadata';
 import {
   deleteUserImage,
   getRecordImageSource,
@@ -48,17 +48,9 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
   const [draftExcluded, setDraftExcluded] = useState(false);
 
   const setOptions = useMemo(() => {
-    const unique = new Map<string, string>();
-    metadata.forEach((record) => {
-      const setName = getRecordSetLabel(record);
-      const key = normalizeSetKey(setName);
-      if (!unique.has(key)) {
-        unique.set(key, setName);
-      }
-    });
     return [
       { key: NO_SET_OPTION, label: 'No Set' },
-      ...[...unique.entries()].map(([key, label]) => ({ key, label }))
+      ...extractSetOptions(metadata)
     ];
   }, [metadata]);
 
@@ -154,12 +146,11 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
 
     return metadata.filter((record) => {
       const matchesOrigin = originFilter === EMPTY_FILTER || record.origin === originFilter;
-      const recordSet = getRecordSetLabel(record);
-      const recordSetKey = normalizeSetKey(recordSet);
-      const hasSet = Boolean(record.setIds?.length || record.setName);
+      const recordSetIds = getRecordSetIds(record);
+      const hasSet = recordSetIds.length > 0;
       const matchesSet =
         setFilter === EMPTY_FILTER ||
-        (setFilter === NO_SET_OPTION ? !hasSet : recordSetKey === setFilter);
+        (setFilter === NO_SET_OPTION ? !hasSet : recordSetIds.includes(setFilter));
       const recordCategories = record.categoryIds ?? record.categories ?? [];
       const matchesCategory =
         categoryFilter === EMPTY_FILTER ||

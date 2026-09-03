@@ -4,6 +4,8 @@ import {
   buildEffectiveMetadata,
   mergeNativeImageOverride,
   createTaxonomyNameKey,
+  extractSetOptions,
+  getRecordSetIds,
   isDuplicateTaxonomyName,
   resolveAssetUrl
 } from './metadata';
@@ -147,6 +149,31 @@ describe('buildEffectiveMetadata', () => {
     expect(effective).toHaveLength(2);
     expect(effective.find((record) => record.id === 'cow')?.excluded).toBe(true);
     expect(effective.find((record) => record.id === 'user-1')?.origin).toBe('user');
+  });
+});
+
+describe('stable set ID filtering', () => {
+  it('uses overridden set IDs while resolving native labels from bundled records', () => {
+    const records: ImageRecord[] = [
+      {
+        id: 'cow',
+        file: 'mp1/cow.svg',
+        setName: 'Meeting Plan 1',
+        setIds: ['farm-vocabulary'],
+        rights: { creator: '', copyrightNotice: '', license: '', source: 'internal' },
+        origin: 'native'
+      },
+      {
+        id: 'pig',
+        file: 'mp1/pig.svg',
+        setName: 'Farm Vocabulary',
+        rights: { creator: '', copyrightNotice: '', license: '', source: 'internal' },
+        origin: 'native'
+      }
+    ];
+
+    expect(getRecordSetIds(records[0])).toEqual(['farm-vocabulary']);
+    expect(extractSetOptions(records)).toContainEqual({ key: 'farm-vocabulary', label: 'Farm Vocabulary' });
   });
 });
 

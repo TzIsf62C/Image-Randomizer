@@ -4,7 +4,7 @@ import { CloseIcon } from '../components/icons';
 import {
   createTaxonomyNameKey,
   extractSetOptions,
-  getRecordSetLabel,
+  getRecordSetIds,
   isDuplicateTaxonomyName,
   normalizeSetKey,
   normalizeTaxonomyName
@@ -115,7 +115,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   }, [customCategories, metadata]);
 
   const eligibleByCategory = useMemo(() => {
-    const filtered = metadata.filter((record) => selectedSetKeys.has(normalizeSetKey(getRecordSetLabel(record))));
+    const filtered = metadata.filter((record) => getRecordSetIds(record).some((setId) => selectedSetKeys.has(setId)));
     const map = new Map<string, number>();
 
     filtered.forEach((record) => {

@@ -71,18 +71,44 @@ export const getRecordSetLabel = (record: { setName?: unknown }): string => {
   return trimmed || UNCATEGORIZED_SET_NAME;
 };
 
-export const extractSetOptions = (records: ImageRecord[]): SetOption[] => {
-  const seen = new Map<string, string>();
+export const getRecordSetIds = (record: Pick<ImageRecord, 'setIds' | 'setName'>): string[] => {
+  if (Array.isArray(record.setIds) && record.setIds.length > 0) {
+    return normalizeStringList(record.setIds).map(normalizeSetKey);
+  }
 
-  records.forEach((record) => {
-    const label = getRecordSetLabel(record);
-    const key = normalizeSetKey(label);
-    if (!seen.has(key)) {
-      seen.set(key, label);
+  const legacySetName = getRecordSetLabel(record);
+  return legacySetName === UNCATEGORIZED_SET_NAME ? [] : [normalizeSetKey(legacySetName)];
+};
+
+export const extractSetOptions = (records: ImageRecord[]): SetOption[] => {
+  const labelsByKey = new Map<string, string>();
+  const idsByRecord = records.map((record) => ({ record, ids: getRecordSetIds(record) }));
+
+  idsByRecord.forEach(({ record, ids }) => {
+    const legacyLabel = getRecordSetLabel(record);
+    const legacyKey = normalizeSetKey(legacyLabel);
+    if (legacyLabel !== UNCATEGORIZED_SET_NAME && ids.includes(legacyKey)) {
+      labelsByKey.set(legacyKey, legacyLabel);
     }
   });
 
+  const seen = new Map<string, string>();
+
+  idsByRecord.forEach(({ ids }) => {
+    ids.forEach((id) => {
+      if (!seen.has(id)) {
+        seen.set(id, labelsByKey.get(id) ?? id);
+      }
+    });
+  });
+
   return [...seen.entries()].map(([key, label]) => ({ key, label }));
+};
+
+export const getSetLabelForId = (records: ImageRecord[], setId: string): string => {
+  const key = normalizeSetKey(setId);
+  const option = extractSetOptions(records).find((candidate) => candidate.key === key);
+  return option?.label ?? key;
 };
 
 export const mergeNativeImageOverride = (

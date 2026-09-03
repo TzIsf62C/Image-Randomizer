@@ -4,7 +4,7 @@ import { HistoryModal } from '../components/HistoryModal';
 import { SlotReel } from '../components/SlotReel';
 import { CloseIcon, HistoryIcon, SettingsIcon, SpinIcon } from '../components/icons';
 import { SPIN_DURATION_MS } from '../lib/constants';
-import { getRecordSetLabel, normalizeSetKey } from '../lib/metadata';
+import { getRecordSetIds, normalizeSetKey } from '../lib/metadata';
 import { pickImageForSlot, type RepeatState } from '../lib/randomizer';
 import { capSessionHistory, getRecordImageSource, SESSION_HISTORY_LIMIT, useUserImageSources } from '../lib/userStorage';
 import type { ImageRecord, SettingsState, SpinResult } from '../types';
@@ -126,7 +126,7 @@ const playSpinSound = (
 
 const buildEligibility = (records: ImageRecord[], selectedSetNames: string[]): ImageRecord[] => {
   const selectedSetKeys = new Set(selectedSetNames.map((setName) => normalizeSetKey(setName)));
-  return records.filter((record) => selectedSetKeys.has(normalizeSetKey(getRecordSetLabel(record))));
+  return records.filter((record) => getRecordSetIds(record).some((setId) => selectedSetKeys.has(setId)));
 };
 
 export const PracticePage = ({ settings, metadata, repeatState }: PracticePageProps) => {
