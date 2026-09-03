@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, CloseIcon, FilterIcon } from '../components/icons';
-import { extractSetOptions, getRecordSetIds, normalizeSetKey } from '../lib/metadata';
+import { extractSetOptions, getRecordSetIds, getSetLabelForId, normalizeSetKey } from '../lib/metadata';
 import {
   deleteUserImage,
   getRecordImageSource,
@@ -323,8 +323,11 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
     for (const record of selected) {
       if (bulkModal === 'set') {
         const existing = (record.setIds && record.setIds.length > 0 ? record.setIds : record.setName ? [record.setName] : [])
-          .filter((value) => Boolean(value) && value !== NO_SET_OPTION);
-        const merged = Array.from(new Set([...existing, ...nextValues]));
+          .filter((value) => Boolean(value) && value !== NO_SET_OPTION)
+          .map(normalizeSetKey);
+        const merged = Array.from(new Set([...existing, ...nextValues.map(normalizeSetKey)]));
+        const primarySetId = merged[0];
+        const primarySetLabel = setOptions.find((option) => option.key === primarySetId)?.label ?? primarySetId;
 
         if (record.origin === 'native') {
           await saveNativeImageOverride({
@@ -338,7 +341,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
           await saveUserImage({
             ...record,
             setIds: merged,
-            setName: merged[0] ?? undefined,
+            setName: primarySetLabel || undefined,
             updatedAt: new Date().toISOString()
           });
         }
@@ -467,7 +470,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
             const imgUrl = getRecordImageSource(record, userImageUrls);
             const sets = (record.setIds && record.setIds.length > 0 ? record.setIds : record.setName ? [record.setName] : [NO_SET_OPTION])
               .filter(Boolean)
-              .map((value) => (value === NO_SET_OPTION ? 'No Set' : value));
+              .map((value) => (value === NO_SET_OPTION ? 'No Set' : getSetLabelForId(metadata, value)));
             const categories = (record.categoryIds && record.categoryIds.length > 0 ? record.categoryIds : record.categories ?? [])
               .filter(Boolean);
 

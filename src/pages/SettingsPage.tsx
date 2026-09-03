@@ -327,7 +327,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     }
 
     setImportReviewRows([]);
-    setImportFeedback(`Saved ${importReviewRows.length} review${importReviewRows.length === 1 ? '' : 'ed'} image${importReviewRows.length === 1 ? '' : 's'}.`);
+    setImportFeedback(`Saved ${importReviewRows.length} review image${importReviewRows.length === 1 ? '' : 's'}.`);
     onRefreshMetadata?.();
   };
 
@@ -417,9 +417,15 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
       const blob = await loadUserImageBlob(userImage.id);
       if (!blob) continue;
 
-      const arrayBuffer = await blob.arrayBuffer();
-      const bytes = new Uint8Array(arrayBuffer);
-      const base64 = btoa(Array.from(bytes, (byte) => String.fromCharCode(byte)).join(''));
+      const base64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const result = typeof reader.result === 'string' ? reader.result : '';
+          resolve(result.split(',', 2)[1] ?? '');
+        };
+        reader.onerror = () => reject(reader.error ?? new Error('Failed to encode image.'));
+        reader.readAsDataURL(blob);
+      });
 
       archiveFiles.push({
         id: userImage.id,
