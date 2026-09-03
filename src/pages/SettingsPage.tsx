@@ -377,6 +377,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
           if (isQuotaExceededError(error)) {
             setImportFeedback('Storage is full. Delete unused imported images or free space, then try again.');
             setImportProgress('');
+            importedCount = 0;
             break;
           }
 
@@ -389,7 +390,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
         return;
       }
 
-      if (importedCount > 0 && !importFeedback.startsWith('Storage is full')) {
+      if (importedCount > 0) {
         setImportFeedback(`Imported ${importedCount} image${importedCount === 1 ? '' : 's'} and queued them for review.`);
         setImportProgress('');
       }
