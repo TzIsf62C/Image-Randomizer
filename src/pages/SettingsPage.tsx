@@ -302,26 +302,27 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     }
 
     for (const row of importReviewRows) {
+      const { blob, ...rowRecord } = row;
       const nextRecord: ImageRecord = {
-        ...row,
+        ...rowRecord,
         origin: 'user',
-        categoryIds: (row.categoryIds ?? row.categories ?? []).filter(Boolean),
-        categories: (row.categoryIds ?? row.categories ?? []).filter(Boolean),
-        setIds: (row.setIds ?? (row.setName ? [row.setName] : [])).filter(Boolean),
-        setName: (row.setIds ?? (row.setName ? [row.setName] : []))[0] ?? undefined,
+        categoryIds: (rowRecord.categoryIds ?? rowRecord.categories ?? []).filter(Boolean),
+        categories: (rowRecord.categoryIds ?? rowRecord.categories ?? []).filter(Boolean),
+        setIds: (rowRecord.setIds ?? (rowRecord.setName ? [rowRecord.setName] : [])).filter(Boolean),
+        setName: (rowRecord.setIds ?? (rowRecord.setName ? [rowRecord.setName] : []))[0] ?? undefined,
         rights: {
-          creator: row.rights.creator ?? '',
-          copyrightNotice: row.rights.copyrightNotice ?? '',
-          license: row.rights.license ?? '',
-          source: row.rights.source ?? 'user'
+          creator: rowRecord.rights.creator ?? '',
+          copyrightNotice: rowRecord.rights.copyrightNotice ?? '',
+          license: rowRecord.rights.license ?? '',
+          source: rowRecord.rights.source ?? 'user'
         },
-        excluded: Boolean(row.excluded),
+        excluded: Boolean(rowRecord.excluded),
         updatedAt: new Date().toISOString()
       };
 
       await saveUserImage(nextRecord);
-      if (row.blob) {
-        await saveUserImageBlob(nextRecord.id, row.blob);
+      if (blob) {
+        await saveUserImageBlob(nextRecord.id, blob);
       }
     }
 
