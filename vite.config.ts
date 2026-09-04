@@ -21,8 +21,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'Language Learning Image Randomizer',
-        short_name: 'Language Images',
+        name: 'Language Learning Image Shuffle',
+        short_name: 'Language Shuffle',
         description: 'Offline-first image randomizer for language practice',
         theme_color: '#1f2937',
         background_color: '#f4f1ea',

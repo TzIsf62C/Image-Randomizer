@@ -1,4 +1,4 @@
-# Language Learning Slot Machine
+# Language Learning Image Shuffle
 
 Offline-first Progressive Web App for spontaneous language practice using randomized image prompts.
 
