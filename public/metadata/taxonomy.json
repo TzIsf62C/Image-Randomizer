@@ -21,6 +21,7 @@
     { "id": "pronoun", "name": "Pronoun" },
     { "id": "transitive-verb", "name": "Transitive verb" },
     { "id": "verb", "name": "Verb" },
-    { "id": "ditransitive-verb", "name": "Ditransitive verb" }
+    { "id": "ditransitive-verb", "name": "Ditransitive verb" },
+    { "id": "predicate", "name": "Predicate" }
   ]
 }

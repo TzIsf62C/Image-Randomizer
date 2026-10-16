@@ -2313,7 +2313,7 @@
     "id": "touch-1pl",
     "file": "mp5/touch-1pl.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
@@ -2325,7 +2325,7 @@
     "id": "touch-1s",
     "file": "mp5/touch-1s.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
@@ -2337,7 +2337,7 @@
     "id": "touch-2pl-older",
     "file": "mp5/touch-2pl-older.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
@@ -2349,7 +2349,7 @@
     "id": "touch-2pl-younger",
     "file": "mp5/touch-2pl-younger.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
@@ -2361,7 +2361,7 @@
     "id": "touch-2s-older",
     "file": "mp5/touch-2s-older.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
@@ -2373,7 +2373,7 @@
     "id": "touch-2s-younger",
     "file": "mp5/touch-2s-younger.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
@@ -2385,7 +2385,7 @@
     "id": "touch-3pl",
     "file": "mp5/touch-3pl.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
@@ -2397,7 +2397,7 @@
     "id": "touch-3s",
     "file": "mp5/touch-3s.svg",
     "setName": "Meeting Plan 5",
-    "categories": ["verb", "transitive-verb"],
+    "categories": ["predicate"],
     "rights": {
       "creator": "Angela Thompson",
       "copyrightNotice": "© 2016 Angela Thompson",
