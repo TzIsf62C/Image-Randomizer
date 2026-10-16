@@ -4,7 +4,7 @@ import { generateUuid } from './uuid';
 export const STORAGE_KEY = 'language-slot-machine-settings-v1';
 
 export const DEFAULT_SETTINGS: SettingsState = {
-  selectedSetNames: ['Meeting Plan 1', 'Meeting Plan 2', 'Meeting Plan 3', 'Meeting Plan 4'],
+  selectedSetIds: ['meeting-plan-1', 'meeting-plan-2', 'meeting-plan-3', 'meeting-plan-4'],
   slots: [
     { id: generateUuid(), label: 'Subject', category: 'animate' },
     { id: generateUuid(), label: 'Verb', category: 'transitive-verb' },

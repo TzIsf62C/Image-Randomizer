@@ -2,9 +2,11 @@ import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties }
 import { useNavigate } from 'react-router-dom';
 import { HistoryModal } from '../components/HistoryModal';
 import { SlotReel } from '../components/SlotReel';
-import { CloseIcon, HistoryIcon, SettingsIcon, SpinIcon } from '../components/icons';
+import { CloseIcon, HistoryIcon, SpinIcon } from '../components/icons';
+import { PracticeMenu } from '../components/PracticeMenu';
 import { SPIN_DURATION_MS } from '../lib/constants';
-import { getRecordSetIds, normalizeSetKey } from '../lib/metadata';
+import { getRecordSetIds } from '../lib/metadata';
+import type { Taxonomy } from '../lib/taxonomy';
 import { pickImageForSlot, type RepeatState } from '../lib/randomizer';
 import { capSessionHistory, getRecordImageSource, SESSION_HISTORY_LIMIT, useUserImageSources } from '../lib/userStorage';
 import type { ImageRecord, SettingsState, SpinResult } from '../types';
@@ -12,6 +14,7 @@ import type { ImageRecord, SettingsState, SpinResult } from '../types';
 interface PracticePageProps {
   settings: SettingsState;
   metadata: ImageRecord[];
+  taxonomy: Taxonomy;
   repeatState: RepeatState;
 }
 
@@ -124,12 +127,12 @@ const playSpinSound = (
   }
 };
 
-const buildEligibility = (records: ImageRecord[], selectedSetNames: string[]): ImageRecord[] => {
-  const selectedSetKeys = new Set(selectedSetNames.map((setName) => normalizeSetKey(setName)));
+const buildEligibility = (records: ImageRecord[], selectedSetIds: string[]): ImageRecord[] => {
+  const selectedSetKeys = new Set(selectedSetIds);
   return records.filter((record) => getRecordSetIds(record).some((setId) => selectedSetKeys.has(setId)));
 };
 
-export const PracticePage = ({ settings, metadata, repeatState }: PracticePageProps) => {
+export const PracticePage = ({ settings, metadata, taxonomy, repeatState }: PracticePageProps) => {
   const REEL_STAGGER_MS = 90;
   const REEL_HOLD_MS = 80;
   const PORTRAIT_REEL_MIN_SIZE = 125;
@@ -154,15 +157,20 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
   const REEL_BLUR_MS = prefersReducedMotion ? 0 : Math.max(SPIN_DURATION_MS - REEL_HOLD_MS - REEL_SETTLE_MS, 0);
   const REEL_TOTAL_MS = REEL_HOLD_MS + REEL_BLUR_MS + REEL_SETTLE_MS;
 
+  const activeSetIds = useMemo(() => {
+    const hiddenIds = new Set(taxonomy.sets.filter((item) => item.hidden).map((item) => item.id));
+    return settings.selectedSetIds.filter((setId) => !hiddenIds.has(setId));
+  }, [settings.selectedSetIds, taxonomy.sets]);
+
   const eligibleBySlot = useMemo(() => {
-    const bySet = buildEligibility(metadata, settings.selectedSetNames);
+    const bySet = buildEligibility(metadata, activeSetIds);
     return settings.slots.map((slot) =>
       bySet.filter((item) => (item.categoryIds ?? item.categories ?? []).includes(slot.category))
     );
-  }, [metadata, settings.selectedSetNames, settings.slots]);
+  }, [metadata, activeSetIds, settings.slots]);
 
   const hasConfigError =
-    settings.selectedSetNames.length === 0 || eligibleBySlot.some((eligible) => eligible.length === 0);
+    activeSetIds.length === 0 || eligibleBySlot.some((eligible) => eligible.length === 0);
 
   const spin = useCallback((): void => {
     if (spinning || hasConfigError) return;
@@ -292,7 +300,7 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
         setShowHistory(true);
       }
       if (event.key.toLowerCase() === 's') {
-        navigate('/settings');
+        navigate('/practice/configure');
       }
       if (event.key === 'Escape') {
         setShowHistory(false);
@@ -377,14 +385,12 @@ export const PracticePage = ({ settings, metadata, repeatState }: PracticePagePr
       ) : null}
 
       <nav className="practice-controls" aria-label="Practice controls">
+        <PracticeMenu />
         <button className="icon-button spin" type="button" onClick={spin} disabled={spinning || hasConfigError} aria-label="Spin">
           <SpinIcon />
         </button>
         <button className="icon-button" type="button" onClick={() => setShowHistory(true)} aria-label="History">
           <HistoryIcon />
-        </button>
-        <button className="icon-button" type="button" onClick={() => navigate('/settings')} aria-label="Settings">
-          <SettingsIcon />
         </button>
       </nav>
     </main>

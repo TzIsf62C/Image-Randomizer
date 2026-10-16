@@ -1,23 +1,26 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CloseIcon } from '../components/icons';
+import { ArrowLeftIcon, CloseIcon } from '../components/icons';
+import { getRecordSetIds, isDuplicateTaxonomyName, normalizeTaxonomyName } from '../lib/metadata';
 import {
-  extractSetOptions,
-  getRecordSetIds,
-  isDuplicateTaxonomyName,
-  normalizeSetKey,
-  normalizeTaxonomyName
-} from '../lib/metadata';
+  getImagesUsingTaxonomyId,
+  removeTaxonomyItem,
+  renameTaxonomyItem,
+  restoreTaxonomyItem,
+  visibleItems,
+  type Taxonomy,
+  type TaxonomyItem,
+  type TaxonomyKind
+} from '../lib/taxonomy';
 import {
   buildTaxonomyEntry,
-  deleteTaxonomyEntry,
   exportUserDataArchive,
   getRecordImageSource,
   importUserDataArchive,
   isQuotaExceededError,
-  listTaxonomyEntries,
   loadNativeImageOverrides,
   loadUserImageBlob,
+  listTaxonomyEntries,
   processUserImageFile,
   saveTaxonomyEntry,
   saveUserImage,
@@ -27,7 +30,19 @@ import {
 import { generateUuid } from '../lib/uuid';
 import type { ImageRecord, SettingsState, SlotConfig, SlotTemplate } from '../types';
 
+export type SettingsView = 'add-images' | 'configure' | 'library' | 'export' | 'settings';
+
+const VIEW_TITLES: Record<SettingsView, string> = {
+  'add-images': 'Add Images',
+  configure: 'Configure Practice',
+  library: 'Categories & Sets',
+  export: 'Export Data',
+  settings: 'Settings'
+};
+
 interface SettingsPageProps {
+  view: SettingsView;
+  taxonomy: Taxonomy;
   metadata: ImageRecord[];
   settings: SettingsState;
   onChange: (next: SettingsState) => void;
@@ -36,12 +51,10 @@ interface SettingsPageProps {
 
 const FEEDBACK_EMAIL = 'ad.infinitum@tutanota.com';
 
-export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }: SettingsPageProps) => {
+export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onRefreshMetadata }: SettingsPageProps) => {
   const navigate = useNavigate();
   const [templateName, setTemplateName] = useState('');
   const [showImageRights, setShowImageRights] = useState(false);
-  const [customCategories, setCustomCategories] = useState<string[]>([]);
-  const [customSets, setCustomSets] = useState<string[]>([]);
   const [newCategoryName, setNewCategoryName] = useState('');
   const [newSetName, setNewSetName] = useState('');
   const [taxonomyError, setTaxonomyError] = useState('');
@@ -77,41 +90,10 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     };
   }, []);
 
-  useEffect(() => {
-    const loadStoredTaxonomy = async (): Promise<void> => {
-      const storedCategories = await listTaxonomyEntries('categories');
-      const storedSets = await listTaxonomyEntries('sets');
+  const setItems = useMemo(() => visibleItems(taxonomy.sets), [taxonomy.sets]);
+  const categoryItems = useMemo(() => visibleItems(taxonomy.categories), [taxonomy.categories]);
 
-      setCustomCategories(storedCategories.map((entry) => entry.name));
-      setCustomSets(storedSets.map((entry) => entry.name));
-    };
-
-    void loadStoredTaxonomy();
-  }, []);
-
-  const baseSetOptions = useMemo(() => extractSetOptions(metadata), [metadata]);
-  const setOptions = useMemo(
-    () => [
-      ...baseSetOptions,
-      ...customSets.map((setName) => ({ key: normalizeSetKey(setName), label: setName }))
-    ].filter((option, index, list) => index === list.findIndex((candidate) => candidate.key === option.key)),
-    [baseSetOptions, customSets]
-  );
-
-  const selectedSetKeys = useMemo(
-    () => new Set(settings.selectedSetNames.map((setName) => normalizeSetKey(setName))),
-    [settings.selectedSetNames]
-  );
-
-  const categories = useMemo(() => {
-    const set = new Set<string>();
-    metadata.forEach((record) => {
-      const categoryIds = record.categoryIds ?? record.categories ?? [];
-      categoryIds.forEach((category) => set.add(category));
-    });
-    customCategories.forEach((category) => set.add(category));
-    return [...set].sort();
-  }, [customCategories, metadata]);
+  const selectedSetKeys = useMemo(() => new Set(settings.selectedSetIds), [settings.selectedSetIds]);
 
   const eligibleByCategory = useMemo(() => {
     const filtered = metadata.filter((record) => getRecordSetIds(record).some((setId) => selectedSetKeys.has(setId)));
@@ -135,7 +117,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   };
 
   const addSlot = (): void => {
-    const defaultCategory = categories[0] ?? 'subject';
+    const defaultCategory = categoryItems[0]?.id ?? 'subject';
     onChange({
       ...settings,
       slots: [...settings.slots, { id: generateUuid(), label: '', category: defaultCategory }]
@@ -160,124 +142,95 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     onChange({ ...settings, slots: nextSlots });
   };
 
-  const toggleSetName = (setName: string): void => {
-    const selected = new Set(settings.selectedSetNames);
-    if (selected.has(setName)) {
-      selected.delete(setName);
+  const toggleSetId = (setId: string): void => {
+    const selected = new Set(settings.selectedSetIds);
+    if (selected.has(setId)) {
+      selected.delete(setId);
     } else {
-      selected.add(setName);
+      selected.add(setId);
     }
-    onChange({ ...settings, selectedSetNames: [...selected] });
+    onChange({ ...settings, selectedSetIds: [...selected] });
   };
 
-  const addCategory = async (): Promise<void> => {
-    const candidate = normalizeTaxonomyName(newCategoryName);
+  const addTaxonomyItem = async (kind: TaxonomyKind, rawName: string, reset: () => void): Promise<void> => {
+    const noun = kind === 'sets' ? 'set' : 'category';
+    const candidate = normalizeTaxonomyName(rawName);
     if (!candidate) {
-      setTaxonomyError('Category name cannot be empty.');
+      setTaxonomyError(`${kind === 'sets' ? 'Set' : 'Category'} name cannot be empty.`);
       return;
     }
 
-    const existingNames = [...categories, ...customCategories];
-    if (isDuplicateTaxonomyName(existingNames, candidate)) {
-      setTaxonomyError('A category with that name already exists.');
+    const items = kind === 'sets' ? taxonomy.sets : taxonomy.categories;
+    if (isDuplicateTaxonomyName(visibleItems(items).map((item) => item.name), candidate)) {
+      setTaxonomyError(`A ${noun} with that name already exists.`);
       return;
     }
 
-    const entry = buildTaxonomyEntry(candidate, 'user', 'category');
-    await saveTaxonomyEntry(entry, 'categories');
-    setCustomCategories((previous) => [...previous, candidate]);
-    setNewCategoryName('');
+    await saveTaxonomyEntry(buildTaxonomyEntry(candidate, 'user', kind === 'sets' ? 'set' : 'category'), kind);
+    reset();
     setTaxonomyError('');
+    onRefreshMetadata?.();
   };
 
-  const addSet = async (): Promise<void> => {
-    const candidate = normalizeTaxonomyName(newSetName);
-    if (!candidate) {
-      setTaxonomyError('Set name cannot be empty.');
-      return;
-    }
-
-    const existingNames = [...setOptions.map((option) => option.label), ...customSets];
-    if (isDuplicateTaxonomyName(existingNames, candidate)) {
-      setTaxonomyError('A set with that name already exists.');
-      return;
-    }
-
-    const entry = buildTaxonomyEntry(candidate, 'user', 'set');
-    await saveTaxonomyEntry(entry, 'sets');
-    setCustomSets((previous) => [...previous, candidate]);
-    setNewSetName('');
-    setTaxonomyError('');
-  };
-
-  const renameCustomCategory = async (currentName: string): Promise<void> => {
-    const nextName = window.prompt('Rename category', currentName);
+  const renameItem = async (kind: TaxonomyKind, item: TaxonomyItem): Promise<void> => {
+    const noun = kind === 'sets' ? 'set' : 'category';
+    const nextName = window.prompt(`Rename ${noun}`, item.name);
     if (!nextName) return;
 
     const normalized = normalizeTaxonomyName(nextName);
     if (!normalized) {
-      setTaxonomyError('Category name cannot be empty.');
+      setTaxonomyError(`${kind === 'sets' ? 'Set' : 'Category'} name cannot be empty.`);
       return;
     }
 
-    const existingNames = [...categories.filter((name) => name !== currentName), ...customCategories.filter((name) => name !== currentName)];
-    if (isDuplicateTaxonomyName(existingNames, normalized)) {
-      setTaxonomyError('A category with that name already exists.');
+    const items = kind === 'sets' ? taxonomy.sets : taxonomy.categories;
+    const otherNames = visibleItems(items).filter((candidate) => candidate.id !== item.id).map((candidate) => candidate.name);
+    if (isDuplicateTaxonomyName(otherNames, normalized)) {
+      setTaxonomyError(`A ${noun} with that name already exists.`);
       return;
     }
 
-    const taxonomyEntries = await listTaxonomyEntries('categories');
-    const entry = taxonomyEntries.find((candidate) => candidate.name === currentName && candidate.origin === 'user');
-    if (!entry) return;
-
-    const updated = { ...entry, name: normalized, updatedAt: new Date().toISOString() };
-    await saveTaxonomyEntry(updated, 'categories');
-    setCustomCategories((previous) => previous.map((name) => (name === currentName ? normalized : name)));
+    await renameTaxonomyItem(kind, item, normalized);
     setTaxonomyError('');
+    onRefreshMetadata?.();
   };
 
-  const renameCustomSet = async (currentName: string): Promise<void> => {
-    const nextName = window.prompt('Rename set', currentName);
-    if (!nextName) return;
+  const deleteItem = async (kind: TaxonomyKind, item: TaxonomyItem): Promise<void> => {
+    const noun = kind === 'sets' ? 'set' : 'category';
+    const imageCount = getImagesUsingTaxonomyId(metadata, kind, item.id).length;
+    const slotCount = kind === 'categories' ? settings.slots.filter((slot) => slot.category === item.id).length : 0;
 
-    const normalized = normalizeTaxonomyName(nextName);
-    if (!normalized) {
-      setTaxonomyError('Set name cannot be empty.');
+    const warnings: string[] = [];
+    if (!item.builtin && imageCount > 0) {
+      warnings.push(`It will be removed from ${imageCount} image${imageCount === 1 ? '' : 's'}.`);
+    }
+    if (slotCount > 0) {
+      warnings.push(
+        `${slotCount} practice slot${slotCount === 1 ? ' uses' : 's use'} this category and will have no images until you pick another.`
+      );
+    }
+    if (item.builtin) {
+      warnings.push('You can restore it later from Restore defaults.');
+    }
+
+    if (!window.confirm(`${item.builtin ? 'Hide' : 'Delete'} ${noun} "${item.name}"?\n\n${warnings.join('\n')}`.trim())) {
       return;
     }
 
-    const existingNames = [...setOptions.map((option) => option.label).filter((name) => name !== currentName), ...customSets.filter((name) => name !== currentName)];
-    if (isDuplicateTaxonomyName(existingNames, normalized)) {
-      setTaxonomyError('A set with that name already exists.');
-      return;
+    if (kind === 'sets' && !item.builtin && settings.selectedSetIds.includes(item.id)) {
+      onChange({ ...settings, selectedSetIds: settings.selectedSetIds.filter((setId) => setId !== item.id) });
     }
 
-    const taxonomyEntries = await listTaxonomyEntries('sets');
-    const entry = taxonomyEntries.find((candidate) => candidate.name === currentName && candidate.origin === 'user');
-    if (!entry) return;
+    await removeTaxonomyItem(kind, item, metadata);
+    onRefreshMetadata?.();
+  };
 
-    const updated = { ...entry, name: normalized, updatedAt: new Date().toISOString() };
-    await saveTaxonomyEntry(updated, 'sets');
-    setCustomSets((previous) => previous.map((name) => (name === currentName ? normalized : name)));
+  const restoreItems = async (kind: TaxonomyKind, items: TaxonomyItem[]): Promise<void> => {
+    for (const item of items) {
+      await restoreTaxonomyItem(kind, item);
+    }
     setTaxonomyError('');
-  };
-
-  const deleteCustomCategory = async (currentName: string): Promise<void> => {
-    const taxonomyEntries = await listTaxonomyEntries('categories');
-    const entry = taxonomyEntries.find((candidate) => candidate.name === currentName && candidate.origin === 'user');
-    if (!entry) return;
-
-    await deleteTaxonomyEntry('categories', entry.id);
-    setCustomCategories((previous) => previous.filter((name) => name !== currentName));
-  };
-
-  const deleteCustomSet = async (currentName: string): Promise<void> => {
-    const taxonomyEntries = await listTaxonomyEntries('sets');
-    const entry = taxonomyEntries.find((candidate) => candidate.name === currentName && candidate.origin === 'user');
-    if (!entry) return;
-
-    await deleteTaxonomyEntry('sets', entry.id);
-    setCustomSets((previous) => previous.filter((name) => name !== currentName));
+    onRefreshMetadata?.();
   };
 
   const saveTemplate = (): void => {
@@ -307,8 +260,8 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
         origin: 'user',
         categoryIds: (rowRecord.categoryIds ?? rowRecord.categories ?? []).filter(Boolean),
         categories: (rowRecord.categoryIds ?? rowRecord.categories ?? []).filter(Boolean),
-        setIds: (rowRecord.setIds ?? (rowRecord.setName ? [rowRecord.setName] : [])).filter(Boolean),
-        setName: (rowRecord.setIds ?? (rowRecord.setName ? [rowRecord.setName] : []))[0] ?? undefined,
+        setIds: (rowRecord.setIds ?? []).filter(Boolean),
+        setName: undefined,
         rights: {
           creator: rowRecord.rights.creator ?? '',
           copyrightNotice: rowRecord.rights.copyrightNotice ?? '',
@@ -437,7 +390,11 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     const archive = exportUserDataArchive({
       userImages: userArchiveImages,
       nativeOverrides,
-      files: archiveFiles
+      files: archiveFiles,
+      taxonomy: {
+        categories: await listTaxonomyEntries('categories'),
+        sets: await listTaxonomyEntries('sets')
+      }
     });
 
     const blob = new Blob([JSON.stringify(archive, null, 2)], { type: 'application/json' });
@@ -448,6 +405,17 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     link.click();
     URL.revokeObjectURL(url);
     setImportFeedback('User data archive exported.');
+  };
+
+  const handleTemplateExport = (): void => {
+    const blob = new Blob([JSON.stringify({ templates: settings.templates }, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `image-randomizer-templates-${new Date().toISOString().slice(0, 10)}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+    setImportFeedback('Templates exported.');
   };
 
   const handleArchiveImport = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
@@ -493,10 +461,59 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
     });
   };
 
-  const hasNoSets = settings.selectedSetNames.length === 0;
+  const hasNoSets = settings.selectedSetIds.filter((setId) => setItems.some((item) => item.id === setId)).length === 0;
+  const renderTaxonomyList = (kind: TaxonomyKind, items: TaxonomyItem[]) => {
+    const hiddenBuiltIns = items.filter((item) => item.builtin && item.hidden);
+    const renamedBuiltIns = items.filter((item) => item.builtin && item.name !== item.defaultName);
+
+    return (
+      <>
+        <div className="template-list">
+          {visibleItems(items).map((item) => (
+            <article key={item.id} className="template-item">
+              <strong>{item.name}</strong>
+              <div>
+                <button type="button" onClick={() => void renameItem(kind, item)}>
+                  Rename
+                </button>
+                <button type="button" onClick={() => void deleteItem(kind, item)}>
+                  Delete
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {hiddenBuiltIns.length > 0 || renamedBuiltIns.length > 0 ? (
+          <div className="template-list">
+            <h3>Restore defaults</h3>
+            {hiddenBuiltIns.map((item) => (
+              <article key={item.id} className="template-item">
+                <span>{item.defaultName} (deleted)</span>
+                <button type="button" onClick={() => void restoreItems(kind, [item])}>
+                  Restore
+                </button>
+              </article>
+            ))}
+            <button
+              type="button"
+              className="action-button"
+              onClick={() => void restoreItems(kind, [...new Set([...hiddenBuiltIns, ...renamedBuiltIns])])}
+            >
+              Restore all defaults
+            </button>
+          </div>
+        ) : null}
+      </>
+    );
+  };
+
+  const missingCategorySlots = settings.slots.filter(
+    (slot) => !categoryItems.some((category) => category.id === slot.category)
+  ).length;
   const hasZeroCategory = settings.slots.some((slot) => (eligibleByCategory.get(slot.category) ?? 0) === 0);
 
-  if (showImageRights) {
+  if (view === 'settings' && showImageRights) {
     return (
       <main className="settings-screen image-rights-screen">
         <header className="image-rights-header">
@@ -529,17 +546,31 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
   return (
     <main className="settings-screen">
       <header className="settings-header">
-        <h1>Settings</h1>
-        <div className="template-save-row">
-          <button type="button" onClick={() => navigate('/images')} className="action-button">
-            Manage images
-          </button>
-          <button type="button" onClick={() => navigate('/')} className="action-button">
-            Practice
-          </button>
-        </div>
+        <button type="button" className="icon-button" onClick={() => navigate('/')} aria-label="Back to practice">
+          <ArrowLeftIcon />
+        </button>
+        <h1>{VIEW_TITLES[view]}</h1>
       </header>
 
+      {view === 'export' ? (
+        <section className="settings-section">
+          <h2>Export</h2>
+          <div className="template-save-row">
+            <button type="button" onClick={() => void handleArchiveExport()}>
+              Export image archive
+            </button>
+            <button type="button" onClick={handleTemplateExport} disabled={settings.templates.length === 0}>
+              Export templates
+            </button>
+          </div>
+          <p className="muted-text">
+            The archive includes your imported images, edits to built-in images, and category and set details.
+          </p>
+          {importFeedback ? <p className="muted-text" aria-live="polite">{importFeedback}</p> : null}
+        </section>
+      ) : null}
+
+      {view === 'add-images' ? (
       <section className="settings-section">
         <h2>User images</h2>
         <div className="template-save-row">
@@ -551,9 +582,6 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
               Cancel
             </button>
           ) : null}
-          <button type="button" onClick={() => void handleArchiveExport()}>
-            Export archive
-          </button>
           <button type="button" onClick={() => archiveInputRef.current?.click()}>
             Import archive
           </button>
@@ -688,9 +716,9 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
                           );
                         }}
                       >
-                        {categories.map((category) => (
-                          <option key={`${row.id}-${category}`} value={category}>
-                            {category}
+                        {categoryItems.map((category) => (
+                          <option key={`${row.id}-${category.id}`} value={category.id}>
+                            {category.name}
                           </option>
                         ))}
                       </select>
@@ -699,7 +727,7 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
                       Sets
                       <select
                         multiple
-                        value={row.setIds ?? (row.setName ? [row.setName] : [])}
+                        value={row.setIds ?? []}
                         onChange={(event) => {
                           const nextSets = Array.from(event.target.selectedOptions, (option) => option.value);
                           setImportReviewRows((previous) =>
@@ -708,15 +736,15 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
                               return {
                                 ...item,
                                 setIds: nextSets,
-                                setName: nextSets[0] ?? undefined
+                                setName: undefined
                               };
                             })
                           );
                         }}
                       >
-                        {setOptions.map((setOption) => (
-                          <option key={`${row.id}-set-${setOption.key}`} value={setOption.label}>
-                            {setOption.label}
+                        {setItems.map((setItem) => (
+                          <option key={`${row.id}-set-${setItem.id}`} value={setItem.id}>
+                            {setItem.name}
                           </option>
                         ))}
                       </select>
@@ -729,21 +757,30 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
         ) : null}
 
       </section>
+      ) : null}
 
+      {view === 'configure' ? (
       <section className="settings-section">
         <h2>Sets</h2>
         <div className="set-grid">
-          {setOptions.map((setOption) => (
-            <label key={setOption.key} className="checkbox-label">
+          {setItems.map((setItem) => (
+            <label key={setItem.id} className="checkbox-label">
               <input
                 type="checkbox"
-                checked={selectedSetKeys.has(setOption.key)}
-                onChange={() => toggleSetName(setOption.label)}
+                checked={selectedSetKeys.has(setItem.id)}
+                onChange={() => toggleSetId(setItem.id)}
               />
-              {setOption.label}
+              {setItem.name}
             </label>
           ))}
         </div>
+      </section>
+      ) : null}
+
+      {view === 'library' ? (
+      <>
+      <section className="settings-section">
+        <h2>Sets</h2>
         <div className="template-save-row">
           <input
             type="text"
@@ -752,28 +789,12 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
             placeholder="Add new set"
             aria-label="Add new set"
           />
-          <button type="button" onClick={() => void addSet()}>
+          <button type="button" onClick={() => void addTaxonomyItem('sets', newSetName, () => setNewSetName(''))}>
             Add set
           </button>
         </div>
 
-        {customSets.length > 0 ? (
-          <div className="template-list">
-            {customSets.map((setName) => (
-              <article key={setName} className="template-item">
-                <strong>{setName}</strong>
-                <div>
-                  <button type="button" onClick={() => void renameCustomSet(setName)}>
-                    Rename
-                  </button>
-                  <button type="button" onClick={() => void deleteCustomSet(setName)}>
-                    Delete
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : null}
+        {renderTaxonomyList('sets', taxonomy.sets)}
       </section>
 
       <section className="settings-section">
@@ -786,28 +807,12 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
             placeholder="Add new category"
             aria-label="Add new category"
           />
-          <button type="button" onClick={() => void addCategory()}>
+          <button type="button" onClick={() => void addTaxonomyItem('categories', newCategoryName, () => setNewCategoryName(''))}>
             Add category
           </button>
         </div>
 
-        {customCategories.length > 0 ? (
-          <div className="template-list">
-            {customCategories.map((categoryName) => (
-              <article key={categoryName} className="template-item">
-                <strong>{categoryName}</strong>
-                <div>
-                  <button type="button" onClick={() => void renameCustomCategory(categoryName)}>
-                    Rename
-                  </button>
-                  <button type="button" onClick={() => void deleteCustomCategory(categoryName)}>
-                    Delete
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : null}
+        {renderTaxonomyList('categories', taxonomy.categories)}
       </section>
 
       {taxonomyError ? (
@@ -815,7 +820,11 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
           <p>{taxonomyError}</p>
         </section>
       ) : null}
+      </>
+      ) : null}
 
+      {view === 'configure' ? (
+      <>
       <section className="settings-section">
         <h2>Slots</h2>
         {settings.slots.map((slot, index) => (
@@ -832,11 +841,14 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
               onChange={(event) => updateSlot(index, { category: event.target.value })}
               aria-label={`Slot ${index + 1} category`}
             >
-              {categories.map((category) => (
-                <option key={category} value={category}>
-                  {category} ({eligibleByCategory.get(category) ?? 0})
-                </option>
-              ))}
+              {taxonomy.categories
+                .filter((category) => !category.hidden || category.id === slot.category)
+                .map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                    {category.hidden ? ' (hidden)' : ''} ({eligibleByCategory.get(category.id) ?? 0})
+                  </option>
+                ))}
             </select>
             <div className="slot-controls">
               <button type="button" onClick={() => moveSlot(index, -1)} aria-label="Move slot left">
@@ -881,6 +893,11 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
         </label>
       </section>
 
+      </>
+      ) : null}
+
+      {view === 'settings' ? (
+      <>
       <section className="settings-section">
         <h2>Behavior</h2>
         <label className="checkbox-label">
@@ -901,6 +918,11 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
         </label>
       </section>
 
+      </>
+      ) : null}
+
+      {view === 'configure' ? (
+      <>
       <section className="settings-section">
         <h2>Templates</h2>
         <div className="template-save-row">
@@ -935,13 +957,23 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
         </div>
       </section>
 
-      {(hasNoSets || hasZeroCategory) && (
+      {(hasNoSets || hasZeroCategory || missingCategorySlots > 0) && (
         <section className="settings-section error-box" aria-live="assertive">
           {hasNoSets ? <p>No sets selected. Select at least one set.</p> : null}
+          {missingCategorySlots > 0 ? (
+            <p>
+              {missingCategorySlots} slot{missingCategorySlots === 1 ? ' uses' : 's use'} a category that was deleted or
+              hidden. Choose a different category.
+            </p>
+          ) : null}
           {hasZeroCategory ? <p>At least one slot category has zero eligible images.</p> : null}
         </section>
       )}
+      </>
+      ) : null}
 
+      {view === 'settings' ? (
+      <>
       <section className="settings-section feedback-section">
         <h2>Feedback &amp; Support</h2>
         <p className="muted-text feedback-intro">
@@ -975,6 +1007,8 @@ export const SettingsPage = ({ metadata, settings, onChange, onRefreshMetadata }
           Image Rights
         </button>
       </footer>
+      </>
+      ) : null}
     </main>
   );
 };
