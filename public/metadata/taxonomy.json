@@ -3,7 +3,8 @@
     { "id": "meeting-plan-1", "name": "Meeting Plan 1" },
     { "id": "meeting-plan-2", "name": "Meeting Plan 2" },
     { "id": "meeting-plan-3", "name": "Meeting Plan 3" },
-    { "id": "meeting-plan-4", "name": "Meeting Plan 4" }
+    { "id": "meeting-plan-4", "name": "Meeting Plan 4" },
+    { "id": "meeting-plan-5", "name": "Meeting Plan 5" }
   ],
   "categories": [
     { "id": "animal", "name": "Animal" },
@@ -19,6 +20,7 @@
     { "id": "preposition", "name": "Preposition" },
     { "id": "pronoun", "name": "Pronoun" },
     { "id": "transitive-verb", "name": "Transitive verb" },
-    { "id": "verb", "name": "Verb" }
+    { "id": "verb", "name": "Verb" },
+    { "id": "ditransitive-verb", "name": "Ditransitive verb" }
   ]
 }
