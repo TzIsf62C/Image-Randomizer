@@ -346,6 +346,14 @@ body,
   grid-template-columns: 1fr 1fr auto;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid #d4d4d4;
+  border-radius: 8px;
+  background: white;
+}
+
+.slot-editor select[multiple] {
+  min-height: 7rem;
 }
 
 .slot-controls {

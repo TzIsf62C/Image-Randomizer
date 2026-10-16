@@ -32,7 +32,7 @@ export interface ImageRecord {
 export interface SlotConfig {
   id: string;
   label: string;
-  category: string;
+  category: string[];
 }
 
 export interface SlotTemplate {

@@ -165,7 +165,7 @@ export const PracticePage = ({ settings, metadata, taxonomy, repeatState }: Prac
   const eligibleBySlot = useMemo(() => {
     const bySet = buildEligibility(metadata, activeSetIds);
     return settings.slots.map((slot) =>
-      bySet.filter((item) => (item.categoryIds ?? item.categories ?? []).includes(slot.category))
+      bySet.filter((item) => (item.categoryIds ?? item.categories ?? []).some((category) => slot.category.includes(category)))
     );
   }, [metadata, activeSetIds, settings.slots]);
 

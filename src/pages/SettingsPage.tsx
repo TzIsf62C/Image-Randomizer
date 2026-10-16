@@ -120,7 +120,7 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
     const defaultCategory = categoryItems[0]?.id ?? 'subject';
     onChange({
       ...settings,
-      slots: [...settings.slots, { id: generateUuid(), label: '', category: defaultCategory }]
+      slots: [...settings.slots, { id: generateUuid(), label: '', category: [defaultCategory] }]
     });
   };
 
@@ -198,7 +198,7 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
   const deleteItem = async (kind: TaxonomyKind, item: TaxonomyItem): Promise<void> => {
     const noun = kind === 'sets' ? 'set' : 'category';
     const imageCount = getImagesUsingTaxonomyId(metadata, kind, item.id).length;
-    const slotCount = kind === 'categories' ? settings.slots.filter((slot) => slot.category === item.id).length : 0;
+    const slotCount = kind === 'categories' ? settings.slots.filter((slot) => slot.category.includes(item.id)).length : 0;
 
     const warnings: string[] = [];
     if (!item.builtin && imageCount > 0) {
@@ -509,9 +509,11 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
   };
 
   const missingCategorySlots = settings.slots.filter(
-    (slot) => !categoryItems.some((category) => category.id === slot.category)
+    (slot) => slot.category.length === 0 || slot.category.some((id) => !categoryItems.some((category) => category.id === id))
   ).length;
-  const hasZeroCategory = settings.slots.some((slot) => (eligibleByCategory.get(slot.category) ?? 0) === 0);
+  const hasZeroCategory = settings.slots.some(
+    (slot) => slot.category.length === 0 || slot.category.every((category) => (eligibleByCategory.get(category) ?? 0) === 0)
+  );
 
   if (view === 'settings' && showImageRights) {
     return (
@@ -759,24 +761,6 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
       </section>
       ) : null}
 
-      {view === 'configure' ? (
-      <section className="settings-section">
-        <h2>Sets</h2>
-        <div className="set-grid">
-          {setItems.map((setItem) => (
-            <label key={setItem.id} className="checkbox-label">
-              <input
-                type="checkbox"
-                checked={selectedSetKeys.has(setItem.id)}
-                onChange={() => toggleSetId(setItem.id)}
-              />
-              {setItem.name}
-            </label>
-          ))}
-        </div>
-      </section>
-      ) : null}
-
       {view === 'library' ? (
       <>
       <section className="settings-section">
@@ -837,12 +821,17 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
               aria-label={`Slot ${index + 1} label`}
             />
             <select
+              multiple
               value={slot.category}
-              onChange={(event) => updateSlot(index, { category: event.target.value })}
-              aria-label={`Slot ${index + 1} category`}
+              onChange={(event) =>
+                updateSlot(index, {
+                  category: Array.from(event.target.selectedOptions, (option) => option.value)
+                })
+              }
+              aria-label={`Slot ${index + 1} categories`}
             >
               {taxonomy.categories
-                .filter((category) => !category.hidden || category.id === slot.category)
+                .filter((category) => !category.hidden || slot.category.includes(category.id))
                 .map((category) => (
                   <option key={category.id} value={category.id}>
                     {category.name}
@@ -866,31 +855,6 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
         <button type="button" onClick={addSlot} className="action-button">
           Add slot
         </button>
-      </section>
-
-      <section className="settings-section">
-        <h2>Randomization</h2>
-        <label>
-          Repeat mode
-          <select
-            value={settings.repeatMode}
-            onChange={(event) => onChange({ ...settings, repeatMode: event.target.value as SettingsState['repeatMode'] })}
-          >
-            <option value="random">Random</option>
-            <option value="cycle">No repeats until all used</option>
-            <option value="avoidLastN">Avoid images seen within last N spins</option>
-          </select>
-        </label>
-
-        <label>
-          N value
-          <input
-            type="number"
-            min={1}
-            value={settings.avoidLastN}
-            onChange={(event) => onChange({ ...settings, avoidLastN: Math.max(1, Number(event.target.value) || 1) })}
-          />
-        </label>
       </section>
 
       </>
@@ -956,6 +920,51 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
           ))}
         </div>
       </section>
+
+      {view === 'configure' ? (
+      <section className="settings-section">
+        <h2>Sets</h2>
+        <div className="set-grid">
+          {setItems.map((setItem) => (
+            <label key={setItem.id} className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={selectedSetKeys.has(setItem.id)}
+                onChange={() => toggleSetId(setItem.id)}
+              />
+              {setItem.name}
+            </label>
+          ))}
+        </div>
+      </section>
+      ) : null}
+
+      {view === 'configure' ? (
+      <section className="settings-section">
+        <h2>Randomization</h2>
+        <label>
+          Repeat mode
+          <select
+            value={settings.repeatMode}
+            onChange={(event) => onChange({ ...settings, repeatMode: event.target.value as SettingsState['repeatMode'] })}
+          >
+            <option value="random">Random</option>
+            <option value="cycle">No repeats until all used</option>
+            <option value="avoidLastN">Avoid images seen within last N spins</option>
+          </select>
+        </label>
+
+        <label>
+          N value
+          <input
+            type="number"
+            min={1}
+            value={settings.avoidLastN}
+            onChange={(event) => onChange({ ...settings, avoidLastN: Math.max(1, Number(event.target.value) || 1) })}
+          />
+        </label>
+      </section>
+      ) : null}
 
       {(hasNoSets || hasZeroCategory || missingCategorySlots > 0) && (
         <section className="settings-section error-box" aria-live="assertive">
