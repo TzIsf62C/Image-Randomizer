@@ -1,0 +1,26 @@
+{
+  "sets": [
+    { "id": "meeting-plan-1", "name": "Meeting Plan 1" },
+    { "id": "meeting-plan-2", "name": "Meeting Plan 2" },
+    { "id": "meeting-plan-3", "name": "Meeting Plan 3" },
+    { "id": "meeting-plan-4", "name": "Meeting Plan 4" },
+    { "id": "meeting-plan-5", "name": "Meeting Plan 5" }
+  ],
+  "categories": [
+    { "id": "animal", "name": "Animal" },
+    { "id": "animate", "name": "Animate" },
+    { "id": "concrete-object", "name": "Concrete object" },
+    { "id": "fixed-object", "name": "Fixed object" },
+    { "id": "inanimate", "name": "Inanimate" },
+    { "id": "intransitive-verb", "name": "Intransitive verb" },
+    { "id": "location", "name": "Location" },
+    { "id": "noun", "name": "Noun" },
+    { "id": "person", "name": "Person" },
+    { "id": "plant", "name": "Plant" },
+    { "id": "preposition", "name": "Preposition" },
+    { "id": "pronoun", "name": "Pronoun" },
+    { "id": "transitive-verb", "name": "Transitive verb" },
+    { "id": "verb", "name": "Verb" },
+    { "id": "ditransitive-verb", "name": "Ditransitive verb" }
+  ]
+}

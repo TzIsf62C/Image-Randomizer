@@ -32,7 +32,7 @@ export interface ImageRecord {
 export interface SlotConfig {
   id: string;
   label: string;
-  category: string;
+  category: string[];
 }
 
 export interface SlotTemplate {
@@ -42,7 +42,7 @@ export interface SlotTemplate {
 }
 
 export interface SettingsState {
-  selectedSetNames: string[];
+  selectedSetIds: string[];
   slots: SlotConfig[];
   soundEnabled: boolean;
   animationEnabled: boolean;

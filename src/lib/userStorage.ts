@@ -16,9 +16,16 @@ export interface UserDataArchive {
   userImages: ImageRecord[];
   nativeOverrides: NativeImageOverride[];
   files: UserArchiveFile[];
+  taxonomy?: ArchiveTaxonomy;
+}
+
+export interface ArchiveTaxonomy {
+  categories: TaxonomyEntry[];
+  sets: TaxonomyEntry[];
 }
 
 export interface UserDataArchiveInput {
+  taxonomy?: ArchiveTaxonomy;
   userImages?: ImageRecord[];
   nativeOverrides?: NativeImageOverride[];
   files?: UserArchiveFile[];
@@ -28,6 +35,7 @@ export interface TaxonomyEntry {
   id: string;
   name: string;
   origin: 'native' | 'user';
+  hidden?: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -286,13 +294,15 @@ export const processUserImageFile = async (file: File): Promise<ImageRecord & { 
 export const exportUserDataArchive = ({
   userImages = [],
   nativeOverrides = [],
-  files = []
+  files = [],
+  taxonomy
 }: UserDataArchiveInput = {}): UserDataArchive => ({
   version: 1,
   exportedAt: new Date().toISOString(),
   userImages,
   nativeOverrides,
-  files
+  files,
+  ...(taxonomy ? { taxonomy } : {})
 });
 
 export const importUserDataArchive = async (archive: Partial<UserDataArchive>): Promise<void> => {
@@ -306,6 +316,13 @@ export const importUserDataArchive = async (archive: Partial<UserDataArchive>): 
 
   for (const userImage of userImages) {
     await saveUserImage(userImage);
+  }
+
+  for (const kind of ['categories', 'sets'] as const) {
+    const entries = archive.taxonomy?.[kind];
+    for (const entry of Array.isArray(entries) ? entries : []) {
+      await saveTaxonomyEntry(entry, kind);
+    }
   }
 
   for (const override of nativeOverrides) {

@@ -1,11 +1,14 @@
 import { DEFAULT_SETTINGS, STORAGE_KEY } from './constants';
 import type { SettingsState } from '../types';
 
+const normalizeCategories = (category: string[] | string): string[] =>
+  Array.isArray(category) ? category : [category];
+
 const isValidSettings = (value: unknown): value is SettingsState => {
   if (typeof value !== 'object' || value === null) return false;
   const maybe = value as Partial<SettingsState>;
   return (
-    Array.isArray(maybe.selectedSetNames) && maybe.selectedSetNames.every((setName) => typeof setName === 'string') &&
+    Array.isArray(maybe.selectedSetIds) && maybe.selectedSetIds.every((setId) => typeof setId === 'string') &&
     Array.isArray(maybe.slots) &&
     typeof maybe.soundEnabled === 'boolean' &&
     typeof maybe.animationEnabled === 'boolean' &&
@@ -24,7 +27,18 @@ export const loadSettings = (): SettingsState => {
     if (isValidSettings(parsed)) {
       return {
         ...DEFAULT_SETTINGS,
-        ...parsed
+        ...parsed,
+        slots: parsed.slots.map((slot) => ({
+          ...slot,
+          category: normalizeCategories(slot.category)
+        })),
+        templates: parsed.templates.map((template) => ({
+          ...template,
+          slots: template.slots.map((slot) => ({
+            ...slot,
+            category: normalizeCategories(slot.category)
+          }))
+        }))
       };
     }
   } catch {

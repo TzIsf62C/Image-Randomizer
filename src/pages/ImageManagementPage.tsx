@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, CloseIcon, FilterIcon } from '../components/icons';
-import { extractSetOptions, getRecordSetIds, getSetLabelForId, normalizeSetKey } from '../lib/metadata';
+import { getRecordSetIds, normalizeSetKey } from '../lib/metadata';
+import { getTaxonomyName, visibleItems, type Taxonomy } from '../lib/taxonomy';
 import {
   deleteUserImage,
   getRecordImageSource,
@@ -14,6 +15,7 @@ import type { ImageRecord } from '../types';
 
 interface ImageManagementPageProps {
   metadata: ImageRecord[];
+  taxonomy: Taxonomy;
   onRefreshMetadata?: () => void;
 }
 
@@ -23,7 +25,7 @@ const NO_CATEGORY_OPTION = '__no_category__';
 
 type BulkModalType = 'set' | 'category' | null;
 
-export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManagementPageProps) => {
+export const ImageManagementPage = ({ metadata, taxonomy, onRefreshMetadata }: ImageManagementPageProps) => {
   const navigate = useNavigate();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [originFilter, setOriginFilter] = useState<'all' | 'native' | 'user'>(EMPTY_FILTER as 'all' | 'native' | 'user');
@@ -50,17 +52,24 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
   const setOptions = useMemo(() => {
     return [
       { key: NO_SET_OPTION, label: 'No Set' },
-      ...extractSetOptions(metadata)
+      ...visibleItems(taxonomy.sets).map((item) => ({ key: item.id, label: item.name }))
     ];
-  }, [metadata]);
+  }, [taxonomy.sets]);
 
   const categoryOptions = useMemo(() => {
-    const unique = new Set<string>();
-    metadata.forEach((record) => {
-      (record.categoryIds ?? record.categories ?? []).forEach((category) => unique.add(category));
-    });
-    return [NO_CATEGORY_OPTION, ...[...unique].sort()];
-  }, [metadata]);
+    return [NO_CATEGORY_OPTION, ...visibleItems(taxonomy.categories).map((item) => item.id)];
+  }, [taxonomy.categories]);
+
+  const hiddenCategoryIds = useMemo(
+    () => new Set(taxonomy.categories.filter((item) => item.hidden).map((item) => item.id)),
+    [taxonomy.categories]
+  );
+  const hiddenSetIds = useMemo(() => new Set(taxonomy.sets.filter((item) => item.hidden).map((item) => item.id)), [taxonomy.sets]);
+  const visibleDraftCategoryIds = draftCategoryIds.filter((id) => !hiddenCategoryIds.has(id));
+  const visibleDraftSetIds = draftSetIds.filter((id) => !hiddenSetIds.has(id));
+
+  const categoryLabel = (id: string): string =>
+    id === NO_CATEGORY_OPTION ? 'No Category' : getTaxonomyName(taxonomy.categories, id);
 
   const activeFilterChips = useMemo(() => {
     const chips = [] as Array<{ key: string; label: string; clear: () => void }>;
@@ -84,13 +93,13 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
     if (categoryFilter !== EMPTY_FILTER) {
       chips.push({
         key: 'category',
-        label: `Category: ${categoryFilter === NO_CATEGORY_OPTION ? 'No Category' : categoryFilter}`,
+        label: `Category: ${categoryFilter === NO_CATEGORY_OPTION ? 'No Category' : getTaxonomyName(taxonomy.categories, categoryFilter)}`,
         clear: () => setCategoryFilter(EMPTY_FILTER)
       });
     }
 
     return chips;
-  }, [categoryFilter, originFilter, setFilter, setOptions]);
+  }, [categoryFilter, originFilter, setFilter, setOptions, taxonomy.categories]);
 
   const editingRecord = useMemo(
     () => metadata.find((record) => record.id === editorId) ?? null,
@@ -402,7 +411,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
     <main className="image-manager-page">
       <div className="image-manager-top">
         <div className="image-manager-toolbar">
-          <button type="button" className="icon-button" onClick={() => navigate('/settings')} aria-label="Back to settings">
+          <button type="button" className="icon-button" onClick={() => navigate('/')} aria-label="Back to practice">
             <ArrowLeftIcon />
           </button>
 
@@ -469,10 +478,10 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
           {filteredRecords.map((record) => {
             const imgUrl = getRecordImageSource(record, userImageUrls);
             const sets = (record.setIds && record.setIds.length > 0 ? record.setIds : record.setName ? [record.setName] : [NO_SET_OPTION])
-              .filter(Boolean)
-              .map((value) => (value === NO_SET_OPTION ? 'No Set' : getSetLabelForId(metadata, value)));
+              .filter((value) => Boolean(value) && !hiddenSetIds.has(normalizeSetKey(value)))
+              .map((value) => (value === NO_SET_OPTION ? 'No Set' : getTaxonomyName(taxonomy.sets, normalizeSetKey(value))));
             const categories = (record.categoryIds && record.categoryIds.length > 0 ? record.categoryIds : record.categories ?? [])
-              .filter(Boolean);
+              .filter((value) => Boolean(value) && !hiddenCategoryIds.has(value));
 
             return (
               <div
@@ -492,7 +501,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
                 </span>
                 <span className="file-name-cell">{formatDisplayFileName(record)}</span>
                 <span>{sets.length > 0 ? sets.join(', ') : 'No Set'}</span>
-                <span>{categories.length > 0 ? categories.join(', ') : 'No Category'}</span>
+                <span>{categories.length > 0 ? categories.map(categoryLabel).join(', ') : 'No Category'}</span>
                 <span>
                   <button type="button" className="action-button compact" onClick={() => setEditorId(record.id)}>
                     Edit
@@ -542,7 +551,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
                   <option value={EMPTY_FILTER}>All categories</option>
                   {categoryOptions.map((category) => (
                     <option key={category} value={category}>
-                      {category === NO_CATEGORY_OPTION ? 'No Category' : category}
+                      {categoryLabel(category)}
                     </option>
                   ))}
                 </select>
@@ -580,7 +589,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
                         );
                       }}
                     />
-                    {bulkModal === 'set' ? (value === NO_SET_OPTION ? 'No Set' : label) : value === NO_CATEGORY_OPTION ? 'No Category' : label}
+                    {bulkModal === 'set' ? (value === NO_SET_OPTION ? 'No Set' : label) : value === NO_CATEGORY_OPTION ? 'No Category' : categoryLabel(value)}
                   </label>
                 );
               })}
@@ -684,11 +693,11 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
               <div className="image-editor-card">
                 <h3>Categories</h3>
                 <div className="taxonomy-chip-list">
-                  {draftCategoryIds.length > 0 ? (
-                    draftCategoryIds.map((category) => (
+                  {visibleDraftCategoryIds.length > 0 ? (
+                    visibleDraftCategoryIds.map((category) => (
                       <span key={category} className="taxonomy-chip">
-                        <span>{category}</span>
-                        <button type="button" className="chip-remove" aria-label={`Remove ${category}`} onClick={() => removeDraftCategory(category)}>
+                        <span>{categoryLabel(category)}</span>
+                        <button type="button" className="chip-remove" aria-label={`Remove ${categoryLabel(category)}`} onClick={() => removeDraftCategory(category)}>
                           ×
                         </button>
                       </span>
@@ -715,7 +724,7 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
                       .filter((category) => !draftCategoryIds.includes(category))
                       .map((category) => (
                         <option key={category} value={category}>
-                          {category}
+                          {categoryLabel(category)}
                         </option>
                       ))}
                   </select>
@@ -725,8 +734,8 @@ export const ImageManagementPage = ({ metadata, onRefreshMetadata }: ImageManage
               <div className="image-editor-card">
                 <h3>Sets</h3>
                 <div className="taxonomy-chip-list">
-                  {draftSetIds.length > 0 ? (
-                    draftSetIds.map((setId) => {
+                  {visibleDraftSetIds.length > 0 ? (
+                    visibleDraftSetIds.map((setId) => {
                       const label = setOptions.find((option) => normalizeSetKey(option.key) === normalizeSetKey(setId))?.label ?? setId;
                       return (
                         <span key={setId} className="taxonomy-chip">

@@ -547,7 +547,7 @@
     "setName": "Meeting Plan 2",
     "categories": [
       "verb",
-      "transitive-verb"
+      "ditransitive-verb"
     ],
     "rights": {
     "creator": "Angela Thompson",
@@ -1851,6 +1851,606 @@
     "copyrightNotice": "© 2016 Angela Thompson",
     "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
     "source": "internal"
+    }
+  },
+  {
+    "id": "arm",
+    "file": "mp5/arm.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "back",
+    "file": "mp5/back.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "beak",
+    "file": "mp5/beak.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "beard",
+    "file": "mp5/beard.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "butt",
+    "file": "mp5/butt.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "cheek",
+    "file": "mp5/cheek.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "chin",
+    "file": "mp5/chin.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "claw",
+    "file": "mp5/claw.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "digits",
+    "file": "mp5/digits.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "ear",
+    "file": "mp5/ear.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "elbow",
+    "file": "mp5/elbow.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "eye",
+    "file": "mp5/eye.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "eyebrow",
+    "file": "mp5/eyebrow.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "eyelashes",
+    "file": "mp5/eyelashes.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "face",
+    "file": "mp5/face.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "feather",
+    "file": "mp5/feather.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "fingers",
+    "file": "mp5/fingers.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "foot",
+    "file": "mp5/foot.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "fur",
+    "file": "mp5/fur.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "hair",
+    "file": "mp5/hair.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "hand",
+    "file": "mp5/hand.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "head",
+    "file": "mp5/head.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "hoof",
+    "file": "mp5/hoof.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "horn",
+    "file": "mp5/horn.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "jaw",
+    "file": "mp5/jaw.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "knee",
+    "file": "mp5/knee.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "leg",
+    "file": "mp5/leg.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "lips",
+    "file": "mp5/lips.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "mouth",
+    "file": "mp5/mouth.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "neck",
+    "file": "mp5/neck.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "shell",
+    "file": "mp5/shell.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "shoulder",
+    "file": "mp5/shoulder.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "snout",
+    "file": "mp5/snout.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "tail",
+    "file": "mp5/tail.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "thumb",
+    "file": "mp5/thumb.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "toes",
+    "file": "mp5/toes.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "tongue",
+    "file": "mp5/tongue.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "tooth",
+    "file": "mp5/tooth.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-1pl",
+    "file": "mp5/touch-1pl.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-1s",
+    "file": "mp5/touch-1s.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-2pl-older",
+    "file": "mp5/touch-2pl-older.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-2pl-younger",
+    "file": "mp5/touch-2pl-younger.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-2s-older",
+    "file": "mp5/touch-2s-older.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-2s-younger",
+    "file": "mp5/touch-2s-younger.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-3pl",
+    "file": "mp5/touch-3pl.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "touch-3s",
+    "file": "mp5/touch-3s.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["verb", "transitive-verb"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "trunk",
+    "file": "mp5/trunk.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "waist",
+    "file": "mp5/waist.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "wing-insect",
+    "file": "mp5/wing-insect.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
+    }
+  },
+  {
+    "id": "wing",
+    "file": "mp5/wing.svg",
+    "setName": "Meeting Plan 5",
+    "categories": ["noun", "concrete-object", "inanimate"],
+    "rights": {
+      "creator": "Angela Thompson",
+      "copyrightNotice": "© 2016 Angela Thompson",
+      "license": "Used by permission of Global Language and Culture Learning (GLC). All rights reserved. ",
+      "source": "internal"
     }
   }
 ]
