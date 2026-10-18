@@ -4,7 +4,9 @@
     { "id": "meeting-plan-2", "name": "Meeting Plan 2" },
     { "id": "meeting-plan-3", "name": "Meeting Plan 3" },
     { "id": "meeting-plan-4", "name": "Meeting Plan 4" },
-    { "id": "meeting-plan-5", "name": "Meeting Plan 5" }
+    { "id": "meeting-plan-5", "name": "Meeting Plan 5" },
+    { "id": "meeting-plan-6", "name": "Meeting Plan 6" },
+    { "id": "meeting-plan-7", "name": "Meeting Plan 7" }
   ],
   "categories": [
     { "id": "animal", "name": "Animal" },
