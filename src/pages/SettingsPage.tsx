@@ -1011,7 +1011,7 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
       </section>
 
       <footer className="settings-rights-footer">
-        <p>Image Randomizer App Copyright © 2026 TzIsf62C</p>
+        <p>Language Learning Image Shuffle App Copyright © 2026 TzIsf62C</p>
         <button type="button" className="action-button" onClick={() => setShowImageRights(true)}>
           Image Rights
         </button>
