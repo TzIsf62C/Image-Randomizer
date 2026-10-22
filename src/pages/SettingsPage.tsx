@@ -152,6 +152,17 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
     onChange({ ...settings, selectedSetIds: [...selected] });
   };
 
+  const setVisibleSetsSelected = (selected: boolean): void => {
+    const visibleSetIds = new Set(setItems.map((setItem) => setItem.id));
+    const nextSelectedSetIds = settings.selectedSetIds.filter((setId) => !visibleSetIds.has(setId));
+    onChange({
+      ...settings,
+      selectedSetIds: selected
+        ? [...nextSelectedSetIds, ...setItems.map((setItem) => setItem.id)]
+        : nextSelectedSetIds
+    });
+  };
+
   const addTaxonomyItem = async (kind: TaxonomyKind, rawName: string, reset: () => void): Promise<void> => {
     const noun = kind === 'sets' ? 'set' : 'category';
     const candidate = normalizeTaxonomyName(rawName);
@@ -923,7 +934,17 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
 
       {view === 'configure' ? (
       <section className="settings-section">
-        <h2>Sets</h2>
+        <div className="settings-section-heading">
+          <h2>Sets</h2>
+          <div className="set-selection-controls">
+            <button type="button" className="action-button" onClick={() => setVisibleSetsSelected(true)}>
+              Select all
+            </button>
+            <button type="button" className="action-button" onClick={() => setVisibleSetsSelected(false)}>
+              Select none
+            </button>
+          </div>
+        </div>
         <div className="set-grid">
           {setItems.map((setItem) => (
             <label key={setItem.id} className="checkbox-label">
@@ -1011,7 +1032,7 @@ export const SettingsPage = ({ view, taxonomy, metadata, settings, onChange, onR
       </section>
 
       <footer className="settings-rights-footer">
-        <p>Image Randomizer App Copyright © 2026 TzIsf62C</p>
+        <p>Language Learning Image Shuffle App Copyright © 2026 TzIsf62C</p>
         <button type="button" className="action-button" onClick={() => setShowImageRights(true)}>
           Image Rights
         </button>

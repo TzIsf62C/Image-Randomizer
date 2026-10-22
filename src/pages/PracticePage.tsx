@@ -172,6 +172,24 @@ export const PracticePage = ({ settings, metadata, taxonomy, repeatState }: Prac
   const hasConfigError =
     activeSetIds.length === 0 || eligibleBySlot.some((eligible) => eligible.length === 0);
 
+  const spinDisabledReason = useMemo(() => {
+    const reasons: string[] = [];
+
+    if (activeSetIds.length === 0) {
+      reasons.push('no active image sets are selected');
+    }
+
+    const emptySlotIndex = eligibleBySlot.findIndex((eligible) => eligible.length === 0);
+    if (emptySlotIndex >= 0) {
+      const slotLabel = settings.slots[emptySlotIndex]?.label || `Slot ${emptySlotIndex + 1}`;
+      reasons.push(`${slotLabel} has no eligible images in the selected sets`);
+    }
+
+    if (reasons.length === 0) return null;
+
+    return `Spin is unavailable because ${reasons.join(' and ')}. Open Configure Practice to update your sets or slot categories.`;
+  }, [activeSetIds.length, eligibleBySlot, settings.slots]);
+
   const spin = useCallback((): void => {
     if (spinning || hasConfigError) return;
 
@@ -385,8 +403,21 @@ export const PracticePage = ({ settings, metadata, taxonomy, repeatState }: Prac
       ) : null}
 
       <nav className="practice-controls" aria-label="Practice controls">
+        {spinDisabledReason ? (
+          <p id="spin-config-error" className="spin-config-error" role="alert">
+            {spinDisabledReason}
+          </p>
+        ) : null}
         <PracticeMenu />
-        <button className="icon-button spin" type="button" onClick={spin} disabled={spinning || hasConfigError} aria-label="Spin">
+        <button
+          className="icon-button spin"
+          type="button"
+          onClick={spin}
+          disabled={spinning || hasConfigError}
+          aria-label="Spin"
+          aria-describedby={spinDisabledReason ? 'spin-config-error' : undefined}
+          title={spinDisabledReason ?? undefined}
+        >
           <SpinIcon />
         </button>
         <button className="icon-button" type="button" onClick={() => setShowHistory(true)} aria-label="History">

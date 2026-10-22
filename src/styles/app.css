@@ -242,9 +242,18 @@ body,
 
 .practice-controls {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: center;
   align-items: center;
+}
+
+.spin-config-error {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--rose);
+  font-weight: 700;
+  text-align: center;
 }
 
 .icon-button {
@@ -327,6 +336,24 @@ body,
   border: 2px solid #d4d4d4;
   border-radius: 12px;
   padding: 1rem;
+}
+
+.settings-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.settings-section-heading h2 {
+  margin: 0;
+}
+
+.set-selection-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .set-grid {
